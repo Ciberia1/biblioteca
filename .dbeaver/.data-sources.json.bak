@@ -1,0 +1,29 @@
+{
+	"folders": {},
+	"connections": {
+		"derby-18b305a747f-557c2fa409c4dd1d": {
+			"provider": "generic",
+			"driver": "derby",
+			"name": "bibliotecaCiberia",
+			"save-password": true,
+			"configuration": {
+				"database": "C:\\Users\\Ámbito académico\\Documents\\GitHub\\bibliotecaCiberia",
+				"url": "jdbc:derby:C:\\Users\\Ámbito académico\\Documents\\GitHub\\bibliotecaCiberia",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"auth-model": "native"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}
