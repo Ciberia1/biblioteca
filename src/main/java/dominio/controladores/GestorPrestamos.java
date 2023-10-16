@@ -1,11 +1,21 @@
 package dominio.controladores;
 
 import persistencia.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+@Controller
+
 
 public class GestorPrestamos {
+	private static final Logger log = LoggerFactory.getLogger(GestorPrestamos.class);
 
-	PrestamoDAO prestamoDAO;
-	ReservaDAO reservaDAO;
+	@Autowired
+	private PrestamoDAO prestamoDAO;
+	@Autowired
+	private ReservaDAO reservaDAO;
 
 	/**
 	 * 

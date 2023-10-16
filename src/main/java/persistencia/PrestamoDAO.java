@@ -1,34 +1,16 @@
 package persistencia;
 
 import dominio.entidades.*;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public class PrestamoDAO extends EntityDAO {
-
-	/**
-	 * 
-	 * @param prestamo
-	 */
-	public int altaPrestamo(Prestamo prestamo) {
-		// TODO - implement PrestamoDAO.altaPrestamo
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param prestamo
-	 */
-	public int bajaPrestamo(Prestamo prestamo) {
-		// TODO - implement PrestamoDAO.bajaPrestamo
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param prestamo
-	 */
-	public Prestamo modificarPrestamo(Prestamo prestamo) {
-		// TODO - implement PrestamoDAO.modificarPrestamo
-		throw new UnsupportedOperationException();
-	}
-
+@Repository
+public interface PrestamoDAO extends JpaRepository<Prestamo, Long> {
+	/*
+	 * Se hereda de JpaRepository operaciones de acceso a datos comunes a todas las
+	 * entidades: E save(E) List<E> saveAll(List<E>) List<E> findAll() E
+	 * findById(id) delete(E) deleteById(id) ...
+	 *
+	 * Aquí se podrían definir consultas de selección más específicas y complejas
+	 **/
 }

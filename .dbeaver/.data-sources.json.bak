@@ -1,14 +1,14 @@
 {
 	"folders": {},
 	"connections": {
-		"derby-18b305a747f-557c2fa409c4dd1d": {
+		"derby-18b3061d8f8-23c649d31d475124": {
 			"provider": "generic",
 			"driver": "derby",
-			"name": "bibliotecaCiberia",
+			"name": "ciberiaBBDD",
 			"save-password": true,
 			"configuration": {
-				"database": "C:\\Users\\Ámbito académico\\Documents\\GitHub\\bibliotecaCiberia",
-				"url": "jdbc:derby:C:\\Users\\Ámbito académico\\Documents\\GitHub\\bibliotecaCiberia",
+				"database": "C:\\Users\\Ámbito académico\\Documents\\GitHub\\bibliotecaCiberia\\ciberiaBBDD",
+				"url": "jdbc:derby:C:\\Users\\Ámbito académico\\Documents\\GitHub\\bibliotecaCiberia\\ciberiaBBDD",
 				"configurationType": "MANUAL",
 				"type": "dev",
 				"auth-model": "native"

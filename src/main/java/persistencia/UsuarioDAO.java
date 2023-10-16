@@ -1,34 +1,16 @@
 package persistencia;
 
 import dominio.entidades.*;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public class UsuarioDAO extends EntityDAO {
-
-	/**
-	 * 
-	 * @param usuario
-	 */
-	public String altaUsuario(Usuario usuario) {
-		// TODO - implement UsuarioDAO.altaUsuario
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param usuario
-	 */
-	public String bajaUsuario(Usuario usuario) {
-		// TODO - implement UsuarioDAO.bajaUsuario
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param usuario
-	 */
-	public Usuario modificarUsuario(Usuario usuario) {
-		// TODO - implement UsuarioDAO.modificarUsuario
-		throw new UnsupportedOperationException();
-	}
-
+@Repository
+public interface UsuarioDAO extends JpaRepository<Usuario, Long> {
+	/*
+	 * Se hereda de JpaRepository operaciones de acceso a datos comunes a todas las
+	 * entidades: E save(E) List<E> saveAll(List<E>) List<E> findAll() E
+	 * findById(id) delete(E) deleteById(id) ...
+	 *
+	 * Aquí se podrían definir consultas de selección más específicas y complejas
+	 **/
 }

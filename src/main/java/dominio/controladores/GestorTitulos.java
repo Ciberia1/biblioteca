@@ -2,12 +2,21 @@ package dominio.controladores;
 
 import persistencia.*;
 import dominio.entidades.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+@Controller
 
 public class GestorTitulos {
-
-	ObraDAO obraDAO;
-	EjemplarDAO ejemplarDAO;
-	AutorDAO autorDAO;
+	private static final Logger log = LoggerFactory.getLogger(GestorTitulos.class);
+	@Autowired
+	private ObraDAO obraDAO;
+	@Autowired
+	private EjemplarDAO ejemplarDAO;
+	@Autowired
+	private AutorDAO autorDAO;
 
 	/**
 	 * 
@@ -15,8 +24,8 @@ public class GestorTitulos {
 	 * @param isbn
 	 * @param autores
 	 */
-	public Obra altaTítulo(String titulo, String isbn, String[] autores) {
-		// TODO - implement GestorTitulos.altaTítulo
+	public Obra altaTitulo(String titulo, String isbn, String[] autores) {
+		// TODO - implement GestorTitulos.altaTï¿½tulo
 		throw new UnsupportedOperationException();
 	}
 
