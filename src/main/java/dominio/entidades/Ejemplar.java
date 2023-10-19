@@ -8,8 +8,8 @@ public class Ejemplar {
 	Collection<Reserva> reservas;
 	Collection<Prestamo> prestamos;
 	private String id;
-	private Int numReserva;
+	private int numReserva;
 	private String estado;
-	private Int nroEjemplar;
+	private int nroEjemplar;
 
 }
