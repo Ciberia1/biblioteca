@@ -1,4 +1,4 @@
-package library.business.entity;
+package dominio.entidades;
 
 public class Greeting {
 	private String person;

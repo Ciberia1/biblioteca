@@ -1,5 +1,7 @@
 package persistencia;
 
+import java.util.Date;
+
 public abstract class EntityDAO<E> {
 
 	private String id;
