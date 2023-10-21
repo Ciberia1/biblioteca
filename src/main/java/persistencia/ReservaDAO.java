@@ -1,32 +1,16 @@
 package persistencia;
 
-public class ReservaDAO extends EntityDAO {
+import dominio.entidades.*;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-	/**
-	 * 
-	 * @param reserva
-	 */
-	public int altaReserva(Reserva reserva) {
-		// TODO - implement ReservaDAO.altaReserva
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param reserva
-	 */
-	public int bajaReserva(Reserva reserva) {
-		// TODO - implement ReservaDAO.bajaReserva
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param reserva
-	 */
-	public Reserva modificarReserva(Reserva reserva) {
-		// TODO - implement ReservaDAO.modificarReserva
-		throw new UnsupportedOperationException();
-	}
-
+@Repository
+public interface ReservaDAO extends JpaRepository<Reserva, Long> {
+	/*
+	 * Se hereda de JpaRepository operaciones de acceso a datos comunes a todas las
+	 * entidades: E save(E) List<E> saveAll(List<E>) List<E> findAll() E
+	 * findById(id) delete(E) deleteById(id) ...
+	 *
+	 * Aquí se podrían definir consultas de selección más específicas y complejas
+	 **/
 }

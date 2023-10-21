@@ -1,32 +1,16 @@
 package persistencia;
 
-public class PubSeriadasDAO extends ObraDAO {
+import dominio.entidades.*;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-	/**
-	 * 
-	 * @param pubSeriadas
-	 */
-	public PubSeriadas modificarPubSeriadas(PubSeriadas pubSeriadas) {
-		// TODO - implement PubSeriadasDAO.modificarPubSeriadas
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param pubSeriadas
-	 */
-	public int altaPubSeriadas(PubSeriadas pubSeriadas) {
-		// TODO - implement PubSeriadasDAO.altaPubSeriadas
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param pubSeriadas
-	 */
-	public int bajaPubSeriadas(PubSeriadas pubSeriadas) {
-		// TODO - implement PubSeriadasDAO.bajaPubSeriadas
-		throw new UnsupportedOperationException();
-	}
-
+@Repository
+public interface PubSeriadasDAO extends JpaRepository<PubSeriadas, Long> {
+	/*
+	 * Se hereda de JpaRepository operaciones de acceso a datos comunes a todas las
+	 * entidades: E save(E) List<E> saveAll(List<E>) List<E> findAll() E
+	 * findById(id) delete(E) deleteById(id) ...
+	 *
+	 * Aquí se podrían definir consultas de selección más específicas y complejas
+	 **/
 }

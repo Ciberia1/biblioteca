@@ -2,10 +2,23 @@ package dominio.controladores;
 
 import persistencia.*;
 
-public class GestorPrestamos {
+import java.sql.Date;
 
-	PrestamoDAO prestamoDAO;
-	ReservaDAO reservaDAO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+@Controller
+
+
+public class GestorPrestamos {
+	private static final Logger log = LoggerFactory.getLogger(GestorPrestamos.class);
+
+	@Autowired
+	private PrestamoDAO prestamoDAO;
+	@Autowired
+	private ReservaDAO reservaDAO;
 
 	/**
 	 * 
@@ -14,7 +27,15 @@ public class GestorPrestamos {
 	 * @param idUsuario
 	 */
 	public void realizarPrestamo(String isbn, String idEjemplar, String idUsuario) {
-		// TODO - implement GestorPrestamos.realizarPrestamo
+
+		//Obtiene la fecha de hoy
+		Date fechaHoy = new Date(System.currentTimeMillis());
+		//Obtiene la fecha de hoy + 15 dias
+		Date fechaFin = new Date(System.currentTimeMillis() + 15*24*60*60*1000);
+		//Crea un nuevo prestamo
+		
+
+		// TODO - implement GestorPrestamos.realizarPrestamo	
 		throw new UnsupportedOperationException();
 	}
 
