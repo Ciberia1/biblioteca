@@ -4,7 +4,7 @@ public class AgenteBD {
 
 	private AgenteBD instanciaAgenteBD;
 
-	public persistencia.boolean conectar() {
+	public boolean conectar() {
 		// TODO - implement AgenteBD.conectar
 		throw new UnsupportedOperationException();
 	}
