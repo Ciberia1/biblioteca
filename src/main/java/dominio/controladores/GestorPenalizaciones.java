@@ -1,6 +1,6 @@
 package dominio.controladores;
 
-import persistencia.*;
+import persistencia.UsuarioDAO;
 import dominio.entidades.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
