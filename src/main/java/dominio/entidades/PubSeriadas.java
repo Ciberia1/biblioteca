@@ -9,7 +9,7 @@ public class PubSeriadas extends Obra {
 	
 	public PubSeriadas() {
 	}
-    public PubSeriadas(String id, String issn, String editor, int periodicidad, String tipo) {
+    public PubSeriadas(Long id, String issn, String editor, int periodicidad, String tipo) {
 		super();
 		this.id = id;
 		this.issn = issn;
@@ -19,7 +19,7 @@ public class PubSeriadas extends Obra {
 	}
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String id;
+	private Long id;
 	@Column
 	private String issn;
     @Column
@@ -30,10 +30,10 @@ public class PubSeriadas extends Obra {
 	private String tipo;
     
     
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getIssn() {

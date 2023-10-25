@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -15,7 +16,7 @@ public class Ejemplar {
 	public Ejemplar() {
 	}
 
-	public Ejemplar(String id, int numReserva, String estado, int nroEjemplar, Obra obra, Collection<Reserva> reservas,
+	public Ejemplar(Long id, int numReserva, String estado, int nroEjemplar, Obra obra, Collection<Reserva> reservas,
 			Collection<Prestamo> prestamos) {
 		super();
 		this.id = id;
@@ -29,28 +30,29 @@ public class Ejemplar {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
-    @Column
-    private int numReserva;
-    @Column
-    private String estado;
-    @Column
-    private int nroEjemplar;
-    @Column
-    private Obra obra;
+	private Long id; // Cambiado de String a Long
+	@Column
+	private int numReserva;
+	@Column
+	private String estado;
+	@Column
+	private int nroEjemplar;
 
-    @OneToMany(mappedBy = "ejemplar", cascade = CascadeType.ALL)
-    private Collection<Reserva> reservas;
+	@ManyToOne(targetEntity = Obra.class) // Agregado targetEntity para especificar la clase objetivo
+	private Obra obra;
 
-    @OneToMany(mappedBy = "ejemplar", cascade = CascadeType.ALL)
-    private Collection<Prestamo> prestamos;
+	@OneToMany(mappedBy = "ejemplar", cascade = CascadeType.ALL)
+	private Collection<Reserva> reservas;
+
+	@OneToMany(mappedBy = "ejemplar", cascade = CascadeType.ALL)
+	private Collection<Prestamo> prestamos;
     
 	
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

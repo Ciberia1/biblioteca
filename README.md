@@ -13,7 +13,7 @@ No olvides revisar nuestra memoria del proyecto, donde encontrarás detalles sob
 ¡Explora nuestro repositorio y disfruta gestionando tu biblioteca con CIBERIA! 😃✨
 ## Miembros:
 - Jesús Fernández López (👨‍💻‍👨‍💼 CEO y desarrollador)
-- Andrea Ordoó Peña (👩‍💻 Desarrolladora)
+- Andrea Ordoño Peña (👩‍💻 Desarrolladora)
 
 ## Memoria del proyecto:
 ### Parte 1 de la memoria del proyecto:

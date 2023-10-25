@@ -4,14 +4,18 @@ import java.util.*;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
 @Entity
 public class Libro extends Obra {
 	public Libro() {
 	}
 
-	public Libro(String id, String editorial, String edicion, String isbn, String encuadernacion,
+	public Libro(Long id, String editorial, String edicion, String isbn, String encuadernacion,
 			Collection<Autor> autores) {
 		super();
 		this.id = id;
@@ -24,25 +28,32 @@ public class Libro extends Obra {
 
 
 	@Id
-    private String id;
-    @Column
-    private String editorial;
-    @Column
-    private String edicion;
-    @Column
-    private String isbn;
-    @Column
-    private String encuadernacion;
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Añadido para generar automáticamente el valor de 'id'
+	private Long id;
+	@Column
+	private String editorial;
+	@Column
+	private String edicion;
+	@Column
+	private String isbn;
+	@Column
+	private String encuadernacion;
 
-    @ManyToMany
-    private Collection<Autor> autores;
+	@ManyToMany
+	@JoinTable(
+	  name = "escribe", 
+	  joinColumns = @JoinColumn(name = "libro_id"), 
+	  inverseJoinColumns = @JoinColumn(name = "autor_id")
+	)
+	private Collection<Autor> autores;
+
 
 	
-    public String getId() {
+    public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

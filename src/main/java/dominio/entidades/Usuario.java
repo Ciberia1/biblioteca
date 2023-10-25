@@ -5,8 +5,6 @@ import java.util.*;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
@@ -31,24 +29,24 @@ public class Usuario {
 
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String dni;
-    @Column
-    private String nombre;
-    @Column
-    private String apellidos;
-    @Column
-    private Date fechaFinPen;
-    @Column
-    private String domicilio;
-    @Column
-    private String rol;
+	private String dni; // Se ha eliminado @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
+	private String nombre;
+	@Column
+	private String apellidos;
+	@Column
+	private Date fechaFinPen;
+	@Column
+	private String domicilio;
+	@Column
+	private String rol;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Collection<Prestamo> prestamos;
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	private Collection<Prestamo> prestamos;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Collection<Reserva> reservas;
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	private Collection<Reserva> reservas;
+
 
 	public String getDni() {
 		return dni;

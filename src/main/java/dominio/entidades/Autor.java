@@ -1,8 +1,7 @@
 package dominio.entidades;
 
-import java.util.*;
+import java.util.Collection;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

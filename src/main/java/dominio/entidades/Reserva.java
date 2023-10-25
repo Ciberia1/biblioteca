@@ -35,10 +35,11 @@ public class Reserva {
     private Ejemplar ejemplar;
     @Column
     private Date fecha;
+    
+    
 	public Long getId() {
 		return id;
 	}
-
 
 	public void setId(Long id) {
 		this.id = id;

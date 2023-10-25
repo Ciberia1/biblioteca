@@ -27,11 +27,12 @@ public class Genero {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-    @Column
+	@Column
 	private String nombre;
 
-	@OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "generos", cascade = CascadeType.ALL) // Se asume que 'Obra' tiene un campo llamado 'genero'
 	private Collection<Obra> obras;
+
 
 	public Long getId() {
 		return id;
