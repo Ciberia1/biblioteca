@@ -1,7 +1,7 @@
 {
 	"folders": {},
 	"connections": {
-		"derby-18b3061d8f8-23c649d31d475124": {
+		"derby-18b6cf75145-1c5c63cc3c72aba3": {
 			"provider": "generic",
 			"driver": "derby",
 			"name": "ciberiaBBDD",
@@ -23,7 +23,10 @@
 			"auto-commit": true,
 			"confirm-execute": false,
 			"confirm-data-change": false,
-			"auto-close-transactions": false
+			"smart-commit": false,
+			"smart-commit-recover": false,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800
 		}
 	}
 }
