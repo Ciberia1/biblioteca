@@ -14,4 +14,6 @@ public interface UsuarioDAO extends JpaRepository<Usuario, Long> {
 	 *
 	 * Aquí se podrían definir consultas de selección más específicas y complejas
 	 **/
+    Usuario findByDni(String dni);
+
 }
