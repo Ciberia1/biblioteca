@@ -12,7 +12,7 @@ import com.dominio.entidades.*;
 import com.persistencia.UsuarioDAO;
 
 @Controller
-public class LoginController {
+public class GestorInterfaces {
 
 	    @Autowired
 	    private UsuarioDAO usuarioDAO;
@@ -34,5 +34,11 @@ public class LoginController {
 
 	        // Código para manejar la información de inicio de sesión enviada...
 	        return "redirect:/inicio";  // Redirige a inicio.html si los datos de inicio de sesión son correctos
+	    }
+	    
+	    @GetMapping("/inicio")
+	    public String menuInicio(Model modelo) {
+	        modelo.addAttribute("usuario", new Usuario());
+	        return "inicio";
 	    }
 	}
