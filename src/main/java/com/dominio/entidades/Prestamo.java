@@ -17,6 +17,18 @@ import jakarta.persistence.TemporalType;
 @Entity
 @Table(name = "Prestamo")
 public class Prestamo {
+	
+	public Prestamo(Long prestamoID, Usuario usuario, Ejemplar ejemplar, Date fechaInicioPres, Date fechaFinPres,
+			Boolean activo) {
+		super();
+		this.prestamoID = prestamoID;
+		this.usuario = usuario;
+		this.ejemplar = ejemplar;
+		this.fechaInicioPres = fechaInicioPres;
+		this.fechaFinPres = fechaFinPres;
+		this.activo = activo;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long prestamoID;
@@ -40,4 +52,54 @@ public class Prestamo {
 
 	@Column(name = "Activo", nullable = false)
 	private Boolean activo;
+
+	public Long getPrestamoID() {
+		return prestamoID;
+	}
+
+	public void setPrestamoID(Long prestamoID) {
+		this.prestamoID = prestamoID;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Ejemplar getEjemplar() {
+		return ejemplar;
+	}
+
+	public void setEjemplar(Ejemplar ejemplar) {
+		this.ejemplar = ejemplar;
+	}
+
+	public Date getFechaInicioPres() {
+		return fechaInicioPres;
+	}
+
+	public void setFechaInicioPres(Date fechaInicioPres) {
+		this.fechaInicioPres = fechaInicioPres;
+	}
+
+	public Date getFechaFinPres() {
+		return fechaFinPres;
+	}
+
+	public void setFechaFinPres(Date fechaFinPres) {
+		this.fechaFinPres = fechaFinPres;
+	}
+
+	public Boolean getActivo() {
+		return activo;
+	}
+
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
+	}
+	
+	
 }

@@ -18,6 +18,14 @@ import jakarta.persistence.TemporalType;
 @Table(name = "Reserva")
 public class Reserva {
 
+	public Reserva(Long reservaID, Usuario usuario, Ejemplar ejemplar, Date fecha) {
+		super();
+		this.reservaID = reservaID;
+		this.usuario = usuario;
+		this.ejemplar = ejemplar;
+		this.fecha = fecha;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long reservaID;
@@ -34,4 +42,38 @@ public class Reserva {
 	@Column(name = "Fecha", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
+
+	public Long getReservaID() {
+		return reservaID;
+	}
+
+	public void setReservaID(Long reservaID) {
+		this.reservaID = reservaID;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Ejemplar getEjemplar() {
+		return ejemplar;
+	}
+
+	public void setEjemplar(Ejemplar ejemplar) {
+		this.ejemplar = ejemplar;
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+	
+	
 }

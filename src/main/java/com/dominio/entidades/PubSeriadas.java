@@ -10,6 +10,16 @@ import jakarta.persistence.Id;
 @Entity
 @DiscriminatorValue(value="Seriada")
 public class PubSeriadas extends Obra {
+	
+	public PubSeriadas(Long id, String issn, String editor, String tipo, String periodicidad) {
+		super();
+		this.id = id;
+		this.issn = issn;
+		this.editor = editor;
+		this.tipo = tipo;
+		this.periodicidad = periodicidad;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -25,4 +35,46 @@ public class PubSeriadas extends Obra {
 
 	@Column(name = "Periodicidad", nullable = false, length = 15)
 	private String periodicidad;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getIssn() {
+		return issn;
+	}
+
+	public void setIssn(String issn) {
+		this.issn = issn;
+	}
+
+	public String getEditor() {
+		return editor;
+	}
+
+	public void setEditor(String editor) {
+		this.editor = editor;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getPeriodicidad() {
+		return periodicidad;
+	}
+
+	public void setPeriodicidad(String periodicidad) {
+		this.periodicidad = periodicidad;
+	}
+	
+	
 }
