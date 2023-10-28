@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Fri Oct 27 00:38:17 CEST 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-018b-6e23-6cff-0000025cfbd0 
+Fri Oct 27 13:47:45 CEST 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-018b-70f6-3290-00000276d380 
 on database directory C:\Users\Ámbito académico\Documents\GitHub\bibliotecaCiberia\ciberiaBBDD with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2a139a55 
 Loaded from file:/C:/Users/%c3%81mbito%20acad%c3%a9mico/.m2/repository/org/apache/derby/derby/10.16.1.1/derby-10.16.1.1.jar
 java.vendor=Oracle Corporation
