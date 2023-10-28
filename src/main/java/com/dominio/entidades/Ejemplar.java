@@ -16,6 +16,10 @@ import jakarta.persistence.Table;
 @Table(name = "Ejemplar")
 public class Ejemplar {
 	
+	public Ejemplar() {
+		super();
+	}
+	
 	public Ejemplar(Long ejemplarID, Obra obra, Collection<Reserva> reservas, Collection<Prestamo> prestamos,
 			int nroEjemplar, int numReserva, String estado) {
 		super();

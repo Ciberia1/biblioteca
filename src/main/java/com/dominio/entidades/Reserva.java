@@ -17,7 +17,9 @@ import jakarta.persistence.TemporalType;
 @Entity
 @Table(name = "Reserva")
 public class Reserva {
-
+	public Reserva() {
+		super();
+	}
 	public Reserva(Long reservaID, Usuario usuario, Ejemplar ejemplar, Date fecha) {
 		super();
 		this.reservaID = reservaID;

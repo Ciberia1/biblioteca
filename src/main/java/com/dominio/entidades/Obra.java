@@ -16,12 +16,8 @@ import jakarta.persistence.TemporalType;
 @Inheritance (strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="claseObra", discriminatorType= DiscriminatorType.STRING)
 public class Obra {
-	
-	
-
 	public Obra() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Obra(Collection<Ejemplar> ejemplares, String genero, String titulo, int nroPaginas, String id,
@@ -102,6 +98,10 @@ public class Obra {
 
 	public void setFechaPublicacion(Date fechaPublicacion) {
 		this.fechaPublicacion = fechaPublicacion;
+	}
+	
+	public boolean getEsLibro() {
+	    return this instanceof Libro;
 	}
 
 }

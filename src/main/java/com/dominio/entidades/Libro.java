@@ -10,8 +10,11 @@ import jakarta.persistence.*;
 @Entity
 @DiscriminatorValue(value="Libro")
 public class Libro extends Obra {
+	public Libro() {
+		super();
+	}
 	
-	public Libro(Set<Autor> autores, Long id, String editorial, String edicion, String isbn, String encuadernacion) {
+	public Libro(Set<Autor> autores, String id, String editorial, String edicion, String isbn, String encuadernacion) {
 		super();
 		this.autores = autores;
 		this.id = id;
@@ -29,21 +32,21 @@ public class Libro extends Obra {
 	private Set<Autor> autores;
 
 	@Id
-	@Column(name = "ID", nullable = false, length = 10)
-	private Long id;
 
-	@Column(name = "Editorial", nullable = false, length = 25)
+	@Column(name = "ID", nullable = false, length = 10)
+	private String id;
+
+	@Column(name = "Editorial", nullable = true, length = 25)
 	private String editorial;
 
-	@Column(name = "Edicion", nullable = false, length = 25)
+	@Column(name = "Edicion", nullable = true, length = 25)
 	private String edicion;
 
-	@Column(name = "ISBN", unique = true, nullable = false, length = 25)
+	@Column(name = "ISBN", unique = true, nullable = true, length = 25)
 	private String isbn;
 
-	@Column(name = "Encuadernacion", nullable = false, length = 25)
+	@Column(name = "Encuadernacion", nullable = true, length = 25)
 	private String encuadernacion;
-
 	public Set<Autor> getAutores() {
 		return autores;
 	}
@@ -52,11 +55,11 @@ public class Libro extends Obra {
 		this.autores = autores;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

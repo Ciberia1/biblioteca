@@ -17,7 +17,9 @@ import jakarta.persistence.TemporalType;
 @Entity
 @Table(name = "Prestamo")
 public class Prestamo {
-	
+	public Prestamo() {
+		super();
+	}
 	public Prestamo(Long prestamoID, Usuario usuario, Ejemplar ejemplar, Date fechaInicioPres, Date fechaFinPres,
 			Boolean activo) {
 		super();
