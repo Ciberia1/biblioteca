@@ -22,11 +22,7 @@
         -moz-osx-font-smoothing: grayscale;
       }
 
-      body {
-        zoom: 0.89
-      }
-
-      .margin-bottom-16 {
+         .margin-bottom-16 {
         margin-bottom: 8px;
       }
 
@@ -58,7 +54,13 @@
       table {
         width: 100%;
         border-collapse: collapse;
+		table-layout: auto;  /* 테이블 레이아웃을 자동으로 설정합니다. */
+
       }
+	  input {
+		width: 100%;  /* 입력 필드의 너비를 부모 요소인 셀의 너비에 맞춥니다. */
+        box-sizing: border-box;  /* 테두리와 패딩이 너비에 포함되도록 설정합니다. */    
+	}
 
       th,
       td {
@@ -75,6 +77,13 @@
         background-color: #443fde;
         color: white;
       }
+	  
+	      input {
+        max-width: 200px;  /* 원하는 최대 너비를 설정합니다. */
+        overflow: hidden;  /* 내용이 너무 길면 숨깁니다. */
+        text-overflow: ellipsis;  /* 너무 긴 내용은 생략 부호(...)로 표시합니다. */
+        white-space: nowrap;  /* 내용을 한 줄에 표시합니다. */
+    }
     </style>
   </head>
   </head>
@@ -152,25 +161,17 @@
           <th>Periodicidad</th>
         </tr>
         <tr th:each="obra : ${obras}">
-          <td th:text="${obra.titulo}"></td>
-          <td th:text="${obra.fechaPublicacion}"></td>
-          <td th:text="${obra.nroPaginas}"></td>
-          <td th:if="${obra.esLibro}" th:text="${obra.editorial}"></td>
-          <td th:if="${!obra.esLibro}" th:text="'-'"></td>
-          <td th:if="${obra.esLibro}" th:text="${obra.edicion}"></td>
-          <td th:if="${!obra.esLibro}" th:text="'-'"></td>
-          <td th:if="${obra.esLibro}" th:text="${obra.Isbn}"></td>
-          <td th:if="${!obra.esLibro}" th:text="'-'"></td>
-          <td th:if="${obra.esLibro}" th:text="${obra.encuadernacion}"></td>
-          <td th:if="${!obra.esLibro}" th:text="'-'"></td>
-          <td th:if="${!obra.esLibro}" th:text="${obra.Issn}"></td>
-          <td th:if="${obra.esLibro}" th:text="'-'"></td>
-          <td th:if="${!obra.esLibro}" th:text="${obra.editor}"></td>
-          <td th:if="${obra.esLibro}" th:text="'-'"></td>
-          <td th:if="${!obra.esLibro}" th:text="${obra.tipo}"></td>
-          <td th:if="${obra.esLibro}" th:text="'-'"></td>
-          <td th:if="${!obra.esLibro}" th:text="${obra.periodicidad}"></td>
-          <td th:if="${obra.esLibro}" th:text="'-'"></td>
+		  <td><input type="text" th:value="${obra.titulo}" name="titulo" /></td>
+		  <td><input type="date" th:value="${obra.fechaPublicacion}" name="fechaPublicacion" /></td>
+		  <td><input type="number" th:value="${obra.nroPaginas}" name="nroPaginas" /></td>
+		  <td><input type="text" th:value="${obra.esLibro ? obra.editorial : '-'}" name="editorial"/></td>
+		  <td><input type="text" th:value="${obra.esLibro ? obra.edicion : '-'}" name="edicion" /></td>
+		  <td><input type="text" th:value="${obra.esLibro ? obra.Isbn : '-'}" name="Isbn" /></td>
+		  <td><input type="text" th:value="${obra.esLibro ? obra.encuadernacion : '-'}" name="encuadernacion" /></td>
+		  <td><input type="text" th:value="${!obra.esLibro ? obra.Issn : '-'}" name="Issn" /></td>
+		  <td><input type="text" th:value="${!obra.esLibro ? obra.editor : '-'}" name="editor" /></td>
+		  <td><input type="text" th:value="${!obra.esLibro ? obra.tipo : '-'}" name="tipo" /></td>
+		  <td><input type="text" th:value="${!obra.esLibro ? obra.periodicidad : '-'}" name="periodicidad" /></td>
           <td>
             <input type="checkbox" th:value="${obra.Id}" th:name="obraId" />
           </td>
@@ -183,6 +184,7 @@
       </svg>
     </div>
   </button>
+
 </form>
     </div>
   </body>
