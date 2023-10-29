@@ -1,5 +1,6 @@
 package com.dominio.controladores;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,11 +54,11 @@ public class GestorInterfaces {
 
 	@GetMapping("/gestion")
 	public String getObras(Model model) {
-	    List<Obra> obras = obraDAO.findAll();
-	    for (Obra obra : obras) {
+		List<Obra> obras = obraDAO.findAll();	
+		for (Obra obra : obras) {
 			model.addAttribute("obras", obras);
 		}
-	    return "gestion"; // Nombre del archivo HTML "gestion.html"
+		return "gestion"; // Nombre del archivo HTML "gestion.html"
 	}
 
 }

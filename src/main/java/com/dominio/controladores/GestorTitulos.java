@@ -1,9 +1,14 @@
 package com.dominio.controladores;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dominio.entidades.*;
 import com.persistencia.*;
@@ -43,10 +48,24 @@ public class GestorTitulos {
 	 * 
 	 * @param t
 	 */
-	public void borrarTitulo(Obra t) {
-		// TODO - implement GestorTitulos.borrarTitulo
-		throw new UnsupportedOperationException();
+	
+	@PostMapping("/gestion")
+	public String gestionObras(@RequestParam(name="obraId", required=false) List<Long> obraIds) {
+	    if (obraIds != null) {
+	        for (Long obraId : obraIds) {
+	            try {
+	                obraDAO.deleteById(obraId);
+	            } catch (EmptyResultDataAccessException e) {
+	                // manejar la excepción aquí
+	            }
+	        }
+	    }
+	    // Redirige a la página principal después de eliminar las obras
+	    return "redirect:/inicio";
 	}
+
+
+
 
 	/**
 	 * 

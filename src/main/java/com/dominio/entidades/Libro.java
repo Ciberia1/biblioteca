@@ -14,10 +14,9 @@ public class Libro extends Obra {
 		super();
 	}
 	
-	public Libro(Set<Autor> autores, String id, String editorial, String edicion, String isbn, String encuadernacion) {
+	public Libro(Set<Autor> autores, String editorial, String edicion, String isbn, String encuadernacion) {
 		super();
 		this.autores = autores;
-		this.id = id;
 		this.editorial = editorial;
 		this.edicion = edicion;
 		this.isbn = isbn;
@@ -30,11 +29,6 @@ public class Libro extends Obra {
             joinColumns = @JoinColumn(name = "IDLibro"), 
             inverseJoinColumns = @JoinColumn(name = "IDAutor"))
 	private Set<Autor> autores;
-
-	@Id
-
-	@Column(name = "ID", nullable = false, length = 10)
-	private String id;
 
 	@Column(name = "Editorial", nullable = true, length = 25)
 	private String editorial;
@@ -53,14 +47,6 @@ public class Libro extends Obra {
 
 	public void setAutores(Set<Autor> autores) {
 		this.autores = autores;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getEditorial() {

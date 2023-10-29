@@ -6,6 +6,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
@@ -20,7 +22,7 @@ public class Obra {
 		super();
 	}
 
-	public Obra(Collection<Ejemplar> ejemplares, String genero, String titulo, int nroPaginas, String id,
+	public Obra(Collection<Ejemplar> ejemplares, String genero, String titulo, int nroPaginas, Long id,
 			Date fechaPublicacion) {
 		super();
 		this.ejemplares = ejemplares;
@@ -44,8 +46,9 @@ public class Obra {
     private int nroPaginas;
 
     @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false, length = 10)
-    private String id;
+    private Long id;
 
     @Column(name = "FechaPublicacion", nullable = false)
     @Temporal(TemporalType.DATE)
@@ -84,11 +87,11 @@ public class Obra {
 		this.nroPaginas = nroPaginas;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
