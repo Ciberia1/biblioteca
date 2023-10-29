@@ -47,6 +47,11 @@ public class GestorInterfaces {
 		return "inicio";
 	}
 
+	@GetMapping("/publicarObra")
+	public String formularioObra(Model modelo) {
+		modelo.addAttribute("usuario", new Usuario());
+		return "publicarObra";
+	}
 	@Autowired
 	public void ObraController(ObraDAO obraDAO) {
 		this.obraDAO = obraDAO;
