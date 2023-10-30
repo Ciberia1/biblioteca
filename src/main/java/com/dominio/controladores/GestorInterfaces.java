@@ -1,6 +1,5 @@
 package com.dominio.controladores;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dominio.entidades.*;
+import com.persistencia.AutorDAO;
 import com.persistencia.ObraDAO;
 import com.persistencia.UsuarioDAO;
 
@@ -21,6 +21,7 @@ public class GestorInterfaces {
 	@Autowired
 	private UsuarioDAO usuarioDAO;
 	private ObraDAO obraDAO;
+	private AutorDAO autorDAO;
 
 	@GetMapping("/login")
 	public String formularioLogin(Model modelo) {
@@ -47,11 +48,26 @@ public class GestorInterfaces {
 		return "inicio";
 	}
 
+	@Autowired
+	public void AutorController(AutorDAO autorDAO) {
+		this.autorDAO = autorDAO;
+	}
+
 	@GetMapping("/publicarObra")
-	public String formularioObra(Model modelo) {
-		modelo.addAttribute("usuario", new Usuario());
+	public String getAutores(Model model) {
+		List<Autor> autores = autorDAO.findAll();
+		Obra obra = new Obra();
+		model.addAttribute("obra", obra);
+		Libro libro = new Libro();
+		model.addAttribute("libro", libro);
+
+		PubSeriadas pubseriada = new PubSeriadas();
+		model.addAttribute("pubseriada", pubseriada);
+		model.addAttribute("autores", autores);
+		
 		return "publicarObra";
 	}
+
 	@Autowired
 	public void ObraController(ObraDAO obraDAO) {
 		this.obraDAO = obraDAO;
@@ -59,10 +75,9 @@ public class GestorInterfaces {
 
 	@GetMapping("/gestion")
 	public String getObras(Model model) {
-		List<Obra> obras = obraDAO.findAll();	
-		for (Obra obra : obras) {
-			model.addAttribute("obras", obras);
-		}
+		List<Obra> obras = obraDAO.findAll();
+		model.addAttribute("obras", obras);
+
 		return "gestion"; // Nombre del archivo HTML "gestion.html"
 	}
 

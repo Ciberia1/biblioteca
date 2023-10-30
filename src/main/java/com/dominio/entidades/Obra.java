@@ -2,6 +2,8 @@ package com.dominio.entidades;
 
 import java.util.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
@@ -51,7 +53,7 @@ public class Obra {
     private Long id;
 
     @Column(name = "FechaPublicacion", nullable = false)
-    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaPublicacion;
     
 

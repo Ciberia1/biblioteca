@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -19,6 +22,8 @@ public class GestorTitulos {
 	private static final Logger log = LoggerFactory.getLogger(GestorTitulos.class);
 	@Autowired
 	private ObraDAO obraDAO;
+	@Autowired
+	private PubSeriadasDAO pubSeriadaDAO;
 	@Autowired
 	private EjemplarDAO ejemplarDAO;
 	@Autowired
@@ -35,6 +40,27 @@ public class GestorTitulos {
 		throw new UnsupportedOperationException();
 	}
 
+	@PostMapping("/publicarObra")
+	public String publicarObra(@ModelAttribute Obra obra, @ModelAttribute Libro libro,
+			@ModelAttribute PubSeriadas pubseriada, @RequestParam String claseObra) {
+		System.out.println(claseObra);
+
+		if ("Libro".equals(claseObra)) {
+			// Crear y guardar un Libro
+		} else if ("Publicación seriada".equals(claseObra)) {
+			System.out.println("Rrrrrrrrr");
+			PubSeriadas Seriada = new PubSeriadas();
+			BeanUtils.copyProperties(obra, Seriada);
+			Seriada.setEditor(claseObra);
+			Seriada.setIssn(pubseriada.getIssn());
+			Seriada.setEditor(pubseriada.getEditor());
+			Seriada.setTipo(pubseriada.getTipo());
+			Seriada.setPeriodicidad(pubseriada.getPeriodicidad());
+			pubSeriadaDAO.save(Seriada);
+		}
+		return "redirect:/";
+	}
+
 	/**
 	 * 
 	 * @param t
@@ -48,24 +74,21 @@ public class GestorTitulos {
 	 * 
 	 * @param t
 	 */
-	
+
 	@PostMapping("/gestion")
-	public String gestionObras(@RequestParam(name="obraId", required=false) List<Long> obraIds) {
-	    if (obraIds != null) {
-	        for (Long obraId : obraIds) {
-	            try {
-	                obraDAO.deleteById(obraId);
-	            } catch (EmptyResultDataAccessException e) {
-	                // manejar la excepción aquí
-	            }
-	        }
-	    }
-	    // Redirige a la página principal después de eliminar las obras
-	    return "redirect:/inicio";
+	public String gestionObras(@RequestParam(name = "obraId", required = false) List<Long> obraIds) {
+		if (obraIds != null) {
+			for (Long obraId : obraIds) {
+				try {
+					obraDAO.deleteById(obraId);
+				} catch (EmptyResultDataAccessException e) {
+					System.out.println("Error");
+				}
+			}
+		}
+		// Redirige a la página principal después de eliminar las obras
+		return "redirect:/inicio";
 	}
-
-
-
 
 	/**
 	 * 
