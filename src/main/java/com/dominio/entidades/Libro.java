@@ -9,10 +9,18 @@ import jakarta.persistence.*;
 @Entity
 @DiscriminatorValue(value="Libro")
 public class Libro extends Obra {
+
+	
 	public Libro() {
 		super();
 	}
-	
+
+	public Libro(Collection<Ejemplar> ejemplares, String genero, String titulo, int nroPaginas, Long id,
+			Date fechaPublicacion) {
+		super(ejemplares, genero, titulo, nroPaginas, id, fechaPublicacion);
+		// TODO Auto-generated constructor stub
+	}
+
 	public Libro(Set<Autor> autores, String editorial, String edicion, String isbn, String encuadernacion) {
 		super();
 		this.autores = autores;

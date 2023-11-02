@@ -60,11 +60,9 @@ public class GestorInterfaces {
 		model.addAttribute("obra", obra);
 		Libro libro = new Libro();
 		model.addAttribute("libro", libro);
-
 		PubSeriadas pubseriada = new PubSeriadas();
 		model.addAttribute("pubseriada", pubseriada);
 		model.addAttribute("autores", autores);
-		
 		return "publicarObra";
 	}
 
@@ -77,7 +75,6 @@ public class GestorInterfaces {
 	public String getObras(Model model) {
 		List<Obra> obras = obraDAO.findAll();
 		model.addAttribute("obras", obras);
-
 		return "gestion"; // Nombre del archivo HTML "gestion.html"
 	}
 

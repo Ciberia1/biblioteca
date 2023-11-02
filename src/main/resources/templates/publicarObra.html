@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html data-wf-domain="biblioteca-6acf80.webflow.io" data-wf-page="65365511e38c758ed1676458" data-wf-site="65365511e38c758ed1676401">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <title>Publicar obra</title>
-    <meta content="Publicar obra" property="og:title" />
-    <meta content="Publicar obra" property="twitter:title" />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="Webflow" name="generator" />
-    <link href="css/biblioteca-6acf80.webflow.dbb688d7d.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous" />
+    <meta content="Publicar obra" property="og:title">
+    <meta content="Publicar obra" property="twitter:title">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="Webflow" name="generator">
+    <link href="css/biblioteca-6acf80.webflow.dbb688d7d.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
     <style>
       * {
@@ -21,19 +21,21 @@
         margin-right: 20px;
         /* Ajusta este valor a lo que necesites */
       }
-	        table {
+
+      table {
         width: 100%;
         border-collapse: collapse;
-		table-layout: auto;  /* 테이블 레이아웃을 자동으로 설정합니다. */
-
+        table-layout: auto;
+        /* 테이블 레이아웃을 자동으로 설정합니다. */
       }
-	        h2 {
+
+      h2 {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
 
-	        th,
+      th,
       td {
         border: 1px solid #ddd;
         padding: 8px;
@@ -55,7 +57,7 @@
       <div class="container-navigation">
         <div class="navigation-left">
           <a href="/" class="brand w-nav-brand">
-            <img src="img/65367f8a8d37ee8bd2045ee4_logo.png" loading="lazy" width="169" sizes="(max-width: 479px) 43vw, 169px" alt="" srcset="img/65367f8a8d37ee8bd2045ee4_logo-p-500.png 500w, img/65367f8a8d37ee8bd2045ee4_logo-p-800.png 800w, img/65367f8a8d37ee8bd2045ee4_logo-p-1080.png 1080w, img/65367f8a8d37ee8bd2045ee4_logo-p-1600.png 1600w, img/65367f8a8d37ee8bd2045ee4_logo.png 1832w" class="logo" />
+            <img src="img/65367f8a8d37ee8bd2045ee4_logo.png" loading="lazy" width="169" sizes="(max-width: 479px) 43vw, 169px" alt="65367f8a8d37ee8bd2045ee4_logo" srcset="img/65367f8a8d37ee8bd2045ee4_logo-p-500.png 500w, img/65367f8a8d37ee8bd2045ee4_logo-p-800.png 800w, img/65367f8a8d37ee8bd2045ee4_logo-p-1080.png 1080w, img/65367f8a8d37ee8bd2045ee4_logo-p-1600.png 1600w, img/65367f8a8d37ee8bd2045ee4_logo.png 1832w" class="logo">
           </a>
         </div>
         <div class="navigation-middle">
@@ -88,148 +90,151 @@
         </div>
         <div data-w-id="7a6f2f36-720c-79f1-afa5-219274c01bb5" style="-webkit-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:100" class="job-submission-form-wrapper">
           <div class="w-form">
-		<form action="@{/publicarObra}" class="job-submission-form" th:object="${obra}"  >
-		  <div id="formulario-obra" class="job-submission-form-section-wrapper">
-			<div id="w-node-_35571b41-498a-13b4-c487-1c69096208df-d1676458" class="job-submission-form-section">
-			  <div class="margin-bottom-24">
-				<h5>Datos del obra</h5>
-			  </div>
-			  <label id="titulo-titulo" for="titulo">Título</label>
-			  <input type="text" class="form-field w-input" maxlength="30" name="titulo" th:field="*{titulo}" id="titulo" required />  	
-			  <label id="titulo-paginas" for="nroPaginas">Número de páginas</label>
-			  <input type="number" class="form-field w-input" name="nroPaginas" th:field="*{nroPaginas}" placeholder="" id="nroPaginas" required />
-			  <label id ="fechaPub-label" for ="fechaPublicacion">Fecha de publicación</label> 
-			  <input type= "date" class="form-field w-input" name="fechaPublicacion" th:field="*{fechaPublicacion}" id="fechaPublicacion" required />                  
-			  <label id ="genero-label" for ="genero">Género</label>
-			  <input type= "text" class="form-field w-input" maxlength="256" name="genero" th:field="*{genero}" placeholder="" id="genero" required />  			  
-				  <label id="titulo-tipo" for="tipo">Seleccionar tipo de obra</label>
+            <form action="@{/publicarObra}" class="job-submission-form" th:object="${obra}">
+              <div id="formulario-obra" class="job-submission-form-section-wrapper">
+                <div id="w-node-_35571b41-498a-13b4-c487-1c69096208df-d1676458" class="job-submission-form-section">
+                  <div class="margin-bottom-24">
+                    <h5>Datos del obra</h5>
+                  </div>
+                  <label id="titulo-titulo" for="titulo">Título</label>
+                  <input type="text" class="form-field w-input" maxlength="30" name="titulo" th:field="*{titulo}" id="titulo" required="">
+                  <label id="titulo-paginas" for="nroPaginas">Número de páginas</label>
+                  <input type="number" class="form-field w-input" name="nroPaginas" th:field="*{nroPaginas}" placeholder="" id="nroPaginas" required="">
+                  <label id="fechaPub-label" for="fechaPublicacion">Fecha de publicación</label>
+                  <input type="date" class="form-field w-input" name="fechaPublicacion" th:field="*{fechaPublicacion}" id="fechaPublicacion" required="">
+                  <label id="genero-label" for="genero">Género</label>
+                  <input type="text" class="form-field w-input" maxlength="256" name="genero" th:field="*{genero}" placeholder="" id="genero" required="">
+                  <label id="titulo-tipo" for="tipo">Seleccionar tipo de obra</label>
                   <div data-delay="0" data-hover="false" class="w-dropdown">
                     <div class="dropdown-toggle-2 w-dropdown-toggle">
                       <div class="w-icon-dropdown-toggle"></div>
-                      <div>Selecciona el tipo de obra que quieres añadir</div>
+                      <div> Selecciona el tipo de obra que quieres añadir </div>
                     </div>
                     <nav class="w-dropdown-list">
-						<a href="#formulario-libro" class="w-dropdown-link" onclick="document.getElementById('claseObra').value = 'Libro'">Libro</a>
-						<a href="#formulario-seriada" class="w-dropdown-link" onclick="document.getElementById('claseObra').value = 'Publicación seriada'">Publicación seriada</a>
-						<input type="hidden" id="claseObra" name="claseObra" />
+                      <a href="#formulario-libro" class="w-dropdown-link" onclick="document.getElementById('claseObra').value = 'Libro'">Libro</a>
+                      <a href="#formulario-seriada" class="w-dropdown-link" onclick="document.getElementById('claseObra').value = 'Publicación seriada'">Publicación seriada</a>
+                      <input type="hidden" id="claseObra" name="claseObra">
                     </nav>
                   </div>
                 </div>
               </div>
-			  </form>
-			  <form action="#" th:action="@{/publicarObra}" th:object="${libro}" method="post">
+            </form>
+            <form action="#" th:action="@{/publicarObra}" th:object="${libro}" method="post">
               <div id="formulario-libro" class="job-submission-form-section-wrapper" style="display: none;">
                 <div id="w-node-_7198811f-31c1-b07d-c003-160563186162-d1676458" class="job-submission-form-section">
                   <div class="margin-bottom-24">
                     <h5>Datos adicionales del libro</h5>
                   </div>
-					<label for="editorial">Editorial</label>
-					<input type="text" th:field="*{editorial}" id="editorial" class="form-field w-input" required />
-					<label for="edicion">Edición</label>
-					<input type="text" th:field="*{edicion}" id="edicion" class="form-field w-input"required />
-					<label for="isbn">ISBN</label>
-					<input type="text" th:field="*{isbn}" id="isbn" class="form-field w-input" required />
-					<label for="encuadernacion">Encuadernación</label>
-					<input type="text" th:field="*{encuadernacion}" id="encuadernacion"class="form-field w-input" required />
+                  <input type="hidden" class="form-field w-input" maxlength="256" name="titulo" data-name="titulo" id="titulo" required="">
+                  <input type="hidden" class="form-field w-input" name="nroPaginas" data-name="nroPaginas" id="nroPaginas" required="">
+                  <input type="date" class="form-field w-input" name="fechaPublicacion" data-name="fechaPublicacion" id="fechaPublicacion" required="" style="display: none;">
+                  <input type="hidden" class="form-field w-input" maxlength="256" name="genero" data-name="genero" id="genero" required="">
+                  <label for="editorial">Editorial</label>
+                  <input type="text" th:field="*{editorial}" id="editorial" class="form-field w-input" required="">
+                  <label for="edicion">Edición</label>
+                  <input type="text" th:field="*{edicion}" id="edicion" class="form-field w-input" required="">
+                  <label for="isbn">ISBN</label>
+                  <input type="text" th:field="*{isbn}" id="isbn" class="form-field w-input" required="">
+                  <label for="encuadernacion">Encuadernación</label>
+                  <input type="text" th:field="*{encuadernacion}" id="encuadernacion" class="form-field w-input" required="">
+				   <input type="hidden" name="claseObra" value="Libro">
                   <label id="titulo-autor" for="autor">Autor</label>
-					<table>
-						<thead>
-							<tr>
-								<th>Nombre</th>
-								<th>Apellidos</th>
-								<th>Biografia</th>
-								<th>Seleccionar</th>
-							</tr>
-						</thead>
-						<tbody th:each="autor: ${autores}">
-							<tr>
-								<td th:text="${autor.nombre}"></td>
-								<td th:text="${autor.apellido}"></td>
-								<td th:text="${autor.biografia}"></td> 
-								<td><input type="checkbox" th:value="${autor.id}" name="seleccionarAutor" /></td>
-							</tr> 
-						</tbody> 
-					</table> 
-                  <input type="submit" name="type" value="Libro" data-wait="Espera..." class="button-primary w-button" />
-				      <a href="@{/publicarObra(claseObra='Libro')}" class="button-primary w-button">Enviar</a>
-
-				  </form>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Biografia</th>
+                        <th>Seleccionar</th>
+                      </tr>
+                    </thead>
+                    <tbody th:each="autor: ${autores}">
+                      <tr>
+                        <td th:text="${autor.nombre}"></td>
+                        <td th:text="${autor.apellido}"></td>
+                        <td th:text="${autor.biografia}"></td>
+                        <td>
+                          <input type="checkbox" th:value="${autor.id}" th:field="*{autores}">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <input type="submit" name="type" value="Aceptar" data-wait="Espera..." class="button-primary w-button">
                 </div>
               </div>
-			  <form action="#" th:action="@{/publicarObra}" th:object="${pubseriada}" method="post">
-              <div id="formulario-seriada" class="job-submission-form-section-wrapper" style="display: none;">
-                <div id="w-node-_9729051f-bb64-6345-32a8-145514763e9a-d1676458" class="job-submission-form-section">
-                  <div class="margin-bottom-24">
-                    <h5>Datos adicionales de la publicación seriada</h5>
-                  </div>
-				        <input type="hidden" class="form-field w-input" maxlength="256" name="titulo" data-name="titulo" id="titulo" required />
-      <input type="hidden" class="form-field w-input" name="nroPaginas" data-name="nroPaginas" id="nroPaginas" required />
-<input type="date" class="form-field w-input" name="fechaPublicacion" data-name="fechaPublicacion" id="fechaPublicacion" required style="display: none;" />
-      <input type="hidden" class="form-field w-input" maxlength="256" name="genero" data-name="genero" id="genero" required />
-                  <label for="editor">Editor</label>
-                  <input type="text" class="form-field w-input" maxlength="256" name="editor" th:field="*{editor}"  data-name="editor" placeholder="" id="editor" required />
-                  <label id="tipo-titulo" for="tipo">Tipo</label>
-                  <input type="text" class="form-field w-input" maxlength="256" name="tipo" th:field="*{tipo}" data-name="tipo" placeholder="" id="tipo" required />
-                  <label id="issn-titulo" for="issn">ISSN</label>
-                  <input type="text" class="form-field w-input" maxlength="256" name="issn" th:field="*{issn}"  data-name="issn" placeholder="" id="issn" required />
-                  <label id="titulo-periodicidad" for="periodicidad">Periodicidad</label>
-                  <input type="text" class="form-field w-input" maxlength="256" name="periodicidad" th:field="*{periodicidad}" data-name="periodicidad" placeholder="" id="periodicidad" required />
-				  <input type="hidden" name="claseObra" value="Publicación seriada" />
-				  <input type="submit" name="type" value="PubSeriada" data-wait="Espera..." class="button-primary w-button" />
-
-                </div>
+            </form>
+          </div>
+        </div>
+        <form action="#" th:action="@{/publicarObra}" th:object="${pubseriada}" method="post">
+          <div id="formulario-seriada" class="job-submission-form-section-wrapper" style="display: none;">
+            <div id="w-node-_9729051f-bb64-6345-32a8-145514763e9a-d1676458" class="job-submission-form-section">
+              <div class="margin-bottom-24">
+                <h5>Datos adicionales de la publicación seriada</h5>
               </div>
-			  </form>
-            <div class="success-message w-form-done">
-              <div>La petición ha sido recibida</div>
-            </div>
-            <div class="error-message w-form-fail">
-              <div>Error</div>
+              <input type="hidden" class="form-field w-input" maxlength="256" name="titulo" data-name="titulo" id="titulo" required="">
+              <input type="hidden" class="form-field w-input" name="nroPaginas" data-name="nroPaginas" id="nroPaginas" required="">
+              <input type="date" class="form-field w-input" name="fechaPublicacion" data-name="fechaPublicacion" id="fechaPublicacion" required="" style="display: none;">
+              <input type="hidden" class="form-field w-input" maxlength="256" name="genero" data-name="genero" id="genero" required="">
+              <label for="editor">Editor</label>
+              <input type="text" class="form-field w-input" maxlength="256" name="editor" th:field="*{editor}" data-name="editor" placeholder="" id="editor" required="">
+              <label id="tipo-titulo" for="tipo">Tipo</label>
+              <input type="text" class="form-field w-input" maxlength="256" name="tipo" th:field="*{tipo}" data-name="tipo" placeholder="" id="tipo" required="">
+              <label id="issn-titulo" for="issn">ISSN</label>
+              <input type="text" class="form-field w-input" maxlength="256" name="issn" th:field="*{issn}" data-name="issn" placeholder="" id="issn" required="">
+              <label id="titulo-periodicidad" for="periodicidad">Periodicidad</label>
+              <input type="text" class="form-field w-input" maxlength="256" name="periodicidad" th:field="*{periodicidad}" data-name="periodicidad" placeholder="" id="periodicidad" required="">
+              <input type="hidden" name="claseObra" value="Publicación seriada">
+              <input type="submit" name="type" value="Aceptar" data-wait="Espera..." class="button-primary w-button">
             </div>
           </div>
+        </form>
+        <div class="success-message w-form-done">
+          <div> La petición ha sido recibida </div>
+        </div>
+        <div class="error-message w-form-fail">
+          <div> Error </div>
         </div>
       </div>
     </div>
     <script type="text/javascript">
-window.onload = function() {
-  var dropdownToggle = document.querySelector('.dropdown-toggle-2');
-  var dropdownContent = dropdownToggle.nextElementSibling;
-  var formObra = document.querySelector('#formulario-obra');
-  var formLibro = document.querySelector('#formulario-libro');
-  var formSeriada = document.querySelector('#formulario-seriada');
-  dropdownToggle.addEventListener('click', function(event) {
-    event.stopPropagation();
-    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-  });
-  dropdownContent.children[0].addEventListener('click', function() {
-    formLibro.style.display = 'block';
-    formSeriada.style.display = 'none';
-    // 이전 Obra 폼의 데이터를 Libro 폼에 복사
-    copyData(formObra, formLibro);
-  });
-  dropdownContent.children[1].addEventListener('click', function() {
-    formSeriada.style.display = 'block';
-    formLibro.style.display = 'none';
-    // 이전 Obra 폼의 데이터를 PubSeriada 폼에 복사
-    copyData(formObra, formSeriada);
-  });
-  document.addEventListener('click', function() {
-    dropdownContent.style.display = 'none';
-  });
-};
-
-// 한 폼에서 다른 폼으로 데이터를 복사하는 함수
-function copyData(fromForm, toForm) {
-  var fromInputs = fromForm.querySelectorAll('input');
-  var toInputs = toForm.querySelectorAll('input');
-  fromInputs.forEach(function(fromInput) {
-    toInputs.forEach(function(toInput) {
-      if (fromInput.name === toInput.name) {
-        toInput.value = fromInput.value;
+      window.onload = function() {
+        var dropdownToggle = document.querySelector('.dropdown-toggle-2');
+        var dropdownContent = dropdownToggle.nextElementSibling;
+        var formObra = document.querySelector('#formulario-obra');
+        var formLibro = document.querySelector('#formulario-libro');
+        var formSeriada = document.querySelector('#formulario-seriada');
+        dropdownToggle.addEventListener('click', function(event) {
+          event.stopPropagation();
+          dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        });
+        dropdownContent.children[0].addEventListener('click', function() {
+          formLibro.style.display = 'block';
+          formSeriada.style.display = 'none';
+          // 이전 Obra 폼의 데이터를 Libro 폼에 복사
+          copyData(formObra, formLibro);
+        });
+        dropdownContent.children[1].addEventListener('click', function() {
+          formSeriada.style.display = 'block';
+          formLibro.style.display = 'none';
+          // 이전 Obra 폼의 데이터를 PubSeriada 폼에 복사
+          copyData(formObra, formSeriada);
+        });
+        document.addEventListener('click', function() {
+          dropdownContent.style.display = 'none';
+        });
+      };
+      // 한 폼에서 다른 폼으로 데이터를 복사하는 함수
+      function copyData(fromForm, toForm) {
+        var fromInputs = fromForm.querySelectorAll('input');
+        var toInputs = toForm.querySelectorAll('input');
+        fromInputs.forEach(function(fromInput) {
+          toInputs.forEach(function(toInput) {
+            if (fromInput.name === toInput.name) {
+              toInput.value = fromInput.value;
+            }
+          });
+        });
       }
-    });
-  });
-}
     </script>
   </body>
 </html>
