@@ -53,13 +53,14 @@ public class GestorInterfaces {
 		return "inicio";
 	}
 
-	@Autowired
-	public void AutorController(AutorDAO autorDAO) {
-		this.autorDAO = autorDAO;
-	}
-
-	@GetMapping("/publicarObra")
+	@GetMapping("/publicarAutor")
 	public String getAutores(Model model) {
+		model.addAttribute("autor", new Autor());
+		return "publicarAutor";
+	}
+	
+	@GetMapping("/publicarObra")
+	public String getObrasAutores(Model model) {
 		List<Autor> autores = autorDAO.findAll();
 		Obra obra = new Obra();
 		model.addAttribute("obra", obra);
@@ -71,11 +72,16 @@ public class GestorInterfaces {
 		return "publicarObra";
 	}
 
-	@Autowired
-	public void ObraController(ObraDAO obraDAO) {
-		this.obraDAO = obraDAO;
+	
+	@GetMapping("/editarAutorObra")
+	public String getRelacionObrasAutores(Model model) {
+		List<Autor> autores = autorDAO.findAll();
+		List<Libro> libros = libroDAO.findAll();
+		model.addAttribute("libros", libros);
+		model.addAttribute("autores", autores);
+		return "editarAutorObra";
 	}
-
+	
 	@GetMapping("/gestion")
 	public String getObras(Model model) {
 		List<Obra> obras = obraDAO.findAll();
@@ -87,9 +93,7 @@ public class GestorInterfaces {
 	public String getAutor(Model model) {
 		List<Autor> autores = autorDAO.findAll();
 		model.addAttribute("autores", autores);
-		List<Libro> libros = libroDAO.findAll();
-		model.addAttribute("libros", libros);
-		return "gestionAutor"; // Nombre del archivo HTML "gestion.html"
+		return "gestionAutor";
 	}
 
 }

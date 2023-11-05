@@ -31,11 +31,28 @@
           overflow: hidden;
           text-overflow: ellipsis;
         }
+		
+		
 
-        .button-primary-right-icon {
-          margin-bottom: 50px;
-          text-align: center;
-        }
+		
+		.button-primary-right-icon {
+  width: 200px;  /* 버튼의 너비 설정 */
+  height: 50px;  /* 버튼의 높이 설정 */
+  line-height: 50px;  /* 버튼 내부의 텍스트 수직 정렬 */
+  text-align: center;  /* 텍스트 수평 정렬 */
+  white-space: nowrap;  /* 텍스트를 한 줄에 표시 */
+  overflow: hidden;  /* 내용이 너무 길 경우 잘라내기 */
+  text-overflow: ellipsis;  /* 내용이 너무 길 경우 ...으로 표시 */
+}
+
+.w-layout-grid.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;  /* 4개의 동일한 너비의 열 생성 */
+  justify-items: center;  /* 각 아이템을 그리드 셀의 중앙에 위치시킴 */
+  gap: 10px;  /* 그리드 셀 사이의 간격 설정 */
+  margin-bottom: 20px;  /* 테이블과 버튼 사이에 여백 추가 */
+}
+
 
         .title-wrap-center-large {
           margin-bottom: 0px;
@@ -52,6 +69,8 @@
         }
 
         table {
+		  margin-top: 50px;
+
           width: 100%;
           border-collapse: collapse;
           table-layout: auto;
@@ -130,8 +149,15 @@
         </div>
         <div class="w-layout-grid"></div>
         <div class="w-layout-grid grid">
-          <a id="w-node-_454d0c08-5123-3eed-1e40-3851377dd90b-d167644a" href="/publicarObra" class="button-primary-right-icon w-inline-block">
+          <a id="w-node-_454d0c08-5123-3eed-1e40-3851377dd90b-d167644a" href="/publicarAutor" class="button-primary-right-icon w-inline-block">
             <div>Añadir autores</div>
+            <div class="icon-regular w-embed">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              </svg>
+            </div>
+          </a>
+		   <a id="w-node-_454d0c08-5123-3eed-1e40-3851377dd90b-d167644a" href="/editarAutorObra" class="button-primary-right-icon w-inline-block">
+            <div>Editar autor y obra</div>
             <div class="icon-regular w-embed">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
               </svg>
@@ -181,13 +207,13 @@
 window.onload = function() {
   var buttons = document.querySelectorAll('.button-primary-right-icon');
 
-  buttons[2].addEventListener('click', function(e) {
+  buttons[3].addEventListener('click', function(e) {
     e.preventDefault();
     document.getElementById('obrasForm').action = "/borrarAutores";
     document.getElementById('obrasForm').submit();
   });
 
-  buttons[1].addEventListener('click', function(e) {
+  buttons[2].addEventListener('click', function(e) {
     e.preventDefault();
     
     var tableRows = document.querySelectorAll('#obrasForm table tr');

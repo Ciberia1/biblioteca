@@ -2,7 +2,9 @@ package com.dominio.controladores;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,11 +33,27 @@ public class GestorAutores {
 	private AutorDAO autorDAO;
 
 	@PostMapping("/publicarAutor")
-	public String altaAutor(@ModelAttribute Autor autor, @ModelAttribute Libro libro,
-			@ModelAttribute PubSeriadas pubseriada, @RequestParam String claseObra) {
+	public String altaAutor(@ModelAttribute Autor autor) {
+		autorDAO.save(autor);
 
-		return "redirect:/";
+		return "redirect:/inicio";
 	}
+	
+	@PostMapping("/editarAutorObra")
+	public String editarAutorObra(@RequestParam("libroId") String libroId, @RequestParam(value = "autorIds", required = false) List<String> autorIds) {
+		Set<Autor> autoresnuevos = new HashSet<>();
+		if (autorIds != null) {
+		for (String autor : autorIds) {
+			Autor temporal= autorDAO.getById(Long.valueOf(autor));
+			autoresnuevos.add(temporal);
+		}
+	}
+		Libro nuevo = libroDAO.getById(Long.valueOf(libroId));
+		nuevo.setAutores(autoresnuevos);
+		libroDAO.save(nuevo);
+		
+        return "redirect:/result";
+    }
 
 	@PostMapping("/actualizarAutores")
 	public String actualizarAutores(@RequestBody List<Autor> autores) {

@@ -58,7 +58,7 @@ public class GestorTitulos {
 			Seriada.setPeriodicidad(pubseriada.getPeriodicidad());
 			pubSeriadaDAO.save(Seriada);
 		}
-		return "redirect:/";
+		return "redirect:/gestion";
 	}
 
 	@PostMapping("/actualizarObras")

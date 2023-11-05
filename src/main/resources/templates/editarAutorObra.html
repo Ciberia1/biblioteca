@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html data-wf-domain="biblioteca-6acf80.webflow.io" data-wf-page="65365511e38c758ed1676458" data-wf-site="65365511e38c758ed1676401">
+  <head>
+    <meta charset="utf-8">
+    <title>Publicar obra</title>
+    <meta content="Publicar obra" property="og:title">
+    <meta content="Publicar obra" property="twitter:title">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="Webflow" name="generator">
+    <link href="css/biblioteca-6acf80.webflow.dbb688d7d.css" rel="stylesheet" type="text/css">
+    <style>
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center; /* Add this line */
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      th {
+        background-color: #443fde;
+        color: white;
+      }
+
+      .title-wrap-center {
+        margin: 0 auto; /* Centra el div en la página */
+        text-align: center; /* Centra el texto dentro del div */
+        margin-top: 70px; /* Añade margen superior de 70px */
+      }
+
+      .job-submission-form-wrapper,
+      .job-submission-form {
+        margin: 0 auto; /* Centra el div en la página */
+        width: 100%; /* Reduce the width */
+      }
+	  
+.title-wrap-center {
+  max-width: 100%; /* Adjust this value to control the width */
+  margin: 70px auto; /* This centers the div on the page and adds a top margin of 70px */
+  text-align: center; /* This centers the text within the div */
+}
+.job-submission-form-wrapper {
+  padding-top: 30px; /* reduce the top padding */
+}
+
+    </style>
+  </head>
+  <body>
+    <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
+      <div class="container-navigation">
+        <div class="navigation-left">
+          <a href="/" class="brand w-nav-brand">
+            <img src="img/65367f8a8d37ee8bd2045ee4_logo.png" loading="lazy" width="169" sizes="(max-width: 479px) 43vw, 169px" alt="65367f8a8d37ee8bd2045ee4_logo" srcset="img/65367f8a8d37ee8bd2045ee4_logo-p-500.png 500w, img/65367f8a8d37ee8bd2045ee4_logo-p-800.png 800w, img/65367f8a8d37ee8bd2045ee4_logo-p-1080.png 1080w, img/65367f8a8d37ee8bd2045ee4_logo-p-1600.png 1600w, img/65367f8a8d37ee8bd2045ee4_logo.png 1832w" class="logo">
+          </a>
+        </div>
+        <div class="navigation-middle">
+          <nav role="navigation" class="nav-menu w-nav-menu">
+            <div class="navbar-mobile-button-wrapper">
+              <a href="#" class="button-primary w-button">Login</a>
+            </div>
+          </nav>
+        </div>
+        <div class="navigation-right">
+          <div class="navigation-button-wrap">
+            <button class="button-primary" data-wf-user-logout="Cerrar sesión" data-wf-user-login="Iniciar sesión" type="button">Cerrar sesión</button>
+          </div>
+          <div class="menu-button w-nav-button">
+            <div class="w-icon-nav-menu"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="banner-announcement">
+      <h3 class="flowbase-header">Biblioteca: UCLM</h3>
+    </div>
+        <div data-w-id="18f15721-4c45-512a-e538-07e4f3167b37"  class="title-wrap-center" >
+            <h2>Autores y sus libros</h2>
+        <div data-w-id="7a6f2f36-720c-79f1-afa5-219274c01bb5" style="-webkit-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:100" class="job-submission-form-wrapper">
+          <div class="w-form">
+            <form action="@{/editarAutorObra}" class="job-submission-form" th:object="${libros}">
+              <div id="formulario-obra" class="job-submission-form-section-wrapper">
+                <div id="w-node-_35571b41-498a-13b4-c487-1c69096208df-d1676458" class="job-submission-form-section">
+
+				<div data-delay="0" data-hover="false" class="w-dropdown">
+				                  <div class="margin-bottom-24">
+                    <h5>Libros disponibles</h5>
+                  </div>
+					<div class="dropdown-toggle-2 w-dropdown-toggle">
+						<div class="w-icon-dropdown-toggle"></div>
+						<div> Selecciona el libro al que deseas modificar los autores</div>
+					</div>
+            <nav class="w-dropdown-list">
+              <div th:each="libro : ${libros}">
+                <a class="w-dropdown-link" 
+                   th:text="${libro.titulo}"
+                   th:attr="data-id=${libro.id}"> <!-- Atributo 'data-id' que contiene el ID del libro -->
+                </a>
+              </div>
+            </nav>
+				</div>
+                </div>
+              </div>
+            </form>
+            <form th:action="@{/editarAutorObra}" th:object="${autores}" method="post">
+			  <input type="hidden" id="libroId" name="libroId" />
+              <div id="formulario-libro" class="job-submission-form-section-wrapper" style="display: none;">
+                <div id="w-node-_7198811f-31c1-b07d-c003-160563186162-d1676458" class="job-submission-form-section">
+                  <div class="margin-bottom-24">
+                    <h5>Seleccionar autor/es</h5>
+                  </div>
+                   <label id="titulo-autor" for="autor">Autor</label>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Biografia</th>
+                      </tr>
+                    </thead>
+                    <tbody th:each="autor: ${autores}">
+                      <tr>
+                        <td th:text="${autor.nombre}"></td>
+                        <td th:text="${autor.apellido}"></td>
+                        <td th:text="${autor.biografia}"></td>
+                        <td>
+        <input type="checkbox" th:value="${autor.id}" name="autorIds" />
+		</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <input type="submit" name="type" value="Aceptar" data-wait="Espera..." class="button-primary w-button">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="success-message w-form-done">
+          <div> La petición ha sido recibida </div>
+        </div>
+        <div class="error-message w-form-fail">
+          <div> Error </div>
+        </div>
+    </div>
+ <script type="text/javascript">
+  window.onload = function() {
+  var dropdownToggle = document.querySelector('.dropdown-toggle-2');
+  var dropdownContent = dropdownToggle.nextElementSibling;
+  var formObra = document.querySelector('#formulario-obra');
+  var formLibro = document.querySelector('#formulario-libro');
+  var libroIdField = document.querySelector('#libroId'); // Selecciona el campo de entrada oculto
+
+  dropdownToggle.addEventListener('click', function(event) {
+    event.stopPropagation();
+    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+  });
+
+  dropdownContent.addEventListener('click', function(e) {
+    var selectedBookId = e.target.getAttribute('data-id'); // Asume que cada opción del dropdown tiene un atributo 'data-id' con el ID del libro
+    libroIdField.value = selectedBookId; // Actualiza el valor del campo de entrada oculto
+    formLibro.style.display = 'block';
+    formObra.style.display = 'none';
+  });
+
+  document.addEventListener('click', function() {
+    dropdownContent.style.display = 'none';
+  });
+};
+
+</script>
+
+  </body>
+</html>
