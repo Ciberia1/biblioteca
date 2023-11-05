@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dominio.entidades.*;
 import com.persistencia.AutorDAO;
+import com.persistencia.LibroDAO;
 import com.persistencia.ObraDAO;
 import com.persistencia.UsuarioDAO;
 
@@ -20,7 +21,11 @@ public class GestorInterfaces {
 
 	@Autowired
 	private UsuarioDAO usuarioDAO;
+	@Autowired
 	private ObraDAO obraDAO;
+	@Autowired
+	private LibroDAO libroDAO;
+	@Autowired
 	private AutorDAO autorDAO;
 
 	@GetMapping("/login")
@@ -76,6 +81,15 @@ public class GestorInterfaces {
 		List<Obra> obras = obraDAO.findAll();
 		model.addAttribute("obras", obras);
 		return "gestion"; // Nombre del archivo HTML "gestion.html"
+	}
+	
+	@GetMapping("/gestionAutor")
+	public String getAutor(Model model) {
+		List<Autor> autores = autorDAO.findAll();
+		model.addAttribute("autores", autores);
+		List<Libro> libros = libroDAO.findAll();
+		model.addAttribute("libros", libros);
+		return "gestionAutor"; // Nombre del archivo HTML "gestion.html"
 	}
 
 }

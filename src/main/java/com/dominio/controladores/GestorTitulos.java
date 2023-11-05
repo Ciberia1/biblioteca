@@ -114,7 +114,6 @@ public class GestorTitulos {
 		}
 		return "redirect:/gestion";
 	}
-
 	@PostMapping("/borrarObras")
 	public String borrarObras(@RequestParam(name = "id", required = false) List<Long> obraIds) {
 		if (obraIds != null) {
