@@ -31,28 +31,24 @@
           overflow: hidden;
           text-overflow: ellipsis;
         }
-		
-		
 
-		
-		.button-primary-right-icon {
-  width: 200px;  /* 버튼의 너비 설정 */
-  height: 50px;  /* 버튼의 높이 설정 */
-  line-height: 50px;  /* 버튼 내부의 텍스트 수직 정렬 */
-  text-align: center;  /* 텍스트 수평 정렬 */
-  white-space: nowrap;  /* 텍스트를 한 줄에 표시 */
-  overflow: hidden;  /* 내용이 너무 길 경우 잘라내기 */
-  text-overflow: ellipsis;  /* 내용이 너무 길 경우 ...으로 표시 */
-}
+        .button-primary-right-icon {
+          width: 200px;
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
 
-.w-layout-grid.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;  /* 4개의 동일한 너비의 열 생성 */
-  justify-items: center;  /* 각 아이템을 그리드 셀의 중앙에 위치시킴 */
-  gap: 10px;  /* 그리드 셀 사이의 간격 설정 */
-  margin-bottom: 20px;  /* 테이블과 버튼 사이에 여백 추가 */
-}
-
+        .w-layout-grid.grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          justify-items: center;
+          gap: 10px;
+          margin-bottom: 20px;
+        }
 
         .title-wrap-center-large {
           margin-bottom: 0px;
@@ -69,8 +65,7 @@
         }
 
         table {
-		  margin-top: 50px;
-
+          margin-top: 50px;
           width: 100%;
           border-collapse: collapse;
           table-layout: auto;
@@ -101,16 +96,21 @@
           background-color: #443fde;
           color: white;
         }
-    th:first-child {
-      width: 10%;  /* 이름 필드의 너비를 작게 설정 */
-    }
-	    th:nth-child(2) {
-      width: 20%;  /* 전기 필드의 너비를 크게 설정 */
-    }
-	
-	td:last-child {
-      width: 2%;  /* 이름 필드의 너비를 작게 설정 */
-    }
+
+        th:first-child {
+          width: 10%;
+          /* 이름 필드의 너비를 작게 설정 */
+        }
+
+        th:nth-child(2) {
+          width: 20%;
+          /* 전기 필드의 너비를 크게 설정 */
+        }
+
+        td:last-child {
+          width: 2%;
+          /* 이름 필드의 너비를 작게 설정 */
+        }
       </style>
   </head>
   </head>
@@ -156,7 +156,7 @@
               </svg>
             </div>
           </a>
-		   <a id="w-node-_454d0c08-5123-3eed-1e40-3851377dd90b-d167644a" href="/editarAutorObra" class="button-primary-right-icon w-inline-block">
+          <a id="w-node-_454d0c08-5123-3eed-1e40-3851377dd90b-d167644a" href="/editarAutorObra" class="button-primary-right-icon w-inline-block">
             <div>Editar autor y obra</div>
             <div class="icon-regular w-embed">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -179,74 +179,73 @@
           </a>
         </div>
       </div>
-		<form id="obrasForm" th:object="${autor}" th:action="@{/actualizarAutores}" method="post">
+      <form id="obrasForm" th:object="${autor}" th:action="@{/actualizarAutores}" method="post">
         <table>
           <tr>
             <th>Nombre</th>
             <th>Apellidos</th>
             <th>Biografía</th>
+            <th>Libros</th>
           </tr>
           <tr th:each="autor : ${autores}">
             <td>
               <input type="text" th:value="${autor.nombre}" name="nombre" />
             </td>
-			<td>
+            <td>
               <input type="text" th:value="${autor.apellido}" name="apellido" />
             </td>
-			<td>
+            <td>
               <input type="text" th:value="${autor.biografia}" name="biografia" />
             </td>
             <td>
+              <span th:each="libro : ${autor.libros}">
+                <p th:text="${libro.titulo}"></p>
+              </span>
+            <td>
               <input type="checkbox" th:value="${autor.Id}" th:name="id" />
+            </td>
             </td>
           </tr>
         </table>
       </form>
     </div>
-<script>
-window.onload = function() {
-  var buttons = document.querySelectorAll('.button-primary-right-icon');
-
-  buttons[3].addEventListener('click', function(e) {
-    e.preventDefault();
-    document.getElementById('obrasForm').action = "/borrarAutores";
-    document.getElementById('obrasForm').submit();
-  });
-
-  buttons[2].addEventListener('click', function(e) {
-    e.preventDefault();
-    
-    var tableRows = document.querySelectorAll('#obrasForm table tr');
-    var autores = [];
-    
-    for (var i = 1; i < tableRows.length; i++) {
-      var autor = {};
-      var inputs = tableRows[i].querySelectorAll('input');
-      
-      for (var j = 0; j < inputs.length; j++) {
-        autor[inputs[j].name] = inputs[j].value;
+    <script>
+      window.onload = function() {
+        var buttons = document.querySelectorAll('.button-primary-right-icon');
+        buttons[3].addEventListener('click', function(e) {
+          e.preventDefault();
+          document.getElementById('obrasForm').action = "/borrarAutores";
+          document.getElementById('obrasForm').submit();
+        });
+        buttons[2].addEventListener('click', function(e) {
+          e.preventDefault();
+          var tableRows = document.querySelectorAll('#obrasForm table tr');
+          var autores = [];
+          for (var i = 1; i < tableRows.length; i++) {
+            var autor = {};
+            var inputs = tableRows[i].querySelectorAll('input');
+            for (var j = 0; j < inputs.length; j++) {
+              autor[inputs[j].name] = inputs[j].value;
+            }
+            autores.push(autor);
+          }
+          fetch('/actualizarAutores', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(autores),
+          }).then(function(response) {
+            if (response.ok) {
+              window.location.href = '/inicio';
+            } else {
+              console.error('Server response was not ok. ', response);
+            }
+          }).catch(function(error) {
+            console.error('Error:', error);
+          });
+        });
       }
-      
-      autores.push(autor);
-    }
-    
-    fetch('/actualizarAutores', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(autores),
-    }).then(function(response) {
-      if(response.ok) {
-          window.location.href = '/inicio';
-      } else {
-          console.error('Server response was not ok. ', response);
-      }
-    }).catch(function(error) {
-      console.error('Error:', error);
-    });
-  });
-}
-</script>
+    </script>
   </body>
 </html>

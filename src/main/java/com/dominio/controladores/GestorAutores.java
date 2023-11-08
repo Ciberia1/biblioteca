@@ -52,7 +52,7 @@ public class GestorAutores {
 		nuevo.setAutores(autoresnuevos);
 		libroDAO.save(nuevo);
 		
-        return "redirect:/result";
+        return "redirect:/gestionAutor";
     }
 
 	@PostMapping("/actualizarAutores")
