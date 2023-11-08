@@ -15,6 +15,7 @@
 			}
 		}
 	},
+	"virtual-models": {"derby-18b6e6535ed-4e3db1a95250cf81":{"DERBYUSER":{":OBRA":{"description":"CLASE_OBRA","constraints":{}}}}},
 	"connection-types": {
 		"dev": {
 			"name": "Development",

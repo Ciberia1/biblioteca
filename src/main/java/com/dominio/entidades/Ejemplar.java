@@ -15,11 +15,11 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "Ejemplar")
 public class Ejemplar {
-	
+
 	public Ejemplar() {
 		super();
 	}
-	
+
 	public Ejemplar(Long ejemplarID, Obra obra, Collection<Reserva> reservas, Collection<Prestamo> prestamos,
 			int nroEjemplar, int numReserva, String estado) {
 		super();
@@ -31,6 +31,7 @@ public class Ejemplar {
 		this.numReserva = numReserva;
 		this.estado = estado;
 	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ejemplarID;
@@ -109,6 +110,5 @@ public class Ejemplar {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-
 
 }

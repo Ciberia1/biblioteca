@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html data-wf-domain="biblioteca-6acf80.webflow.io" data-wf-page="65365511e38c758ed167644a" data-wf-site="65365511e38c758ed1676401">
+  <head>
+    <meta charset="utf-8" />
+    <html xmlns:th="http://www.thymeleaf.org">
+      <link href="css/biblioteca-6acf80.webflow.7c7b1dc28.css" rel="stylesheet" type="text/css" />
+      <link href="https://fonts.googleapis.com" rel="preconnect" />
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous" />
+      <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+      <script type="text/javascript">
+        WebFont.load({
+          google: {
+            families: ["Archivo:100,200,300,regular,500,600,700,800,900", "Inter:200,300,regular,500,600,700,800"]
+          }
+        });
+      </script>
+      <link href="img/65365511e38c758ed16764bc_Favicon.svg" rel="shortcut icon" type="image/x-icon" />
+      <link href="img/65365511e38c758ed16764bd_Webclip.svg" rel="apple-touch-icon" />
+      <style>
+        * {
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+        .margin-bottom-16 {
+          margin-bottom: 8px;
+        }
+
+        h2 {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .button-primary-right-icon {
+          width: 200px;
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .w-layout-grid.grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          justify-items: center;
+          gap: 10px;
+          margin-bottom: 20px;
+        }
+
+        .title-wrap-center-large {
+          margin-bottom: 0px;
+          /* Cambia este valor según lo necesites */
+        }
+
+        .boton-guardar-cambios {
+          margin-top: 20px;
+          /* Ajusta este valor según lo que necesites */
+        }
+
+        .container-navigation {
+          margin-bottom: 10px;
+        }
+
+        table {
+          margin-top: 50px;
+          width: 100%;
+          border-collapse: collapse;
+          table-layout: auto;
+          /* 테이블 레이아웃을 자동으로 설정합니다. */
+          margin-bottom: 60px;
+          /* 원하는 마진 크기로 변경 */
+        }
+
+        input {
+          width: 100%;
+          /* 입력 필드의 너비를 부모 요소인 셀의 너비에 맞춥니다. */
+          box-sizing: border-box;
+          /* 테두리와 패딩이 너비에 포함되도록 설정합니다. */
+        }
+
+        th,
+        td {
+          border: 1px solid #ddd;
+          padding: 8px;
+          text-align: left;
+        }
+
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+
+        th {
+          background-color: #443fde;
+          color: white;
+        }
+
+        th:first-child {
+          width: 10%;
+          /* 이름 필드의 너비를 작게 설정 */
+        }
+
+        th:nth-child(2) {
+          width: 20%;
+          /* 전기 필드의 너비를 크게 설정 */
+        }
+
+        td:last-child {
+          width: 2%;
+          /* 이름 필드의 너비를 작게 설정 */
+        }
+      </style>
+  </head>
+  </head>
+  <body>
+    <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
+      <div class="container-navigation">
+        <div class="navigation-left">
+          <a href="/" class="brand w-nav-brand">
+            <img src="img/65367f8a8d37ee8bd2045ee4_logo.png" loading="lazy" width="169" sizes="(max-width: 479px) 43vw, 169px" alt="" srcset="img/65367f8a8d37ee8bd2045ee4_logo-p-500.png 500w, img/65367f8a8d37ee8bd2045ee4_logo-p-800.png 800w, img/65367f8a8d37ee8bd2045ee4_logo-p-1080.png 1080w, img/65367f8a8d37ee8bd2045ee4_logo-p-1600.png 1600w, img/65367f8a8d37ee8bd2045ee4_logo.png 1832w" class="logo" />
+          </a>
+        </div>
+        <div class="navigation-middle">
+          <nav role="navigation" class="nav-menu w-nav-menu">
+            <div class="navbar-mobile-button-wrapper">
+              <a href="#" class="button-primary w-button">Login</a>
+            </div>
+          </nav>
+        </div>
+        <div class="navigation-right">
+          <div class="navigation-button-wrap">
+            <button class="button-primary" data-wf-user-logout="Cerrar sesión" data-wf-user-login="Iniciar sesión" type="button">Cerrar sesión</button>
+          </div>
+          <div class="menu-button w-nav-button">
+            <div class="w-icon-nav-menu"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="browse-header-section">
+      <div style="-webkit-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:1" class="container-x-small">
+        <div class="title-wrap-center-large">
+          <div class="margin-bottom-16">
+            <h2>Gestionar autores de las obras del catálogo <span class="text-color-primary"></span>
+            </h2>
+          </div>
+        </div>
+        <div class="w-layout-grid"></div>
+        <div class="w-layout-grid grid">
+          <a id="w-node-_454d0c08-5123-3eed-1e40-3851377dd90b-d167644a" href="/publicarAutor" class="button-primary-right-icon w-inline-block">
+            <div>Añadir autores</div>
+            <div class="icon-regular w-embed">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              </svg>
+            </div>
+          </a>
+          <a id="w-node-_454d0c08-5123-3eed-1e40-3851377dd90b-d167644a" href="/editarAutorObra" class="button-primary-right-icon w-inline-block">
+            <div>Editar autor y obra</div>
+            <div class="icon-regular w-embed">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              </svg>
+            </div>
+          </a>
+          <a href="" class="button-primary-right-icon w-inline-block">
+            <div>Editar autores</div>
+            <div class="icon-regular w-embed">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              </svg>
+            </div>
+          </a>
+          <a id="w-node-_6450deab-05ad-10ea-b710-85522e08d930-d167644a" href="#" class="button-primary-right-icon w-inline-block">
+            <div>Eliminar autores</div>
+            <div class="icon-regular w-embed">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+      <form id="obrasForm" th:object="${autor}" th:action="@{/actualizarAutores}" method="post">
+        <table>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Biografía</th>
+            <th>Libros</th>
+          </tr>
+          <tr th:each="autor : ${autores}">
+            <td>
+              <input type="text" th:value="${autor.nombre}" name="nombre" />
+            </td>
+            <td>
+              <input type="text" th:value="${autor.apellido}" name="apellido" />
+            </td>
+            <td>
+              <input type="text" th:value="${autor.biografia}" name="biografia" />
+            </td>
+            <td>
+              <span th:each="libro : ${autor.libros}">
+                <p th:text="${libro.titulo}"></p>
+              </span>
+            <td>
+              <input type="checkbox" th:value="${autor.Id}" th:name="id" />
+            </td>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <script>
+      window.onload = function() {
+        var buttons = document.querySelectorAll('.button-primary-right-icon');
+        buttons[3].addEventListener('click', function(e) {
+          e.preventDefault();
+          document.getElementById('obrasForm').action = "/borrarAutores";
+          document.getElementById('obrasForm').submit();
+        });
+        buttons[2].addEventListener('click', function(e) {
+          e.preventDefault();
+          var tableRows = document.querySelectorAll('#obrasForm table tr');
+          var autores = [];
+          for (var i = 1; i < tableRows.length; i++) {
+            var autor = {};
+            var inputs = tableRows[i].querySelectorAll('input');
+            for (var j = 0; j < inputs.length; j++) {
+              autor[inputs[j].name] = inputs[j].value;
+            }
+            autores.push(autor);
+          }
+          fetch('/actualizarAutores', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(autores),
+          }).then(function(response) {
+            if (response.ok) {
+              window.location.href = '/inicio';
+            } else {
+              console.error('Server response was not ok. ', response);
+            }
+          }).catch(function(error) {
+            console.error('Error:', error);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

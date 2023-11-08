@@ -2144,51 +2144,6 @@ textarea.w-input, textarea.w-select {
   display: flex;
 }
 
-.w-checkbox {
-  margin-bottom: 5px;
-  padding-left: 20px;
-  display: block;
-}
-
-.w-checkbox:before {
-  content: " ";
-  grid-area: 1 / 1 / 2 / 2;
-  display: table;
-}
-
-.w-checkbox:after {
-  content: " ";
-  clear: both;
-  grid-area: 1 / 1 / 2 / 2;
-  display: table;
-}
-
-.w-checkbox-input {
-  float: left;
-  margin: 4px 0 0 -20px;
-  line-height: normal;
-}
-
-.w-checkbox-input--inputType-custom {
-  width: 12px;
-  height: 12px;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-}
-
-.w-checkbox-input--inputType-custom.w--redirected-checked {
-  background-color: #3898ec;
-  background-image: url("https://d3e54v103j8qbb.cloudfront.net/static/custom-checkbox-checkmark.589d534424.svg");
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-color: #3898ec;
-}
-
-.w-checkbox-input--inputType-custom.w--redirected-focus {
-  box-shadow: 0 0 3px 1px #3898ec;
-}
-
 .w-users-userloginformwrapper {
   margin-bottom: 0;
   padding-left: 20px;
@@ -2230,6 +2185,25 @@ textarea.w-input, textarea.w-select {
   padding-left: 20px;
   padding-right: 20px;
   position: relative;
+}
+
+.w-checkbox {
+  margin-bottom: 5px;
+  padding-left: 20px;
+  display: block;
+}
+
+.w-checkbox:before {
+  content: " ";
+  grid-area: 1 / 1 / 2 / 2;
+  display: table;
+}
+
+.w-checkbox:after {
+  content: " ";
+  clear: both;
+  grid-area: 1 / 1 / 2 / 2;
+  display: table;
 }
 
 .w-checkbox-input {
@@ -2532,6 +2506,7 @@ blockquote {
 }
 
 .partnership-text-wrap {
+  height: 440px;
   color: var(--neutral--600);
   background-image: url("https://assets-global.website-files.com/65365511e38c758ed1676401/65365511e38c758ed16764b2_Partnership%20Rectangle.svg");
   background-position: 0 0;
@@ -2540,6 +2515,7 @@ blockquote {
   justify-content: center;
   padding: 16px 48px;
   font-size: 14px;
+  font-weight: 500;
 }
 
 .logo-grid {
@@ -3790,6 +3766,7 @@ blockquote {
 .container-x-small {
   width: 100%;
   max-width: 740px;
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
   position: relative;
@@ -3960,9 +3937,9 @@ blockquote {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 10px 12px 10px 20px;
-  font-size: 15px;
-  font-weight: 500;
+  padding: 16px 12px 15px 20px;
+  font-size: 17px;
+  font-weight: 600;
   line-height: 24px;
   text-decoration: none;
   transition: all .5s cubic-bezier(.6, .6, 0, 1);
@@ -4993,6 +4970,7 @@ blockquote {
 }
 
 .section-header {
+  color: var(--neutral--600);
   padding: 64px 5% 100px;
   position: relative;
 }
@@ -5573,7 +5551,7 @@ blockquote {
 
 .flowbase-banner {
   z-index: 9999;
-  min-height: 120px;
+  min-height: 90px;
   background-color: var(--neutral--800);
   background-image: url("https://assets-global.website-files.com/65365511e38c758ed1676401/65365511e38c758ed1676488_Banner%20BG.webp");
   background-position: 100%;
@@ -5615,6 +5593,39 @@ blockquote {
   background-color: #fff;
   border-radius: 0;
   position: static;
+}
+
+.div-block {
+  object-fit: none;
+  font-weight: 200;
+}
+
+.heading {
+  color: var(--violet--dark);
+  text-align: left;
+  font-weight: 800;
+}
+
+.paragraph {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.image {
+  border-radius: 0;
+}
+
+.column {
+  object-fit: contain;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+
+.grid {
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 @media screen and (max-width: 991px) {
@@ -5691,7 +5702,7 @@ blockquote {
 
   .browse-grid {
     grid-column-gap: 16px;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1.75fr;
   }
 
   .search-result-list {
@@ -5752,7 +5763,12 @@ blockquote {
     margin-top: 0;
   }
 
-  .button-primary-right-icon, .button-secondary-right-icon {
+  .button-primary-right-icon {
+    background-color: var(--green--darker);
+    display: flex;
+  }
+
+  .button-secondary-right-icon {
     display: flex;
   }
 
@@ -6056,7 +6072,7 @@ blockquote {
   }
 
   .browse-header-section {
-    padding-top: 72px;
+    padding-top: 40px;
     padding-bottom: 72px;
   }
 
@@ -6235,15 +6251,6 @@ blockquote {
   }
 }
 
-#w-node-_01eb8987-0a4a-750f-5091-1a98973b4cbc-d167643c {
-  grid-area: span 1 / span 1 / span 1 / span 1;
-}
-
-#w-node-_602f1cc7-bad4-8585-d028-36bb6d541da4-d167643c {
-  align-self: end;
-  justify-self: end;
-}
-
 #w-node-da83c76b-8582-bdfd-54ac-0c0749a4f522-d1676444 {
   grid-area: span 1 / span 1 / span 1 / span 1;
   align-self: end;
@@ -6281,7 +6288,7 @@ blockquote {
   align-self: center;
 }
 
-#w-node-_80c74753-c7d6-9908-f823-7e5aecd26239-d1676453, #w-node-d1272945-c282-7568-e033-3334913f6d8f-d1676453 {
+#w-node-_454d0c08-5123-3eed-1e40-3851377dd90b-d167644a, #w-node-_6450deab-05ad-10ea-b710-85522e08d930-d167644a, #w-node-_80c74753-c7d6-9908-f823-7e5aecd26239-d1676453, #w-node-d1272945-c282-7568-e033-3334913f6d8f-d1676453 {
   grid-area: span 1 / span 1 / span 1 / span 1;
 }
 
@@ -6294,8 +6301,8 @@ blockquote {
 }
 
 @media screen and (max-width: 991px) {
-  #w-node-_602f1cc7-bad4-8585-d028-36bb6d541da4-d167643c {
-    justify-self: start;
+  #w-node-_6450deab-05ad-10ea-b710-85522e08d930-d167644a {
+    grid-area: span 1 / span 1 / span 1 / span 1;
   }
 
   #w-node-d1272945-c282-7568-e033-3334913f6d8f-d1676453 {

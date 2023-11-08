@@ -1,1 +1,1 @@
-{"resources":{"Scripts/Script.sql":{"default-datasource":"derby-18b6cf75145-1c5c63cc3c72aba3","default-schema":"DERBYUSER"}}}
+{"resources":{"Scripts/Script-1.sql":{"default-datasource":"derby-18b6e6535ed-4e3db1a95250cf81","default-schema":"APP"},"Scripts/Script-2.sql":{"default-datasource":"derby-18b6e6535ed-4e3db1a95250cf81","default-schema":"DERBYUSER"},"Scripts/Script.sql":{"default-schema":"APP","default-datasource":"derby-18b6e6535ed-4e3db1a95250cf81"}}}
