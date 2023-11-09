@@ -137,9 +137,45 @@ public class GestorTitulos {
 	 * 
 	 * @param t
 	 */
-	public void bajaEjemplar(Obra t) {
-		// TODO - implement GestorTitulos.bajaEjemplar
-		throw new UnsupportedOperationException();
+		@PostMapping("/borrarEjemplar")
+		public String bajaEjemplar(@RequestParam(name = "id", required = false) List<Long> ejemplarIds) {
+				if (ejemplarIds != null) {
+					for (Long ejemplarId : ejemplarIds) {
+						try {
+							ejemplarDAO.deleteById(ejemplarId);
+						} catch (EmptyResultDataAccessException e) {
+							System.out.println("Error");
+						}
+					}
+				}
+				return "redirect:/inicio";
 	}
+		@PostMapping("/actualizarEjemplares")
+		public String actualizarEjemplares(@RequestBody List<Ejemplar> Ejemplares) {
+			for (Ejemplar ejemplar : Ejemplares) {
+				//Ejemplar ejemplare = new Ejemplar();
+					if (!ejemplar.getReservas().equals("-")) {
+						ejemplar.setReservas(ejemplar.getReservas());
+					}
+					if (!ejemplar.getPrestamos().equals("-")) {
+						ejemplar.setPrestamos(ejemplar.getPrestamos());
+					}
+					if (!ejemplar.getObra().equals("-")) {
+						ejemplar.setObra(ejemplar.getObra());
+					}
+					if (!ejemplar.getEstado().equals("-")) {
+						ejemplar.setEstado(ejemplar.getEstado());
+					}
+
+					
+					ejemplar.setNroEjemplar(ejemplar.getNroEjemplar());
+					ejemplar.setNumReserva(ejemplar.getNumReserva());
+					
+					ejemplarDAO.save(ejemplar);
+
+				} 
+			return "redirect:/gestion";
+		}
+
 
 }
