@@ -61,7 +61,7 @@ public class GestorInterfaces {
 		model.addAttribute("autor", new Autor());
 		return "publicarAutor";
 	}
-	
+
 	@GetMapping("/publicarObra")
 	public String getObrasAutores(Model model) {
 		List<Autor> autores = autorDAO.findAll();
@@ -75,7 +75,6 @@ public class GestorInterfaces {
 		return "publicarObra";
 	}
 
-	
 	@GetMapping("/editarAutorObra")
 	public String getRelacionObrasAutores(Model model) {
 		List<Autor> autores = autorDAO.findAll();
@@ -84,20 +83,21 @@ public class GestorInterfaces {
 		model.addAttribute("autores", autores);
 		return "editarAutorObra";
 	}
-	
+
 	@GetMapping("/gestion")
 	public String getObras(Model model) {
 		List<Obra> obras = obraDAO.findAll();
 		model.addAttribute("obras", obras);
 		return "gestion"; // Nombre del archivo HTML "gestion.html"
 	}
-	
+
 	@GetMapping("/gestionAutor")
 	public String getAutor(Model model) {
 		List<Autor> autores = autorDAO.findAll();
 		model.addAttribute("autores", autores);
 		return "gestionAutor";
 	}
+
 	@Autowired
 	public void EjemplarController(EjemplarDAO ejemplarDAO) {
 		this.ejemplarDAO = ejemplarDAO;
@@ -106,18 +106,18 @@ public class GestorInterfaces {
 	@GetMapping("/gestionEjemplar")
 	public String getEjemplar(Model model) {
 		List<Ejemplar> ejemplar = ejemplarDAO.findAll();
-		model.addAttribute("ejemplar", ejemplar);
+		model.addAttribute("ejemplares", ejemplar);
 		return "gestionEjemplar"; // Nombre del archivo HTML "gestion.html"
 	}
+
 	@GetMapping("/publicarEjemplar")
-	public String getEjemplares(Model model) {
-		Ejemplar ejemplar = new Ejemplar();
-		model.addAttribute("ejemplar", ejemplar);
-		
+	public String getEjemplaresObras(Model model) {
+		Ejemplar ejemplares = new Ejemplar();
+		model.addAttribute("ejemplar", ejemplares);
+
 		List<Obra> obras = obraDAO.findAll();
 		model.addAttribute("obras", obras);
 		return "publicarEjemplar";
 	}
-
 
 }

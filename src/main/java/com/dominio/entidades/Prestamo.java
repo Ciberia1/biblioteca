@@ -40,7 +40,7 @@ public class Prestamo {
 	private Usuario usuario;
 
 	@ManyToOne
-	@JoinColumns({ @JoinColumn(name = "NroEjemplar", referencedColumnName = "NroEjemplar"),
+	@JoinColumns({ @JoinColumn(name = "ejemplarID", referencedColumnName = "ejemplarID"),
 			@JoinColumn(name = "ID", referencedColumnName = "ID") })
 	private Ejemplar ejemplar;
 

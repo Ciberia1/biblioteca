@@ -2,6 +2,7 @@ package com.dominio.entidades;
 
 import java.util.*;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,15 +21,12 @@ public class Ejemplar {
 		super();
 	}
 
-	public Ejemplar(Long ejemplarID, Obra obra, Collection<Reserva> reservas, Collection<Prestamo> prestamos,
-			int nroEjemplar, int numReserva, String estado) {
+	public Ejemplar(Long ejemplarID, Obra obra, Collection<Reserva> reservas, Collection<Prestamo> prestamos, String estado) {
 		super();
 		this.ejemplarID = ejemplarID;
 		this.obra = obra;
 		this.reservas = reservas;
 		this.prestamos = prestamos;
-		this.nroEjemplar = nroEjemplar;
-		this.numReserva = numReserva;
 		this.estado = estado;
 	}
 
@@ -40,17 +38,11 @@ public class Ejemplar {
 	@JoinColumn(name = "ID")
 	private Obra obra;
 
-	@OneToMany(mappedBy = "ejemplar")
+	@OneToMany(mappedBy = "ejemplar", cascade = CascadeType.REMOVE)
 	private Collection<Reserva> reservas;
 
-	@OneToMany(mappedBy = "ejemplar")
+	@OneToMany(mappedBy = "ejemplar", cascade = CascadeType.REMOVE)
 	private Collection<Prestamo> prestamos;
-
-	@Column(name = "NroEjemplar", nullable = false)
-	private int nroEjemplar;
-
-	@Column(name = "NumReserva")
-	private int numReserva;
 
 	@Column(name = "Estado", nullable = false, length = 25)
 	private String estado;
@@ -85,22 +77,6 @@ public class Ejemplar {
 
 	public void setPrestamos(Collection<Prestamo> prestamos) {
 		this.prestamos = prestamos;
-	}
-
-	public int getNroEjemplar() {
-		return nroEjemplar;
-	}
-
-	public void setNroEjemplar(int nroEjemplar) {
-		this.nroEjemplar = nroEjemplar;
-	}
-
-	public int getNumReserva() {
-		return numReserva;
-	}
-
-	public void setNumReserva(int numReserva) {
-		this.numReserva = numReserva;
 	}
 
 	public String getEstado() {

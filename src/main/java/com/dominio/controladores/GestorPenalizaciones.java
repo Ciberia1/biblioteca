@@ -10,8 +10,6 @@ import com.persistencia.UsuarioDAO;
 
 @Controller
 public class GestorPenalizaciones {
-	private static final Logger log = LoggerFactory.getLogger(GestorPenalizaciones.class);
-
 	@Autowired
 	private UsuarioDAO usuarioDAO;
 

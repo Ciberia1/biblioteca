@@ -20,7 +20,7 @@ public class Usuario {
 	}
 
 	public Usuario(Collection<Prestamo> prestamos, Collection<Reserva> reservas, String dni, String nombre,
-			String apellidos, Date fechaFinPen, String domicilio, String rol, String contrasena) {
+			String apellidos, Date fechaFinPen, int cupo, String rol, String contrasena) {
 		super();
 		this.prestamos = prestamos;
 		this.reservas = reservas;
@@ -28,7 +28,7 @@ public class Usuario {
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.fechaFinPen = fechaFinPen;
-		this.domicilio = domicilio;
+		this.cupo = cupo;
 		this.rol = rol;
 		this.contrasena = contrasena;
 	}
@@ -53,8 +53,8 @@ public class Usuario {
 	@Temporal(TemporalType.DATE)
 	private Date fechaFinPen;
 
-	@Column(name = "Domicilio", nullable = false, length = 40)
-	private String domicilio;
+	@Column(name = "Cupo", nullable = false, length = 40)
+	private int cupo;
 
 	@Column(name = "Rol", nullable = false, length = 25)
 	private String rol;
@@ -110,12 +110,12 @@ public class Usuario {
 		this.fechaFinPen = fechaFinPen;
 	}
 
-	public String getDomicilio() {
-		return domicilio;
+	public int getCupo() {
+		return cupo;
 	}
 
-	public void setDomicilio(String domicilio) {
-		this.domicilio = domicilio;
+	public void setCupo(int cupo) {
+		this.cupo = cupo;
 	}
 
 	public String getRol() {

@@ -1,15 +1,10 @@
 package com.dominio.controladores;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +17,6 @@ import com.persistencia.*;
 @Controller
 
 public class GestorTitulos {
-	private static final Logger log = LoggerFactory.getLogger(GestorTitulos.class);
 	@Autowired
 	private ObraDAO obraDAO;
 	@Autowired
@@ -31,35 +25,56 @@ public class GestorTitulos {
 	private PubSeriadasDAO pubSeriadaDAO;
 	@Autowired
 	private EjemplarDAO ejemplarDAO;
-	@Autowired
-	private AutorDAO autorDAO;
 
 	@PostMapping("/publicarObra")
 	public String altaObra(@ModelAttribute Obra obra, @ModelAttribute Libro libro,
-			@ModelAttribute PubSeriadas pubseriada, @RequestParam String claseObra) {
+	        @ModelAttribute PubSeriadas pubseriada, @RequestParam String claseObra,
+	        @RequestParam String nroEjemplares) throws InterruptedException {
 
-		if ("Libro".equals(claseObra)) {
-			Libro libron = new Libro();
-			BeanUtils.copyProperties(obra, libron);
-			libron.setAutores(libro.getAutores());
-			libron.setEdicion(libro.getEdicion());
-			libron.setEditorial(libro.getEditorial());
-			libron.setEncuadernacion(libro.getEncuadernacion());
-			libron.setIsbn(libro.getIsbn());
-			libroDAO.save(libron);
+	    if ("Libro".equals(claseObra)) {
+	        Libro libron = new Libro();
+	        BeanUtils.copyProperties(obra, libron, "id");
+	        libron.setAutores(libro.getAutores());
+	        libron.setEdicion(libro.getEdicion());
+	        libron.setEditorial(libro.getEditorial());
+	        libron.setEncuadernacion(libro.getEncuadernacion());
+	        libron.setIsbn(libro.getIsbn());
 
-		} else if ("Publicación seriada".equals(claseObra)) {
-			PubSeriadas Seriada = new PubSeriadas();
-			BeanUtils.copyProperties(obra, Seriada);
-			Seriada.setEditor(pubseriada.getEditor());
-			Seriada.setIssn(pubseriada.getIssn());
-			Seriada.setEditor(pubseriada.getEditor());
-			Seriada.setTipo(pubseriada.getTipo());
-			Seriada.setPeriodicidad(pubseriada.getPeriodicidad());
-			pubSeriadaDAO.save(Seriada);
-		}
-		return "redirect:/gestion";
+	        libroDAO.save(libron);
+	        libron = libroDAO.findById(libron.getId()).get();
+
+	        for (int i = 0; i < Integer.parseInt(nroEjemplares); i++) {
+	            Ejemplar ejemplar = new Ejemplar();
+	            ejemplar.setEstado("Disponible");
+	            ejemplar.setObra(libron);
+	            ejemplarDAO.save(ejemplar);
+	            Thread.sleep(200);
+	        }
+
+	    } else if ("Publicación seriada".equals(claseObra)) {
+	        PubSeriadas Seriada = new PubSeriadas();
+	        BeanUtils.copyProperties(obra, Seriada, "id");
+	        Seriada.setEditor(pubseriada.getEditor());
+	        Seriada.setIssn(pubseriada.getIssn());
+	        Seriada.setEditor(pubseriada.getEditor());
+	        Seriada.setTipo(pubseriada.getTipo());
+	        Seriada.setPeriodicidad(pubseriada.getPeriodicidad());
+
+	        pubSeriadaDAO.save(Seriada);
+	        Seriada = pubSeriadaDAO.findById(Seriada.getId()).get();
+
+	        for (int i = 0; i < Integer.parseInt(nroEjemplares); i++) {
+	            Ejemplar ejemplar = new Ejemplar();
+	            ejemplar.setEstado("Disponible");
+	            ejemplar.setObra(Seriada);
+	            ejemplarDAO.save(ejemplar);
+	            Thread.sleep(200);
+	        }
+	    }
+
+	    return "redirect:/gestion";
 	}
+
 
 	@PostMapping("/actualizarObras")
 	public String actualizarObras(@RequestBody List<ObraWrapper> obrasWrapper) {
@@ -85,7 +100,6 @@ public class GestorTitulos {
 
 				libro.setFechaPublicacion(obraWrapper.getFechaPublicacion());
 				libro.setNroPaginas(obraWrapper.getNroPaginas());
-				libro.setId(obraWrapper.getId());
 				libro.setTitulo(obraWrapper.getTitulo());
 
 				libroDAO.save(libro);
@@ -107,13 +121,13 @@ public class GestorTitulos {
 
 				pubSeriada.setFechaPublicacion(obraWrapper.getFechaPublicacion());
 				pubSeriada.setNroPaginas(obraWrapper.getNroPaginas());
-				pubSeriada.setId(obraWrapper.getId());
 				pubSeriada.setTitulo(obraWrapper.getTitulo());
 				pubSeriadaDAO.save(pubSeriada);
 			}
 		}
 		return "redirect:/gestion";
 	}
+
 	@PostMapping("/borrarObras")
 	public String borrarObras(@RequestParam(name = "id", required = false) List<Long> obraIds) {
 		if (obraIds != null) {
@@ -125,57 +139,6 @@ public class GestorTitulos {
 				}
 			}
 		}
-		return "redirect:/inicio";
+		return "redirect:/gestion";
 	}
-
-	public void altaEjemplar(Obra t) {
-		// TODO - implement GestorTitulos.altaEjemplar
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param t
-	 */
-		@PostMapping("/borrarEjemplar")
-		public String bajaEjemplar(@RequestParam(name = "id", required = false) List<Long> ejemplarIds) {
-				if (ejemplarIds != null) {
-					for (Long ejemplarId : ejemplarIds) {
-						try {
-							ejemplarDAO.deleteById(ejemplarId);
-						} catch (EmptyResultDataAccessException e) {
-							System.out.println("Error");
-						}
-					}
-				}
-				return "redirect:/inicio";
-	}
-		@PostMapping("/actualizarEjemplares")
-		public String actualizarEjemplares(@RequestBody List<Ejemplar> Ejemplares) {
-			for (Ejemplar ejemplar : Ejemplares) {
-				//Ejemplar ejemplare = new Ejemplar();
-					if (!ejemplar.getReservas().equals("-")) {
-						ejemplar.setReservas(ejemplar.getReservas());
-					}
-					if (!ejemplar.getPrestamos().equals("-")) {
-						ejemplar.setPrestamos(ejemplar.getPrestamos());
-					}
-					if (!ejemplar.getObra().equals("-")) {
-						ejemplar.setObra(ejemplar.getObra());
-					}
-					if (!ejemplar.getEstado().equals("-")) {
-						ejemplar.setEstado(ejemplar.getEstado());
-					}
-
-					
-					ejemplar.setNroEjemplar(ejemplar.getNroEjemplar());
-					ejemplar.setNumReserva(ejemplar.getNumReserva());
-					
-					ejemplarDAO.save(ejemplar);
-
-				} 
-			return "redirect:/gestion";
-		}
-
-
 }

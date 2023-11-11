@@ -56,7 +56,7 @@
     <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
       <div class="container-navigation">
         <div class="navigation-left">
-          <a href="/" class="brand w-nav-brand">
+          <a href="/inicio" class="brand w-nav-brand">
             <img src="img/65367f8a8d37ee8bd2045ee4_logo.png" loading="lazy" width="169" sizes="(max-width: 479px) 43vw, 169px" alt="65367f8a8d37ee8bd2045ee4_logo" srcset="img/65367f8a8d37ee8bd2045ee4_logo-p-500.png 500w, img/65367f8a8d37ee8bd2045ee4_logo-p-800.png 800w, img/65367f8a8d37ee8bd2045ee4_logo-p-1080.png 1080w, img/65367f8a8d37ee8bd2045ee4_logo-p-1600.png 1600w, img/65367f8a8d37ee8bd2045ee4_logo.png 1832w" class="logo">
           </a>
         </div>
@@ -90,50 +90,62 @@
         </div>
         <div data-w-id="7a6f2f36-720c-79f1-afa5-219274c01bb5" style="-webkit-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:100" class="job-submission-form-wrapper">
           <div class="w-form">
-            <form action="@{/publicarEjemplar}" class="job-submission-form" th:object="${ejemplar}">
+            <form  action="#" th:action="@{/publicarEjemplar}" class="job-submission-form" method="post">
               <div id="formulario-ejemplar" class="job-submission-form-section-wrapper">
                 <div id="w-node-_35571b41-498a-13b4-c487-1c69096208df-d1676458" class="job-submission-form-section">
                   <div class="margin-bottom-24">
                     <h5>Datos del ejemplar</h5>
                   </div>
                   <label id="titulo-ejemplar" for="nroEjemplar">Cantidad de ejemplares</label>
-                  <input type="number" class="form-field w-input" maxlength="30" name="cantidad" id="nroEjemplar" required="" value="0">
+                  <input type="number" class="form-field w-input" name="nroEjemplar" placeholder="" id="nroEjemplar" min="1" required="">
                   <label id="titulo-obra" for="obra">Obras</label>
                   <table>
                     <thead>
                       <tr>
                         <th>Título</th>
-                        <th>ISBN</th>
-                        <th>ISSN</th>
+                        <th>ISBN/ISSN</th>
                         <th>Seleccionar</th>
                       </tr>
                       <tr th:each="obra : ${obras}">
-			            <td>
-			              <input type="text" th:value="${obra.titulo}" name="titulo" />
-			            </td>
-			            <td>
-			              <input type="text" th:value="${obra.esLibro ? obra.Isbn : '-'}" name="isbn" />
-			            </td>
-			            <td>
-			              <input type="text" th:value="${!obra.esLibro ? obra.Issn : '-'}" name="issn" />
-			            </td>
-			            <td>
-			              <input type="checkbox" th:value="${obra.Id}" th:name="id" />
-			            </td>
-			          </tr>
+                        <td>
+                          <p th:text="${obra.titulo}"></p>
+                        </td>
+                        <td>
+                          <p th:text="${obra.esLibro ? obra.Isbn : obra.Issn}"></p>
+                        </td>
+                        <td>
+                          <input type="checkbox" th:value="${obra.Id}" th:name="id" />
+                        </td>
+                      </tr>
                     </thead>
-                   </table>
+                  </table>
+                  <input type="hidden" name="id" value="${obra.Id}">
+                  <input type="hidden" name="nroEjemplar" value="${nroEjemplar}">
                   <input type="submit" name="type" value="Aceptar" data-wait="Espera..." class="button-primary w-button">
                 </div>
               </div>
             </form>
-        	<div class="success-message w-form-done">
-          	<div> La petición ha sido recibida </div>
-        	</div>
-       		<div class="error-message w-form-fail">
-          	<div> Error </div>
+			<div th:if="${message == 'OK'}" class="success-message w-form-done">
+				<div> La petición ha sido recibida </div>
+			</div>
+			<div th:if="${message == 'Error'}" class="error-message w-form-fail">
+				<div> Error </div>
+			</div>
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+	window.onload = function(){
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach(function(checkbox) {
+    checkbox.addEventListener('change', function() {
+      checkboxes.forEach(function(c) {
+        if (c !== checkbox) c.checked = false;
+      });
+    });
+  });
+};
+
+    </script>
   </body>
-</html>
+</html>      
