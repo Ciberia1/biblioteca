@@ -80,7 +80,8 @@ public class GestorTitulos {
 	public String actualizarObras(@RequestBody List<ObraWrapper> obrasWrapper) {
 		for (ObraWrapper obraWrapper : obrasWrapper) {
 			if (obraWrapper.isEsLibro()) {
-				Libro libro = new Libro();
+				Libro libro = libroDAO.findById(obraWrapper.getId()).get();
+
 				if (obraWrapper.getEdicion() != "-") {
 					libro.setEdicion(obraWrapper.getEdicion());
 				}
@@ -105,7 +106,8 @@ public class GestorTitulos {
 				libroDAO.save(libro);
 
 			} else {
-				PubSeriadas pubSeriada = new PubSeriadas();
+				PubSeriadas pubSeriada =pubSeriadaDAO.findById(obraWrapper.getId()).get();
+
 				if (!obraWrapper.getIssn().equals("-")) {
 					pubSeriada.setIssn(obraWrapper.getIssn());
 				}
