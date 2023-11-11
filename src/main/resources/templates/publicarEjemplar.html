@@ -2,9 +2,9 @@
 <html data-wf-domain="biblioteca-6acf80.webflow.io" data-wf-page="65365511e38c758ed1676458" data-wf-site="65365511e38c758ed1676401">
   <head>
     <meta charset="utf-8">
-    <title>Publicar autor</title>
-    <meta content="Publicar obra" property="og:title">
-    <meta content="Publicar obra" property="twitter:title">
+    <title>Publicar obra</title>
+    <meta content="Publicar ejemplar" property="og:title">
+    <meta content="Publicar ejemplar" property="twitter:title">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="Webflow" name="generator">
     <link href="css/biblioteca-6acf80.webflow.dbb688d7d.css" rel="stylesheet" type="text/css">
@@ -84,39 +84,68 @@
       <div class="container-small">
         <div data-w-id="18f15721-4c45-512a-e538-07e4f3167b37" style="-webkit-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:100" class="title-wrap-center">
           <div class="margin-bottom-12">
-            <h2>Añadir autor</h2>
+            <h2>Añadir ejemplar</h2>
           </div>
-          <p class="paragraph-regular">Escribe a continuación los datos del autor que deseas añadir</p>
+          <p class="paragraph-regular">Escribe a continuación los datos del ejemplar que deseas añadir</p>
         </div>
         <div data-w-id="7a6f2f36-720c-79f1-afa5-219274c01bb5" style="-webkit-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:100" class="job-submission-form-wrapper">
           <div class="w-form">
-            <form action="/publicarAutor" method="post" class="job-submission-form" th:object="${autor}">
-  <div id="formulario-obra" class="job-submission-form-section-wrapper">
-    <div id="w-node-_35571b41-498a-13b4-c487-1c69096208df-d1676458" class="job-submission-form-section">
-      <div class="margin-bottom-24">
-        <h5>Datos del autor</h5>
-      </div>
-      <label id="nombre-nombre" for="nombre">Nombre</label>
-      <input type="text" class="form-field w-input" maxlength="30" name="nombre" th:field="*{nombre}" id="nombre" required="">
-      <label id="nombre-apellidos" for="apellido">Apellidos</label>
-      <input type="text" class="form-field w-input" name="apellidos" th:field="*{apellido}" placeholder="" id="apellido" required="">
-      <label id="nombre-biografia" for="biografia">Biografía</label>
-      <input type="text" class="form-field w-input" name="biografia" th:field="*{biografia}" placeholder="" id="biografia" required="">
-      
-      <!-- 'Enviar' botón -->
-      <input type="submit" value="Enviar" class="button-primary w-button">
-    </div>
-  </div>
-</form>
-        <div class="success-message w-form-done">
-          <div> La petición ha sido recibida </div>
-        </div>
-        <div class="error-message w-form-fail">
-          <div> Error </div>
+            <form  action="#" th:action="@{/publicarEjemplar}" class="job-submission-form" method="post">
+              <div id="formulario-ejemplar" class="job-submission-form-section-wrapper">
+                <div id="w-node-_35571b41-498a-13b4-c487-1c69096208df-d1676458" class="job-submission-form-section">
+                  <div class="margin-bottom-24">
+                    <h5>Datos del ejemplar</h5>
+                  </div>
+                  <label id="titulo-ejemplar" for="nroEjemplar">Cantidad de ejemplares</label>
+                  <input type="number" class="form-field w-input" name="nroEjemplar" placeholder="" id="nroEjemplar" min="1" required="">
+                  <label id="titulo-obra" for="obra">Obras</label>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Título</th>
+                        <th>ISBN/ISSN</th>
+                        <th>Seleccionar</th>
+                      </tr>
+                      <tr th:each="obra : ${obras}">
+                        <td>
+                          <p th:text="${obra.titulo}"></p>
+                        </td>
+                        <td>
+                          <p th:text="${obra.esLibro ? obra.Isbn : obra.Issn}"></p>
+                        </td>
+                        <td>
+                          <input type="checkbox" th:value="${obra.Id}" th:name="id" />
+                        </td>
+                      </tr>
+                    </thead>
+                  </table>
+                  <input type="hidden" name="id" value="${obra.Id}">
+                  <input type="hidden" name="nroEjemplar" value="${nroEjemplar}">
+                  <input type="submit" name="type" value="Aceptar" data-wait="Espera..." class="button-primary w-button">
+                </div>
+              </div>
+            </form>
+			<div th:if="${message == 'OK'}" class="success-message w-form-done">
+				<div> La petición ha sido recibida </div>
+			</div>
+			<div th:if="${message == 'Error'}" class="error-message w-form-fail">
+				<div> Error </div>
+			</div>
         </div>
       </div>
     </div>
     <script type="text/javascript">
+	window.onload = function(){
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach(function(checkbox) {
+    checkbox.addEventListener('change', function() {
+      checkboxes.forEach(function(c) {
+        if (c !== checkbox) c.checked = false;
+      });
+    });
+  });
+};
+
     </script>
   </body>
-</html>
+</html>      

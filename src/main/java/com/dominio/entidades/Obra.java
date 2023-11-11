@@ -4,6 +4,7 @@ import java.util.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
@@ -33,7 +34,7 @@ public class Obra {
 		this.fechaPublicacion = fechaPublicacion;
 	}
 
-	@OneToMany(mappedBy = "obra")
+	@OneToMany(mappedBy = "obra", cascade = CascadeType.REMOVE)
     private Collection<Ejemplar> ejemplares;
 
     @Column(name = "Genero")

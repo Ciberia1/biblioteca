@@ -67,12 +67,19 @@
           /* 테두리와 패딩이 너비에 포함되도록 설정합니다. */
         }
 
-        th,
-        td {
+        th {
           border: 1px solid #ddd;
           padding: 8px;
           text-align: left;
         }
+
+td {
+  border: 1px solid #ddd;
+  padding: 4px;  /* 패딩 크기를 줄여 셀 크기를 줄입니다. */
+  text-align: left;
+  font-size: 0.8em;  /* 글자 크기를 줄여 셀 크기를 줄입니다. */
+  line-height: 1.2em;  /* 줄 간격을 줄여 셀 크기를 줄입니다. */
+}
 
         tr:nth-child(even) {
           background-color: #f2f2f2;
@@ -125,139 +132,92 @@
       <div style="-webkit-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:1" class="container-x-small">
         <div class="title-wrap-center-large">
           <div class="margin-bottom-16">
-            <h2>Gestionar obras del catálogo <span class="text-color-primary"></span>
+            <h2>Gestionar ejemplares del catálogo <span class="text-color-primary"></span>
             </h2>
           </div>
         </div>
         <div class="w-layout-grid"></div>
-        <div class="w-layout-grid grid">
-          <a id="w-node-_454d0c08-5123-3eed-1e40-3851377dd90b-d167644a" href="/publicarObra" class="button-primary-right-icon w-inline-block">
-            <div>Añadir obras</div>
-            <div class="icon-regular w-embed">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              </svg>
-            </div>
-          </a>
-          <a href="#" class="button-primary-right-icon w-inline-block">
-            <div>Editar obras</div>
-            <div class="icon-regular w-embed">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              </svg>
-            </div>
-          </a>
-          <a id="w-node-_6450deab-05ad-10ea-b710-85522e08d930-d167644a" href="#" class="button-primary-right-icon w-inline-block">
-            <div>Eliminar obras</div>
-            <div class="icon-regular w-embed">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              </svg>
-            </div>
-          </a>
+       <div class="w-layout-grid grid" style="display: grid; grid-template-columns: repeat(2, 1fr); justify-items: center;">
+    <a id="w-node-_454d0c08-5123-3eed-1e40-3851377dd90b-d167644a" href="/publicarEjemplar" class="button-primary-right-icon w-inline-block">
+        <div>Añadir ejemplares</div>
+        <div class="icon-regular w-embed">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          </svg>
         </div>
+    </a>
+    <a id="w-node-_6450deab-05ad-10ea-b710-85522e08d930-d167644a" href="/gestionEjemplar" class="button-primary-right-icon w-inline-block">
+        <div>Eliminar ejemplares</div>
+        <div class="icon-regular w-embed">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          </svg>
+        </div>
+    </a>
+</div>
       </div>
-		<form id="obrasForm" th:object="${obra}" th:action="@{/actualizarObras}" method="post">
+		<form id="ejemplarForm" th:object="${ejemplares}" th:action="@{/actualizarEjemplares}" method="post">
         <table>
           <tr>
-            <th>Título</th>
-            <th>Fecha de publicación</th>
-            <th>Número de páginas</th>
-            <th>Editorial</th>
-            <th>Edicion</th>
-			<th>Género</th>
-            <th>ISBN</th>
-            <th>Encuadernacion</th>
-            <th>ISSN</th>
-            <th>Editor</th>
-            <th>Tipo</th>
-            <th>Periodicidad</th>
+            <th>ID</th>
+            <th>Estado</th>
+			<th>Obra</th>
           </tr>
-          <tr th:each="obra : ${obras}">
-            <td>
-              <input type="text" th:value="${obra.titulo}" name="titulo" />
-            </td>
-            <td>
-			  <input type="date" th:value="${#dates.format(obra.fechaPublicacion, 'yyyy-MM-dd')}" name="fechaPublicacion" />
-			</td>
-            <td>
-              <input type="number" th:value="${obra.nroPaginas}" name="nroPaginas" />
-            </td>
-            <td>
-              <input type="text" th:value="${obra.esLibro ? obra.editorial : '-'}" name="editorial" />
-            </td>
-            <td>
-              <input type="text" th:value="${obra.esLibro ? obra.edicion : '-'}" name="edicion" />
-            </td>
-	        <td>
-              <input type="text" th:value="${obra.esLibro ? obra.genero : '-'}" name="genero" />
-            </td>
-            <td>
-              <input type="text" th:value="${obra.esLibro ? obra.Isbn : '-'}" name="isbn" />
-            </td>
-            <td>
-              <input type="text" th:value="${obra.esLibro ? obra.encuadernacion : '-'}" name="encuadernacion" />
-            </td>
-            <td>
-              <input type="text" th:value="${!obra.esLibro ? obra.Issn : '-'}" name="issn" />
-            </td>
-            <td>
-              <input type="text" th:value="${!obra.esLibro ? obra.editor : '-'}" name="editor" />
-            </td>
-            <td>
-              <input type="text" th:value="${!obra.esLibro ? obra.tipo : '-'}" name="tipo" />
-            </td>
-            <td>
-              <input type="text" th:value="${!obra.esLibro ? obra.periodicidad : '-'}" name="periodicidad" />
-			  <input type="hidden" th:value="${obra.esLibro}" name="esLibro" />
-            </td>
-            <td>
-              <input type="checkbox" th:value="${obra.Id}" th:name="id" />
-            </td>
-          </tr>
+<tr th:each="ejemplar : ${ejemplares}">
+    <td>
+        <p th:text="${ejemplar.ejemplarID}"></p> <!-- 여기를 th:text로 수정했습니다. -->
+    </td>
+    <td>
+        <p th:text="${ejemplar.estado}"></p> <!-- 여기를 th:text로 수정했습니다. -->
+    </td>
+    <td>
+        <p th:text="${ejemplar.obra.titulo}"></p> <!-- 여기를 th:text로 수정하고, "titulo" 필드를 추가했습니다. -->
+    </td>
+    <td>
+        <input type="checkbox" th:value="${ejemplar.ejemplarID}" th:name="ejemplarID" />
+    </td>
+</tr>
         </table>
       </form>
     </div>
-    <script>
+<script>
 window.onload = function() {
-  // 'Borrar obras' 버튼
-    var buttons = document.querySelectorAll('.button-primary-right-icon'); // 버튼들을 모두 선택
-
-  buttons[2].addEventListener('click', function(e) {
-    e.preventDefault();
-    document.getElementById('obrasForm').action = "/borrarObras"; // 액션을 변경
-    document.getElementById('obrasForm').submit(); // 폼 제출
-  });
+    var buttons = document.querySelectorAll('.button-primary-right-icon');
 
     buttons[1].addEventListener('click', function(e) {
-    e.preventDefault();
-    
-    var tableRows = document.querySelectorAll('#obrasForm table tr');
-    var obras = [];
-    
-    for (var i = 1; i < tableRows.length; i++) {
-      var obra = {};
-      var inputs = tableRows[i].querySelectorAll('input');
-      
-      for (var j = 0; j < inputs.length; j++) {
-        obra[inputs[j].name] = inputs[j].value;
-      }
-      
-      obras.push(obra);
-    }
-    
-    fetch('/actualizarObras', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(obras),
-    }).then(function(response) {
-      return response.json();
-    }).then(function(data) {
-      console.log('Success:', data);
-    }).catch(function(error) {
-      console.error('Error:', error);
+        e.preventDefault();
+
+        var tableRows = document.querySelectorAll('#ejemplarForm table tr');
+        var ejemplarIds = [];
+
+        for (var i = 1; i < tableRows.length; i++) {
+            var input = tableRows[i].querySelector('input[type="checkbox"]');
+
+            if (input.checked) {
+                ejemplarIds.push(Number(input.value));
+            }
+        }
+
+        var data = {
+            id: ejemplarIds
+        };
+
+        fetch('/borrarEjemplar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        }).then(function(response) {
+            if(response.ok) {
+                window.location.href = '/gestionEjemplar';
+            } else {
+                console.error('Error:', response.status);
+            }
+        }).catch(function(error) {
+            console.error('Error:', error);
+        });
     });
-  });
 }
-    </script>
+
+</script>
   </body>
 </html>

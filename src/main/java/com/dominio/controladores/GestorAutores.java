@@ -1,17 +1,12 @@
 package com.dominio.controladores;
 
-import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +19,6 @@ import com.persistencia.*;
 @Controller
 
 public class GestorAutores {
-	private static final Logger log = LoggerFactory.getLogger(GestorTitulos.class);
 	@Autowired
 	private ObraDAO obraDAO;
 	@Autowired
@@ -35,8 +29,7 @@ public class GestorAutores {
 	@PostMapping("/publicarAutor")
 	public String altaAutor(@ModelAttribute Autor autor) {
 		autorDAO.save(autor);
-
-		return "redirect:/inicio";
+		return "redirect:/gestionAutor";
 	}
 	
 	@PostMapping("/editarAutorObra")
@@ -61,21 +54,32 @@ public class GestorAutores {
 			Autor temporal= new Autor(autor.getId(),autor.getNombre(), autor.getApellido(), autor.getBiografia(), null);
 			autorDAO.save(temporal);
 		}
-		return "redirect:/inicio";
+		return "redirect:/gestionAutor";
 	}
 
 	@PostMapping("/borrarAutores")
-	public String borrarAutores(@RequestParam(name = "id", required = false) List<Long> autoresIds) {
-		if (autoresIds != null) {
-			for (Long autorId : autoresIds) {
-				try {
-					autorDAO.deleteById(autorId);
-				} catch (EmptyResultDataAccessException e) {
-					System.out.println("Error");
-				}
-			}
-		}
-		return "redirect:/inicio";
+	public String borrarAutores(@RequestParam(name = "id", required = false) List<Long> autoresIds) throws InterruptedException {
+	    if (autoresIds != null) {
+	        for (Long autorId : autoresIds) {
+	            try {
+	                Autor autor = autorDAO.findById(autorId).orElse(null);
+	                if (autor != null) {
+	                    Set<Libro> libros = autor.getLibros();
+	                    for (Libro libro : libros) {
+	                        libro.getAutores().remove(autor); // remove the association
+	                    }
+	                    autor.getLibros().clear(); // clear the association from the author side
+	                    autorDAO.save(autor); // save the changes
+	                    autorDAO.deleteById(autorId); // now you can delete the author
+	                    Thread.sleep(200);
+	                }
+	            } catch (EmptyResultDataAccessException e) {
+	                System.out.println("Error");
+	            }
+	        }
+	    }
+	    return "redirect:/gestionAutor";
 	}
+
 
 }
