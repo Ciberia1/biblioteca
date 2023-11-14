@@ -1,3 +1,7 @@
+/**
+ * La clase `Libro` es una subclase de la clase `Obra` y representa una entidad de libro con
+ * propiedades adicionales como autores, editorial, edición, ISBN y encuadernación.
+ */
 package com.dominio.entidades;
 
 import java.util.*;
@@ -18,7 +22,6 @@ public class Libro extends Obra {
 	public Libro(Collection<Ejemplar> ejemplares, String genero, String titulo, int nroPaginas, Long id,
 			Date fechaPublicacion) {
 		super(ejemplares, genero, titulo, nroPaginas, id, fechaPublicacion);
-		// TODO Auto-generated constructor stub
 	}
 
 	public Libro(Set<Autor> autores, String editorial, String edicion, String isbn, String encuadernacion) {

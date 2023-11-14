@@ -1,3 +1,7 @@
+/**
+ * La clase `Autor` representa una entidad de autor con propiedades como identificación, nombre,
+ * apellido, biografía y un conjunto de libros que ha escrito.
+ */
 package com.dominio.entidades;
 
 

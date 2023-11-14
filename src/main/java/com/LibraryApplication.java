@@ -7,6 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 public class LibraryApplication {
 
+/**
+ * La función principal se utiliza para ejecutar la clase LibraryApplication en una aplicación Spring
+ * Boot.
+ */
 	public static void main(String[] args) {
 		SpringApplication.run(LibraryApplication.class, args);
 	}

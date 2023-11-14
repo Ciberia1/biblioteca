@@ -1,3 +1,7 @@
+/**
+ * La clase `Prestamo` es una clase de entidad Java que representa un préstamo con atributos como ID
+ * del préstamo, usuario, copia del libro, fecha de inicio, fecha de finalización y estado activo.
+ */
 package com.dominio.entidades;
 
 import java.util.Date;

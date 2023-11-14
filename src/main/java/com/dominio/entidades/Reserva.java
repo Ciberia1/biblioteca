@@ -1,3 +1,7 @@
+/**
+ * La clase Reserva representa una entidad de reserva con propiedades como ID de reserva, usuario,
+ * ejemplo y fecha.
+ */
 package com.dominio.entidades;
 
 import java.util.Date;

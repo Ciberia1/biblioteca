@@ -1,3 +1,7 @@
+/**
+ * La clase `Usuario` representa una entidad de usuario con varios atributos como nombre, ID, rol y
+ * contraseña.
+ */
 package com.dominio.entidades;
 
 import java.util.*;

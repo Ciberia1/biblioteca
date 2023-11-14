@@ -1,3 +1,7 @@
+/**
+ * La clase Ejemplar representa una copia de un libro u obra, con propiedades como DNI, Obra asociada,
+ * reservas, préstamos y estado.
+ */
 package com.dominio.entidades;
 
 import java.util.*;
