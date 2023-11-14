@@ -1,3 +1,7 @@
+/**
+ * La clase ObraWrapper es una clase Java que representa un objeto contenedor para un libro o
+ * publicación, que contiene varias propiedades como género, ISBN, editor y más.
+ */
 package com.dominio.entidades;
 
 import java.util.Date;

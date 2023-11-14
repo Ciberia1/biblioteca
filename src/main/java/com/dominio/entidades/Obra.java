@@ -1,3 +1,7 @@
+/**
+ * La clase Obra representa una obra, que puede ser un libro o cualquier otro tipo de obra, y contiene
+ * propiedades como género, título, número de páginas, ID y fecha de publicación.
+ */
 package com.dominio.entidades;
 
 import java.util.*;

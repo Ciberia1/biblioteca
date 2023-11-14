@@ -1,3 +1,7 @@
+/**
+ * La clase "GestorTitulos" es una clase de controlador en una aplicación Java Spring que maneja
+ * solicitudes relacionadas con la gestión y publicación de libros y publicaciones seriadas.
+ */
 package com.dominio.controladores;
 
 import java.util.List;
@@ -26,6 +30,23 @@ public class GestorTitulos {
 	@Autowired
 	private EjemplarDAO ejemplarDAO;
 
+/**
+ * La función `altaObra` es un controlador de solicitudes POST que crea una nueva instancia de un
+ * objeto `Libro` o `PubSeriadas`, la guarda en la base de datos y crea un número específico de objetos
+ * `Ejemplar` asociados con el objeto recién creado.
+ * 
+ * @param obra Un objeto de tipo Obra, que contiene información general sobre la obra que se publica.
+ * @param libro El parámetro "libro" es un objeto de tipo Libro, que contiene información sobre un
+ * libro como sus autores, edición, editorial, encuadernación e isbn.
+ * @param pubseriada El parámetro "pubseriada" es de tipo PubSeriadas, que es un atributo del modelo
+ * utilizado para almacenar información sobre una publicación seriada. Contiene propiedades como
+ * editor, issn, tipo y periodicidad.
+ * @param claseObra Un parámetro de cadena que representa el tipo de obra (ya sea "Libro" o
+ * "Publicación en serie").
+ * @param nroEjemplares El parámetro "nroEjemplares" es un String que representa el número de copias de
+ * la obra a crear. Se utiliza en un bucle para crear el número especificado de copias de la obra.
+ * @return El método devuelve un valor de cadena "redirect:/gestion".
+ */
 	@PostMapping("/publicarObra")
 	public String altaObra(@ModelAttribute Obra obra, @ModelAttribute Libro libro,
 	        @ModelAttribute PubSeriadas pubseriada, @RequestParam String claseObra,
@@ -76,6 +97,13 @@ public class GestorTitulos {
 	}
 
 
+/**
+ * La función "actualizarObras" actualiza la información de un listado de obras (libros o publicaciones
+ * seriadas) en base a los datos proporcionados.
+ * 
+ * @param obrasWrapper Una lista de objetos ObraWrapper.
+ * @return El método devuelve una cadena "redirect:/gestion".
+ */
 	@PostMapping("/actualizarObras")
 	public String actualizarObras(@RequestBody List<ObraWrapper> obrasWrapper) {
 		for (ObraWrapper obraWrapper : obrasWrapper) {
@@ -130,6 +158,13 @@ public class GestorTitulos {
 		return "redirect:/gestion";
 	}
 
+/**
+ * La función "borrarObras" es un controlador de solicitudes POST que elimina múltiples objetos "obra"
+ * según sus ID y redirige al punto final "/gestion".
+ * 
+ * @param obraIds Una lista de valores largos que representan los ID de las obras que se eliminarán.
+ * @return El método devuelve una cadena "redirect:/gestion".
+ */
 	@PostMapping("/borrarObras")
 	public String borrarObras(@RequestParam(name = "id", required = false) List<Long> obraIds) {
 		if (obraIds != null) {

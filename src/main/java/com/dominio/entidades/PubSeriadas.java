@@ -1,3 +1,7 @@
+/**
+ * La clase `PubSeriadas` es una subclase de la clase `Obra` y representa una publicación serializada
+ * con propiedades como ISSN, editor, tipo y periodicidad.
+ */
 package com.dominio.entidades;
 
 import jakarta.persistence.Column;
