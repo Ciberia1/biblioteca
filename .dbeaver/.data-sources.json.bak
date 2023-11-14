@@ -1,0 +1,33 @@
+{
+	"folders": {},
+	"connections": {
+		"derby-18b6e6535ed-4e3db1a95250cf81": {
+			"provider": "generic",
+			"driver": "derby",
+			"name": "ciberiaBBDD",
+			"save-password": true,
+			"configuration": {
+				"database": "C:\\Users\\Ámbito académico\\Documents\\GitHub\\bibliotecaCiberia\\ciberiaBBDD",
+				"url": "jdbc:derby:C:\\Users\\Ámbito académico\\Documents\\GitHub\\bibliotecaCiberia\\ciberiaBBDD",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"auth-model": "native"
+			}
+		}
+	},
+	"virtual-models": {"derby-18b6e6535ed-4e3db1a95250cf81":{"DERBYUSER":{":OBRA":{"description":"CLASE_OBRA","constraints":{}}}}},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": false,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800
+		}
+	}
+}
