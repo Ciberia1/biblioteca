@@ -97,11 +97,11 @@
         <h5>Datos del autor</h5>
       </div>
       <label id="nombre-nombre" for="nombre">Nombre</label>
-      <input type="text" class="form-field w-input" maxlength="30" name="nombre" th:field="*{nombre}" id="nombre" required="">
+      <input type="text" class="form-field w-input" maxlength="25" name="nombre" th:field="*{nombre}" id="nombre" required="">
       <label id="nombre-apellidos" for="apellido">Apellidos</label>
-      <input type="text" class="form-field w-input" name="apellidos" th:field="*{apellido}" placeholder="" id="apellido" required="">
+      <input type="text" class="form-field w-input" name="apellidos" maxlength="40" th:field="*{apellido}" placeholder="" id="apellido" required="">
       <label id="nombre-biografia" for="biografia">Biografía</label>
-      <input type="text" class="form-field w-input" name="biografia" th:field="*{biografia}" placeholder="" id="biografia" required="">
+      <input type="text" class="form-field w-input" name="biografia" maxlength="100" th:field="*{biografia}" placeholder="" id="biografia" required="">
       
       <!-- 'Enviar' botón -->
       <input type="submit" value="Enviar" class="button-primary w-button">

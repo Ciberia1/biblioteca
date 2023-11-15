@@ -222,5 +222,10 @@ public class GestorInterfaces {
 		model.addAttribute("obras", obras);
 		return "publicarEjemplar";
 	}
-
+	@GetMapping("/operacionEjemplar")
+	public String getOperacionesEjemplar(Model model) {
+		List<Ejemplar> ejemplar = ejemplarDAO.findAll();
+		model.addAttribute("ejemplares", ejemplar);
+		return "operacionEjemplar"; // Nombre del archivo HTML "gestion.html"
+	}
 }
