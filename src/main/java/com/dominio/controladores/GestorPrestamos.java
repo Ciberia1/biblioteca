@@ -98,14 +98,49 @@ public class GestorPrestamos {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param idUsuario
-	 * @param isbn
-	 */
-	public void realizarReserva(String idUsuario, String isbn) {
-		// TODO - implement GestorPrestamos.realizarReserva
-		throw new UnsupportedOperationException();
-	}
+	@PostMapping("/reservarEjemplar")
+	public ResponseEntity<String> reservarEjemplar(@RequestBody Map<String, String> body) {
+		String dni = body.get("dni");
+		String ejemplarID = body.get("ejemplarID");
 
+		Usuario usuario = usuarioDAO.findByDni(dni);
+		if (usuario == null) {
+			return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
+		}
+
+		Optional<Ejemplar> ejemplarOpt = ejemplarDAO.findById(Long.parseLong(ejemplarID));
+		if (!ejemplarOpt.isPresent()) {
+			return new ResponseEntity<>("Ejemplar no encontrado", HttpStatus.NOT_FOUND);
+		}
+
+		Ejemplar ejemplar = ejemplarOpt.get();
+
+	    // Verificar si el usuario ya tiene prestado el ejemplar
+	    Collection<Prestamo> prestamos = usuario.getPrestamos();
+	    for (Prestamo p : prestamos) {
+	        if (p.getEjemplar().equals(ejemplar)) {
+	            return new ResponseEntity<>("El usuario ya tiene prestado este ejemplar", HttpStatus.CONFLICT);
+	        }
+	    }
+	    
+		// Verificar si el usuario ya ha reservado el ejemplar
+		Collection<Reserva> reservas = usuario.getReservas();
+		for (Reserva r : reservas) {
+			if (r.getEjemplar().equals(ejemplar)) {
+				return new ResponseEntity<>("El usuario ya ha reservado este ejemplar", HttpStatus.CONFLICT);
+			}
+		}
+
+		Reserva reserva = new Reserva();
+		reserva.setUsuario(usuario);
+		reserva.setEjemplar(ejemplar);
+		reserva.setFecha(new Date());
+
+		reservaDAO.save(reserva);
+
+		ejemplar.setEstado("Reservado");
+		ejemplarDAO.save(ejemplar);
+
+		return new ResponseEntity<>("Reserva realizada con éxito", HttpStatus.OK);
+	}
 }
