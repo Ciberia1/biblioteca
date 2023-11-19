@@ -1,3 +1,7 @@
+/**
+ * La clase GestorPrestamos en Java se encarga de los procesos de préstamo, devolución y reserva de
+ * ejemplares de libros para los usuarios, actualizando los datos necesarios en la base de datos.
+ */
 package com.dominio.controladores;
 
 import java.util.Calendar;
@@ -31,6 +35,15 @@ public class GestorPrestamos {
 	@Autowired
 	private EjemplarDAO ejemplarDAO;
 
+/**
+ * La función `prestarEjemplar` es un método Java que maneja el proceso de prestar un libro a un
+ * usuario, incluida la verificación de si el usuario es elegible para el préstamo, la creación de un
+ * nuevo registro de préstamo, la actualización de la cuota del usuario, la actualización del estado
+ * del libro y la eliminación de cualquier reservas para el libro.
+ * 
+ * @param body {
+ * @return El método devuelve una ResponseEntity<String>.
+ */
 	@PostMapping("/prestarEjemplar")
 	public ResponseEntity<String> prestarEjemplar(@RequestBody Map<String, String> body) {
 		String dni = body.get("dni");
@@ -87,6 +100,14 @@ public class GestorPrestamos {
 		return new ResponseEntity<>("Préstamo realizado con éxito", HttpStatus.OK);
 	}
 
+/**
+ * La función `realizarDevolucion` en Java maneja el proceso de devolución de un artículo prestado,
+ * actualizando los datos necesarios en la base de datos y aplicando penalizaciones si la devolución se
+ * retrasa.
+ * 
+ * @param body {
+ * @return El método devuelve una ResponseEntity<String>.
+ */
 	@PostMapping("/devolverEjemplar")
 	public ResponseEntity<String> realizarDevolucion(@RequestBody Map<String, String> body) {
 		String dni = body.get("dni");
@@ -142,6 +163,14 @@ public class GestorPrestamos {
 
 		return new ResponseEntity<>("Devolución realizada con éxito", HttpStatus.OK);
 	}
+/**
+ * La función "reservarEjemplar" en el código Java permite a un usuario reservar una copia del libro
+ * verificando si el usuario existe, si la copia del libro existe, si el usuario ya tiene la copia del
+ * libro prestada y si el usuario ya ha reservado la copia del libro. .
+ * 
+ * @param body {
+ * @return El método devuelve una ResponseEntity<String>.
+ */
 
 	@PostMapping("/reservarEjemplar")
 	public ResponseEntity<String> reservarEjemplar(@RequestBody Map<String, String> body) {
