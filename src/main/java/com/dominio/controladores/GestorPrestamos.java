@@ -87,15 +87,60 @@ public class GestorPrestamos {
 		return new ResponseEntity<>("Préstamo realizado con éxito", HttpStatus.OK);
 	}
 
-	/**
-	 * 
-	 * @param isbn
-	 * @param idEjemplar
-	 * @param idUsuario
-	 */
-	public void realizarDevolucion(String isbn, String idEjemplar, String idUsuario) {
-		// TODO - implement GestorPrestamos.realizarDevolucion
-		throw new UnsupportedOperationException();
+	@PostMapping("/devolverEjemplar")
+	public ResponseEntity<String> realizarDevolucion(@RequestBody Map<String, String> body) {
+		String dni = body.get("dni");
+		String ejemplarID = body.get("ejemplarID");
+
+		// Buscar al usuario
+		Usuario usuario = usuarioDAO.findByDni(dni);
+		if (usuario == null) {
+			return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
+		}
+
+		// Buscar al ejemplar
+		Optional<Ejemplar> ejemplarOpt = ejemplarDAO.findById(Long.parseLong(ejemplarID));
+		if (!ejemplarOpt.isPresent()) {
+			return new ResponseEntity<>("Ejemplar no encontrado", HttpStatus.NOT_FOUND);
+		}
+		Ejemplar ejemplar = ejemplarOpt.get();
+
+		// Buscar el préstamo
+		Collection<Prestamo> prestamos = usuario.getPrestamos();
+		Prestamo prestamo = null;
+		for (Prestamo p : prestamos) {
+			if (p.getEjemplar().equals(ejemplar) && p.getActivo()) {
+				prestamo = p;
+				break;
+			}
+		}
+		if (prestamo == null) {
+			return new ResponseEntity<>("No se encontró el préstamo", HttpStatus.NOT_FOUND);
+		}
+
+		// Actualizar el préstamo
+		prestamo.setActivo(false);
+		prestamoDAO.save(prestamo);
+
+		// Comprobar si la devolución es tardía
+		if (prestamo.getFechaFinPres().before(new Date())) {
+			// Aplicar una penalización (e.g., el usuario no puede pedir préstamos durante 7
+			// días)
+			Calendar c = Calendar.getInstance();
+			c.setTime(new Date());
+			c.add(Calendar.DATE, 7);
+			usuario.setFechaFinPen(c.getTime());
+			usuarioDAO.save(usuario);
+		}
+
+		// Actualizar el cupo del usuario
+		usuario.setCupo(usuario.getCupo() + 1);
+		usuarioDAO.save(usuario);
+
+		ejemplar.setEstado("Disponible");
+		ejemplarDAO.save(ejemplar);
+
+		return new ResponseEntity<>("Devolución realizada con éxito", HttpStatus.OK);
 	}
 
 	@PostMapping("/reservarEjemplar")
