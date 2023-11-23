@@ -217,6 +217,14 @@ window.onload = function() {
         });
     });
 }
+  document.addEventListener('DOMContentLoaded', (event) => {
+    let logoutButton = document.querySelector('.button-primary[data-wf-user-logout="Cerrar sesión"]');
+    if (logoutButton) {
+      logoutButton.addEventListener('click', () => {
+        window.location.href = '/login';
+      });
+    }
+  });
 
 </script>
   </body>
