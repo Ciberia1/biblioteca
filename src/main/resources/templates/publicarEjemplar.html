@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html data-wf-domain="biblioteca-6acf80.webflow.io" data-wf-page="65365511e38c758ed1676458" data-wf-site="65365511e38c758ed1676401">
+  <head>
+    <meta charset="utf-8">
+    <title>Publicar obra</title>
+    <meta content="Publicar ejemplar" property="og:title">
+    <meta content="Publicar ejemplar" property="twitter:title">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="Webflow" name="generator">
+    <link href="css/biblioteca-6acf80.webflow.dbb688d7d.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <style>
+      * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .job-submission-form-number {
+        margin-right: 20px;
+        /* Ajusta este valor a lo que necesites */
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: auto;
+        /* 테이블 레이아웃을 자동으로 설정합니다. */
+      }
+
+      h2 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      th {
+        background-color: #443fde;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
+      <div class="container-navigation">
+        <div class="navigation-left">
+          <a href="/inicio" class="brand w-nav-brand">
+            <img src="img/65367f8a8d37ee8bd2045ee4_logo.png" loading="lazy" width="169" sizes="(max-width: 479px) 43vw, 169px" alt="65367f8a8d37ee8bd2045ee4_logo" srcset="img/65367f8a8d37ee8bd2045ee4_logo-p-500.png 500w, img/65367f8a8d37ee8bd2045ee4_logo-p-800.png 800w, img/65367f8a8d37ee8bd2045ee4_logo-p-1080.png 1080w, img/65367f8a8d37ee8bd2045ee4_logo-p-1600.png 1600w, img/65367f8a8d37ee8bd2045ee4_logo.png 1832w" class="logo">
+          </a>
+        </div>
+        <div class="navigation-middle">
+          <nav role="navigation" class="nav-menu w-nav-menu">
+            <div class="navbar-mobile-button-wrapper">
+              <a href="#" class="button-primary w-button">Login</a>
+            </div>
+          </nav>
+        </div>
+        <div class="navigation-right">
+          <div class="navigation-button-wrap">
+            <button class="button-primary" data-wf-user-logout="Cerrar sesión" data-wf-user-login="Iniciar sesión" type="button">Cerrar sesión</button>
+          </div>
+          <div class="menu-button w-nav-button">
+            <div class="w-icon-nav-menu"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="banner-announcement">
+      <h3 class="flowbase-header">Biblioteca: UCLM</h3>
+    </div>
+    <div class="job-submit-section">
+      <div class="container-small">
+        <div data-w-id="18f15721-4c45-512a-e538-07e4f3167b37" style="-webkit-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:100" class="title-wrap-center">
+          <div class="margin-bottom-12">
+            <h2>Añadir ejemplar</h2>
+          </div>
+          <p class="paragraph-regular">Escribe a continuación los datos del ejemplar que deseas añadir</p>
+        </div>
+        <div data-w-id="7a6f2f36-720c-79f1-afa5-219274c01bb5" style="-webkit-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:100" class="job-submission-form-wrapper">
+          <div class="w-form">
+            <form  action="#" th:action="@{/publicarEjemplar}" class="job-submission-form" method="post">
+              <div id="formulario-ejemplar" class="job-submission-form-section-wrapper">
+                <div id="w-node-_35571b41-498a-13b4-c487-1c69096208df-d1676458" class="job-submission-form-section">
+                  <div class="margin-bottom-24">
+                    <h5>Datos del ejemplar</h5>
+                  </div>
+                  <label id="titulo-ejemplar" for="nroEjemplar">Cantidad de ejemplares</label>
+                  <input type="number" class="form-field w-input" maxlength="19" name="nroEjemplar" placeholder="" id="nroEjemplar" min="1" required="">
+                  <label id="titulo-obra" for="obra">Obras</label>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Título</th>
+                        <th>ISBN/ISSN</th>
+                        <th>Seleccionar</th>
+                      </tr>
+                      <tr th:each="obra : ${obras}">
+                        <td>
+                          <p th:text="${obra.titulo}"></p>
+                        </td>
+                        <td>
+                          <p th:text="${obra.esLibro ? obra.Isbn : obra.Issn}"></p>
+                        </td>
+                        <td>
+                          <input type="checkbox" th:value="${obra.Id}" th:name="id" />
+                        </td>
+                      </tr>
+                    </thead>
+                  </table>
+                  <input type="hidden" name="id" value="${obra.Id}">
+                  <input type="hidden" name="nroEjemplar" value="${nroEjemplar}">
+                  <input type="submit" name="type" value="Aceptar" data-wait="Espera..." class="button-primary w-button">
+                </div>
+              </div>
+            </form>
+			<div th:if="${message == 'OK'}" class="success-message w-form-done">
+				<div> La petición ha sido recibida </div>
+			</div>
+			<div th:if="${message == 'Error'}" class="error-message w-form-fail">
+				<div> Error </div>
+			</div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+	window.onload = function(){
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach(function(checkbox) {
+    checkbox.addEventListener('change', function() {
+      checkboxes.forEach(function(c) {
+        if (c !== checkbox) c.checked = false;
+      });
+    });
+  });
+};
+
+    </script>
+  </body>
+</html>      
