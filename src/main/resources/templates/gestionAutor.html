@@ -199,9 +199,7 @@
               <input type="text" th:value="${autor.biografia}" name="biografia" />
             </td>
             <td>
-              <span th:each="libro : ${autor.libros}">
-                <p th:text="${libro.titulo}"></p>
-              </span>
+				<a th:href="@{/author/{id}(id=${autor.id})}" target="_blank">Ver libros escritos por el autor</a>
             <td>
               <input type="checkbox" th:value="${autor.Id}" th:name="id" />
             </td>
@@ -255,6 +253,7 @@
       });
     }
   });
+
 
     </script>
   </body>
