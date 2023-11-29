@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Wed Nov 15 11:55:55 CET 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-018b-d29f-916c-000001d90600 
-on database directory C:\Users\Andrea\Music\bibliotecaCiberia\ciberiaBBDD with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2a139a55 
-Loaded from file:/C:/Users/Andrea/.m2/repository/org/apache/derby/derby/10.16.1.1/derby-10.16.1.1.jar
+Wed Nov 29 16:52:07 CET 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-018c-1bc7-c650-000001c49ff8 
+on database directory C:\Users\Ámbito académico\Documents\GitHub\bibliotecaCiberia\ciberiaBBDD with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2a139a55 
+Loaded from file:/C:/Users/%c3%81mbito%20acad%c3%a9mico/.m2/repository/org/apache/derby/derby/10.16.1.1/derby-10.16.1.1.jar
 java.vendor=Oracle Corporation
 java.runtime.version=17+35-LTS-2724
-user.dir=C:\Users\Andrea\Music\bibliotecaCiberia
+user.dir=C:\Users\Ámbito académico\Documents\GitHub\bibliotecaCiberia
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
