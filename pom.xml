@@ -8,14 +8,15 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>Ciberia</groupId>
-	<artifactId>bibliotecaCiberia</artifactId>
+	<artifactId>biblioteca</artifactId>
 	<version>1.0.1</version>
-	<name>bibliotecaCiberia</name>
+	<name>biblioteca</name>
 
 	<packaging>war</packaging>
 	<properties>
 		<java.version>21</java.version>
 		<sonar.organization>ciberia1</sonar.organization>
+		<sonar.projectKey>Ciberia1_biblioteca</sonar.projectKey>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
     	<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
