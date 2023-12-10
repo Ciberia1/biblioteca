@@ -44,7 +44,7 @@ public class GestorAutores {
 	@PostMapping("/publicarAutor")
 	public String altaAutor(@ModelAttribute Autor autor) {
 		autorDAO.save(autor);
-		return reedireccion;
+		return gestionAutor;
 	}
 
 	/**
