@@ -18,13 +18,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.dominio.entidades.*;
 import com.persistencia.*;
 
 @Controller
 
 public class GestorAutores {
+    private static final Logger logger = LoggerFactory.getLogger(GestorAutores.class);
+
 	@Autowired
 	private LibroDAO libroDAO;
 	@Autowired
@@ -129,7 +132,7 @@ public class GestorAutores {
 						Thread.sleep(200);
 					}
 				} catch (EmptyResultDataAccessException e) {
-					System.out.println("Error");
+			        logger.error("Error al eliminar el autor con id: " + autorId, e);
 				}
 			}
 		}

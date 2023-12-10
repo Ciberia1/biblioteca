@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.dominio.entidades.Ejemplar;
 import com.dominio.entidades.Obra;
 import com.persistencia.EjemplarDAO;
@@ -22,6 +23,8 @@ import com.persistencia.ObraDAO;
 
 @Controller
 public class GestorEjemplares {
+    private static final Logger logger = LoggerFactory.getLogger(GestorEjemplares.class);
+
 	@Autowired
 	private EjemplarDAO ejemplarDAO;
 	@Autowired
@@ -56,9 +59,9 @@ public class GestorEjemplares {
 				return "redirect:/gestionEjemplar";
 			}
 		} catch (EmptyResultDataAccessException e) {
-			System.out.println("Error");
+	        logger.error("Error al publicar el ejemplar", e);
 		}
-		redirectAttributes.addFlashAttribute("message", "Error"); // 오류 메시지 추가
+		redirectAttributes.addFlashAttribute("message", "Error");
 		return "redirect:/publicarEjemplar";
 	}
 
@@ -76,7 +79,7 @@ public class GestorEjemplares {
 				try {
 					ejemplarDAO.deleteById(ejemplarId);
 				} catch (EmptyResultDataAccessException e) {
-					System.out.println("Error");
+			        logger.error("Error al eliminar el ejemplar con id: " + ejemplarId, e);
 				}
 			}
 		}

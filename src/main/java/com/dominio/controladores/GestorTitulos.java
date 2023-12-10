@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.dominio.entidades.*;
 import com.persistencia.*;
@@ -22,6 +24,8 @@ import com.persistencia.*;
 @Controller
 
 public class GestorTitulos {
+    private static final Logger logger = LoggerFactory.getLogger(GestorTitulos.class);
+
 	@Autowired
 	private ObraDAO obraDAO;
 	@Autowired
@@ -188,7 +192,7 @@ public class GestorTitulos {
 				try {
 					obraDAO.deleteById(obraId);
 				} catch (EmptyResultDataAccessException e) {
-					System.out.println("Error");
+			        logger.error("Error al eliminar la obra con id: " + obraId, e);
 				}
 			}
 		}
