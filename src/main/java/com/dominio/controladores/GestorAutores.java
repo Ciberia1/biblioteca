@@ -31,7 +31,7 @@ public class GestorAutores {
 	@Autowired
 	private AutorDAO autorDAO;
 	
-	private String reedireccion = "redirect:/gestionAutor";
+	private String gestionAutor = "redirect:/gestionAutor";
 
 	/**
 	 * La función "altaAutor" guarda un nuevo autor en la base de datos y redirige a
@@ -71,7 +71,7 @@ public class GestorAutores {
 		nuevo.setAutores(autoresnuevos);
 		libroDAO.save(nuevo);
 
-		return reedireccion;
+		return gestionAutor;
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class GestorAutores {
 					null);
 			autorDAO.save(temporal);
 		}
-		return reedireccion;
+		return gestionAutor;
 	}
 
 	@RequestMapping(value = "/author/{id}", method = RequestMethod.GET)
@@ -134,7 +134,7 @@ public class GestorAutores {
 				}
 			}
 		}
-		return reedireccion;
+		return gestionAutor;
 	}
 
 }

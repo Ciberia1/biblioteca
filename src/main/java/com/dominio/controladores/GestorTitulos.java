@@ -29,6 +29,8 @@ public class GestorTitulos {
 	private PubSeriadasDAO pubSeriadaDAO;
 	@Autowired
 	private EjemplarDAO ejemplarDAO;
+	
+	private String rutaGestion = "redirect:/gestion";
 
 /**
  * La función `altaObra` es un controlador de solicitudes POST que crea una nueva instancia de un
@@ -93,7 +95,7 @@ public class GestorTitulos {
 	        }
 	    }
 
-	    return "redirect:/gestion";
+	    return rutaGestion;
 	}
 
 
@@ -155,7 +157,7 @@ public class GestorTitulos {
 				pubSeriadaDAO.save(pubSeriada);
 			}
 		}
-		return "redirect:/gestion";
+		return rutaGestion;
 	}
 
 /**
@@ -176,6 +178,6 @@ public class GestorTitulos {
 				}
 			}
 		}
-		return "redirect:/gestion";
+		return rutaGestion;
 	}
 }
