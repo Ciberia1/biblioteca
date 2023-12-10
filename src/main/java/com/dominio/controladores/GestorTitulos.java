@@ -5,6 +5,7 @@
 package com.dominio.controladores;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +65,8 @@ public class GestorTitulos {
 	        libron.setIsbn(libro.getIsbn());
 
 	        libroDAO.save(libron);
-	        libron = libroDAO.findById(libron.getId()).get();
+	        Optional<Libro> libroOpt = libroDAO.findById(libron.getId());
+	        libron=libroOpt.get();
 
 	        for (int i = 0; i < Integer.parseInt(nroEjemplares); i++) {
 	            Ejemplar ejemplar = new Ejemplar();
@@ -84,7 +86,8 @@ public class GestorTitulos {
 	        Seriada.setPeriodicidad(pubseriada.getPeriodicidad());
 
 	        pubSeriadaDAO.save(Seriada);
-	        Seriada = pubSeriadaDAO.findById(Seriada.getId()).get();
+	        Optional<PubSeriadas> seriadaOpt = pubSeriadaDAO.findById(Seriada.getId());
+	        Seriada=seriadaOpt.get();
 
 	        for (int i = 0; i < Integer.parseInt(nroEjemplares); i++) {
 	            Ejemplar ejemplar = new Ejemplar();
@@ -112,7 +115,7 @@ public class GestorTitulos {
 			if (obraWrapper.isEsLibro()) {
 				Libro libro = libroDAO.findById(obraWrapper.getId()).get();
 
-				if (obraWrapper.getEdicion() != "-") {
+				if (!obraWrapper.getEdicion().equals("-") ) {
 					libro.setEdicion(obraWrapper.getEdicion());
 				}
 

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -92,7 +93,7 @@ public class GestorAutores {
 		return gestionAutor;
 	}
 
-	@RequestMapping(value = "/author/{id}", method = RequestMethod.GET)
+	@GetMapping( "/author/{id}")
 	public String getAuthorBooks(@PathVariable("id") Long id, Model model) {
 		Autor autor = autorDAO.getById(id);
 		Set<Libro> libros = autor.getLibros();
