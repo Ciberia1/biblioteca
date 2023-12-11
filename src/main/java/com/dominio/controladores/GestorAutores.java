@@ -12,24 +12,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.dominio.entidades.*;
 import com.persistencia.*;
 
 @Controller
 
 public class GestorAutores {
+    private static final Logger logger = LoggerFactory.getLogger(GestorAutores.class);
+
 	@Autowired
 	private LibroDAO libroDAO;
 	@Autowired
 	private AutorDAO autorDAO;
+	
+	private String gestionAutor = "redirect:/gestionAutor";
 
 	/**
 	 * La función "altaAutor" guarda un nuevo autor en la base de datos y redirige a
@@ -42,7 +46,7 @@ public class GestorAutores {
 	@PostMapping("/publicarAutor")
 	public String altaAutor(@ModelAttribute Autor autor) {
 		autorDAO.save(autor);
-		return "redirect:/gestionAutor";
+		return gestionAutor;
 	}
 
 	/**
@@ -69,7 +73,7 @@ public class GestorAutores {
 		nuevo.setAutores(autoresnuevos);
 		libroDAO.save(nuevo);
 
-		return "redirect:/gestionAutor";
+		return gestionAutor;
 	}
 
 	/**
@@ -87,10 +91,10 @@ public class GestorAutores {
 					null);
 			autorDAO.save(temporal);
 		}
-		return "redirect:/gestionAutor";
+		return gestionAutor;
 	}
 
-	@RequestMapping(value = "/author/{id}", method = RequestMethod.GET)
+	@GetMapping( "/author/{id}")
 	public String getAuthorBooks(@PathVariable("id") Long id, Model model) {
 		Autor autor = autorDAO.getById(id);
 		Set<Libro> libros = autor.getLibros();
@@ -128,11 +132,11 @@ public class GestorAutores {
 						Thread.sleep(200);
 					}
 				} catch (EmptyResultDataAccessException e) {
-					System.out.println("Error");
+			        logger.error("Error al eliminar el autor con id: " + autorId, e);
 				}
 			}
 		}
-		return "redirect:/gestionAutor";
+		return gestionAutor;
 	}
 
 }

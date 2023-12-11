@@ -45,7 +45,6 @@ public class ObraWrapper {
 
 	public ObraWrapper() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getGenero() {

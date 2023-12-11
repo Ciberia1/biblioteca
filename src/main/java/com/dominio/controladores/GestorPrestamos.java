@@ -130,7 +130,8 @@ public class GestorPrestamos {
 		Collection<Prestamo> prestamos = usuario.getPrestamos();
 		Prestamo prestamo = null;
 		for (Prestamo p : prestamos) {
-			if (p.getEjemplar().equals(ejemplar) && p.getActivo()) {
+			boolean estado = p.getActivo();
+			if (p.getEjemplar().equals(ejemplar) && estado) {
 				prestamo = p;
 				break;
 			}
