@@ -42,67 +42,67 @@ class LibroTest {
 	}
 	
 	@Test
-	public final void testLibro() throws Exception {
+	final void testLibro() throws Exception {
 		Libro libro1 = new Libro(Maxautor,"Santillana", "Tercera", "978-7562-5433-432", "Tapa blanda");
 		assertTrue(libro1.getEditorial().equals(libro.getEditorial()) && libro1.getEdicion().equals(libro.getEdicion()) && libro1.getIsbn().equals(libro.getIsbn())&& libro1.getEncuadernacion().equals(libro.getEncuadernacion()));
 	}
 	
 	@Test
-	public final void testGetautores() throws Exception {
-		Set<Autor> autores = libro.getAutores();
-		assertEquals(autores, autores);
+	final void testGetautores() throws Exception {
+	    Set<Autor> autores = libro.getAutores();
+	    assertEquals(Maxautor, autores);
 	}
-	
+
 	@Test
-	public final void testSetautores() throws Exception {
+	final void testSetautores() throws Exception {
 		Maxautor.add(new Autor(30L, "Ana", "García","Su obra más famosa es la colmena", libros));
 		libro.setAutores(Maxautor);
 		assertEquals(Maxautor, libro.getAutores());
 	}
 	
 	@Test
-	public final void testGeteditorial() throws Exception {
+	final void testGeteditorial() throws Exception {
 		assertEquals("Santillana", libro.getEditorial());
 	}
 	
 	@Test
-	public final void testSeteditorial() throws Exception {
+	final void testSeteditorial() throws Exception {
 		String editorial = "RA-MA";
 		libro.setEditorial(editorial);
 		assertEquals(editorial, libro.getEditorial());
 	}
 	
 	@Test
-	public final void testGetedicion() throws Exception {
+	final void testGetedicion() throws Exception {
 		assertEquals("Tercera", libro.getEdicion());
 	}
 	
 	@Test
-	public final void testSetedicion() throws Exception {
+	final void testSetedicion() throws Exception {
 		String edicion = "Septima";
 		libro.setEdicion(edicion);
 		assertEquals(edicion, libro.getEdicion());
 	}
 	
 	@Test
-	public final void testGetisbn() throws Exception {
+	final void testGetisbn() throws Exception {
 		assertEquals("978-7562-5433-432", libro.getIsbn());
 	}
 	
 	@Test
-	public final void testSetisbn() throws Exception {
+	final void testSetisbn() throws Exception {
 		String isbn = "324-3443-2345-345";
 		libro.setIsbn(isbn);
 		assertEquals(isbn, libro.getIsbn());
 	}
 	
 	@Test
-	public final void testGetencuadernacion() throws Exception {
+	final void testGetencuadernacion() throws Exception {
 		assertEquals("Tapa blanda", libro.getEncuadernacion());
 	}
 	
 	@Test
-	public final void testSetencuadernacion() throws Exception {
+	final void testSetencuadernacion() throws Exception {
 		String encuadernacion = "Tapa dura";
 		libro.setEncuadernacion(encuadernacion);
 		assertEquals(encuadernacion, libro.getEncuadernacion());

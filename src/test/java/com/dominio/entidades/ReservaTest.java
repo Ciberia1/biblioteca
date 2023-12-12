@@ -2,9 +2,9 @@ package com.dominio.entidades;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Date;
+import java.util.HashSet;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -42,49 +42,73 @@ class ReservaTest {
 	}
 	
 	@Test
-	public final void testReserva() throws Exception {
-		Reserva reserva1 = new Reserva(40L, usuario ,ejemplar, new Date());
+	final void testReserva() throws Exception {
+	    Reserva reserva1 = new Reserva(40L, usuario ,ejemplar, new Date());
+	    assertNotNull(reserva1);
 	}
+
 	
 	@Test
-	public final void testGetreservaId() {
+	final void testGetreservaId() {
 		assertNotNull(reserva.getReservaID());
 	}
 	
 	@Test
-	public final void testSetreservaId() {
+	final void testSetreservaId() {
 		long id = (long) 40;
 		reserva.setReservaID(id);
 		assertEquals(id, reserva.getReservaID());
 	}
 	
+
 	@Test
-	public final void testGetusuario() {
-		
+	final void testGetusuario() {
+	    Usuario usuario = new Usuario( new HashSet<>(), new HashSet<>(), "12345678A", "Juan", "Pérez", new Date(), 3, "usuario", "1234");
+	    reserva.setUsuario(usuario);
+	    assertEquals(usuario, reserva.getUsuario());
 	}
+
+	@Test
+	final void testSetusuario() {
+	    Usuario usuario = new Usuario( new HashSet<>(), new HashSet<>(), "12345678A", "Juan", "Pérez", new Date(), 3, "usuario", "1234");
+
+	    reserva.setUsuario(usuario);
+	    assertEquals(usuario, reserva.getUsuario());
+	}
+
 	
 	@Test
-	public final void testSetusuario() {
-		
+	final void testGetejemplar() {
+	    Obra obra = new Obra(new HashSet<>(), "Novela", "La Odisea", 500, 1L, new Date());
+	    Ejemplar ejemplar = new Ejemplar(11L, obra,new HashSet<>(), new HashSet<>(),"disponible");
+
+
+	    reserva.setEjemplar(ejemplar);
+	    assertEquals(ejemplar, reserva.getEjemplar());
 	}
+
+	@Test
+	final void testSetejemplar() {
+	
+	    Obra obra = new Obra(new HashSet<>(), "Novela", "La Odisea", 500, 1L, new Date());
+	    Ejemplar ejemplar = new Ejemplar(11L, obra,new HashSet<>(), new HashSet<>(),"disponible");
+
+	    reserva.setEjemplar(ejemplar);
+	    assertEquals(ejemplar, reserva.getEjemplar());
+	}
+
 	
 	@Test
-	public final void testGetejemplar() {
-		
+	final void testGetfecha() {
+	    Date date = new Date();
+	    reserva.setFecha(date);
+	    assertEquals(date, reserva.getFecha());
 	}
-	
+
 	@Test
-	public final void testSetejemplar() {
-		
-	}
-	
-	@Test
-	public final void testGetfecha() {
-		
-	}
-	
-	@Test
-	public final void testSetfecha() {
-		
+	final void testSetfecha() {
+	    Date date = new Date();
+	    reserva.setFecha(date);
+	    assertEquals(date, reserva.getFecha());
 	}
 }

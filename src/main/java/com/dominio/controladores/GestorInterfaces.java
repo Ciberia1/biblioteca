@@ -191,19 +191,6 @@ public class GestorInterfaces {
 		return "gestionAutor";
 	}
 
-/**
- * La función utiliza la anotación @Autowired para inyectar una instancia de la clase EjemplarDAO en la
- * clase EjemplarController.
- * 
- * @param ejemplarDAO El parámetro ejemplarDAO es una instancia de la clase EjemplarDAO. Se inyecta en
- * la clase EjemplarController utilizando la anotación @Autowired. Esto significa que la instancia
- * ejemplarDAO se crea automáticamente y se proporciona a la clase EjemplarController mediante el marco
- * Spring.
- */
-	@Autowired
-	public void EjemplarController(EjemplarDAO ejemplarDAO) {
-		this.ejemplarDAO = ejemplarDAO;
-	}
 
 /**
  * Esta función de Java recupera una lista de objetos "Ejemplar" de una base de datos y los agrega al
@@ -222,8 +209,8 @@ public class GestorInterfaces {
 	}
 
 /**
- * La función "getExampleWorks" recupera una lista de trabajos y los agrega al modelo, luego devuelve
- * la vista "publishExample"
+ * La función "getEjemplaresObras" recupera una lista de trabajos y los agrega al modelo, luego devuelve
+ * la vista "operacionEjemplar"
  * 
  * @param model El objeto modelo se utiliza para pasar datos entre el controlador y la vista. En este
  * caso se utiliza para agregar los atributos "ejemplar" y "obras" al modelo.

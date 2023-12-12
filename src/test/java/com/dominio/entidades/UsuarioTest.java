@@ -16,11 +16,9 @@ import org.junit.jupiter.api.Test;
 class UsuarioTest {
 	
 	private Usuario usuario;
-	private static Collection<Reserva> reservas = new HashSet<>();
 	private static Collection<Reserva> reservado = new HashSet<>();
 	private static Collection<Prestamo> prestamos = new HashSet<>();
 	private static Collection<Prestamo> prestado = new HashSet<>();
-	private static Collection<Ejemplar> ejemplares = new HashSet<>();
 	
 	@BeforeAll
 	protected static void setUpBeforeClass() throws Exception {
@@ -44,115 +42,119 @@ class UsuarioTest {
 	}
 	
 	@Test
-	public final void testUsuario() throws Exception {
+	final void testUsuario() throws Exception {
 		Usuario  usuario1 = new Usuario(prestado,reservado ,"05749924Q", "Ana", "García", new Date () ,2 ,"usuario", "1234");
 		assertTrue(usuario1.getDni().equals(usuario.getDni())
 				&& usuario1.getNombre().equals(usuario.getNombre()) && usuario1.getApellidos().equals(usuario.getApellidos()) && usuario1.getRol().equals(usuario.getRol()) && usuario1.getContrasena().equals(usuario.getContrasena()));
 	}
 	
 	@Test
-	public final void testGetprestamos() {
+	final void testGetprestamos() {
 		Collection<Prestamo> prestado = usuario.getPrestamos();
 		assertEquals(prestamos, prestado);
 	}
 	
 	@Test
-	public final void testSetprestamos() {
+	final void testSetprestamos() {
 		prestado.add(new Prestamo());
 		usuario.setPrestamos(prestado);
 		assertEquals(prestado, usuario.getPrestamos());
 	}
 	
 	@Test
-	public final void testGetreservas() {
-		Collection<Reserva> reservas = usuario.getReservas();
-		assertEquals(reservas, reservas);
+	final void testGetreservas() {
+	    Collection<Reserva> reservas = usuario.getReservas();
+	    assertEquals(reservado, reservas);
 	}
-	
+
 	@Test
-	public final void testSetreservas() {
+	final void testSetreservas() {
 		reservado.add(new Reserva());
 		usuario.setReservas(reservado);
 		assertEquals(reservado, usuario.getReservas());
 	}
 	
 	@Test
-	public final void testGetdni() {
+	final void testGetdni() {
 		assertEquals("05749924Q", usuario.getDni());
 	}
 	
 	@Test
-	public final void testSetdni() {
+	final void testSetdni() {
 		String dni = "05749924Q";
 		 usuario.setDni(dni);
 		assertEquals(dni, usuario.getDni());
 	}
 	
 	@Test
-	public final void testGetnombre() {
+	final void testGetnombre() {
 		assertEquals("Ana", usuario.getNombre());
 	}
 	
 	@Test
-	public final void testSetnombre() {
+	final void testSetnombre() {
 		String nombre = "Ana";
 		 usuario.setNombre(nombre);
 		assertEquals(nombre, usuario.getNombre());
 	}
 	
 	@Test
-	public final void testGetapellidos() {
+	final void testGetapellidos() {
 		assertEquals("García", usuario.getApellidos());
 	}
 	
 	@Test
-	public final void testSetapellidos() {
+	final void testSetapellidos() {
 		String apellidos = "García";
 		 usuario.setApellidos(apellidos);
 		assertEquals(apellidos, usuario.getApellidos());
 	}
 	
 	@Test
-	public final void testGetfechaFinPen() {
-		
+	final void testGetfechaFinPen() {
+	    Date fecha = new Date();
+	    usuario.setFechaFinPen(fecha);
+	    assertEquals(fecha, usuario.getFechaFinPen());
 	}
-	
+
 	@Test
-	public final void testSetfechaFinPen() {
-		
+	final void testSetfechaFinPen() {
+	    Date fecha = new Date();
+	    usuario.setFechaFinPen(fecha);
+	    assertEquals(fecha, usuario.getFechaFinPen());
 	}
-	
+
 	@Test
-	public final void testGetcupo() {
+	final void testGetcupo() {
 		assertEquals(2, usuario.getCupo());
 	}
 	
 	@Test
-	public final void testSetcupo() {
+	final void testSetcupo() {
 		int cupo = 2;
 		usuario.setCupo(cupo);
 		assertEquals(cupo, usuario.getCupo());
 	}
 	
 	@Test
-	public final void testGetrol() {
+	final void testGetrol() {
 		assertEquals("usuario", usuario.getRol());
 	}
 	
 	@Test
-	public final void testSetrol() {
+	final void testSetrol() {
 		String rol = "usuario";
 		 usuario.setRol(rol);
 		assertEquals(rol, usuario.getRol());
 	}
 	
 	@Test
-	public final void testGetcontrasena() {
+	final void testGetcontrasena() {
 		assertEquals("1234", usuario.getContrasena());
 	}
 	
 	@Test
-	public final void testSetcontrasena() {
+	final void testSetcontrasena() {
 		String contrasena = "1234";
 		 usuario.setContrasena(contrasena);
 		assertEquals(contrasena, usuario.getContrasena());

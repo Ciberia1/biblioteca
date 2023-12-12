@@ -35,54 +35,54 @@ class PubSeriadasTest {
 	}
 	
 	@Test
-	public final void testPubSeriadas() throws Exception {
+	final void testPubSeriadas() throws Exception {
 		PubSeriadas pubSeriadas1 = new PubSeriadas("987-4561-1234-765", "Luis" ,"Articulo", "Semanal");
 		assertTrue(pubSeriadas1.getIssn().equals(pubSeriadas.getIssn()) && pubSeriadas1.getEditor().equals(pubSeriadas.getEditor()) && pubSeriadas1.getTipo().equals(pubSeriadas.getTipo())&& pubSeriadas1.getPeriodicidad().equals(pubSeriadas.getPeriodicidad()));
 	}
 	
 	@Test
-	public final void testGetissn() {
+	final void testGetissn() {
 		assertEquals("987-4561-1234-765", pubSeriadas.getIssn());
 	}
 	
 	@Test
-	public final void testSetissn() {
+	final void testSetissn() {
 		String issn = "987-4561-1234-765";
 		pubSeriadas.setIssn(issn);
 		assertEquals(issn, pubSeriadas.getIssn());
 	}
 	
 	@Test
-	public final void testGeteditor() {
+	final void testGeteditor() {
 		assertEquals("Luis", pubSeriadas.getEditor());
 	}
 	
 	@Test
-	public final void testSeteditor() {
+	final void testSeteditor() {
 		String editor = "Luis";
 		pubSeriadas.setEditor(editor);
 		assertEquals(editor, pubSeriadas.getEditor());
 	}
 	
 	@Test
-	public final void testGettipo() {
+	final void testGettipo() {
 		assertEquals("Articulo", pubSeriadas.getTipo());
 	}
 	
 	@Test
-	public final void testSettipo() {
+	final void testSettipo() {
 		String tipo = "Articulo";
 		pubSeriadas.setTipo(tipo);
 		assertEquals(tipo, pubSeriadas.getTipo());
 	}
 	
 	@Test
-	public final void testGetperiodicidad() {
+	final void testGetperiodicidad() {
 		assertEquals("Semanal", pubSeriadas.getPeriodicidad());
 	}
 	
 	@Test
-	public final void testSetperiodicidad() {
+	final void testSetperiodicidad() {
 		String periodicidad = "Semanal";
 		pubSeriadas.setPeriodicidad(periodicidad);
 		assertEquals(periodicidad, pubSeriadas.getPeriodicidad());

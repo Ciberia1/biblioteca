@@ -37,146 +37,147 @@ class ObraWrapperTest {
 	}
 	
 	@Test
-	public final void testObraWrapper() throws Exception {
+	final void testObraWrapper() throws Exception {
 		ObraWrapper obraWrapper1 = new ObraWrapper("Misterio", "978-7562-5433-432" ,"Tapa blanda", "234-5678-9876-543","Luis","Articulo","Semanal","La colmena", new Date(), 64, "Santillana", "Tercera", 13L,true);
 		assertTrue(obraWrapper1.getIssn().equals(obraWrapper.getIssn()) && obraWrapper1.getEditor().equals(obraWrapper.getEditor()) && obraWrapper1.getTipo().equals(obraWrapper.getTipo())&& obraWrapper1.getPeriodicidad().equals(obraWrapper.getPeriodicidad()) && obraWrapper1.getTitulo().equals(obraWrapper.getTitulo()) && obraWrapper1.getEditorial().equals(obraWrapper.getEditorial()) && obraWrapper1.getEdicion().equals(obraWrapper.getEdicion()));
 	}
 	
 	@Test
-	public final void testGetgenero() {
+	final void testGetgenero() {
 		assertEquals("Misterio", obraWrapper.getGenero());
 	}
 	
 	@Test
-	public final void testSetgenero() {
+	final void testSetgenero() {
 		String genero = "Misterio";
 		obraWrapper.setGenero(genero);
 		assertEquals(genero, obraWrapper.getGenero());
 	}
 	
 	@Test
-	public final void testGetisbn() {
+	final void testGetisbn() {
 		assertEquals("978-7562-5433-432", obraWrapper.getIsbn());
 	}
 	
 	@Test
-	public final void testSetisbn() {
+	final void testSetisbn() {
 		String isbn = "978-7562-5433-432";
 		obraWrapper.setIsbn(isbn);
 		assertEquals(isbn, obraWrapper.getIsbn());
 	}
 	
 	@Test
-	public final void testGetencuadernacion() {
+	final void testGetencuadernacion() {
 		assertEquals("Tapa blanda", obraWrapper.getEncuadernacion());
 	}
 	
 	@Test
-	public final void testSetencuadernacion() {
+	final void testSetencuadernacion() {
 		String encuadernacion = "Tapa blanda";
 		obraWrapper.setEncuadernacion(encuadernacion);
 		assertEquals(encuadernacion, obraWrapper.getEncuadernacion());
 	}
 	
 	@Test
-	public final void testGetissn() {
+	final void testGetissn() {
 		assertEquals("234-5678-9876-543", obraWrapper.getIssn());
 	}
 	
 	@Test
-	public final void testSetissn() {
+	final void testSetissn() {
 		String issn = "234-5678-9876-543";
 		obraWrapper.setIssn(issn);
 		assertEquals(issn, obraWrapper.getIssn());
 	}
 	
 	@Test
-	public final void testGeteditor() {
+	final void testGeteditor() {
 		assertEquals("Luis", obraWrapper.getEditor());
 	}
 	
 	@Test
-	public final void testSeteditor() {
+	final void testSeteditor() {
 		String editor = "Luis";
 		obraWrapper.setEditor(editor);
 		assertEquals(editor, obraWrapper.getEditor());
 	}
 	
 	@Test
-	public final void testGettipo() {
+	final void testGettipo() {
 		assertEquals("Articulo", obraWrapper.getTipo());
 	}
 	
 	@Test
-	public final void testSettipo() {
+	final void testSettipo() {
 		String tipo = "Articulo";
 		obraWrapper.setTipo(tipo);
 		assertEquals(tipo, obraWrapper.getTipo());
 	}
 	
 	@Test
-	public final void testGetperiodicidad() {
+	final void testGetperiodicidad() {
 		assertEquals("Semanal", obraWrapper.getPeriodicidad());
 	}
 	
 	@Test
-	public final void testSetperiodicidad() {
+	final void testSetperiodicidad() {
 		String periodicidad = "Semanal";
 		obraWrapper.setPeriodicidad(periodicidad);
 		assertEquals(periodicidad, obraWrapper.getPeriodicidad());
 	}
 	
-	
 	@Test
-	public final void testGettitulo() {
+	final void testGettitulo() {
 		assertEquals("La colmena", obraWrapper.getTitulo());
 	}
 	
 	@Test
-	public final void testSettitulo() {
-		String titulo = "La colmena";
-		obraWrapper.setGenero(titulo);
-		assertEquals(titulo, obraWrapper.getTitulo());
+	final void testSettitulo() {
+	    String titulo = "La colmena";
+	    obraWrapper.setTitulo(titulo);
+	    assertEquals(titulo, obraWrapper.getTitulo());
 	}
+
 	
 	@Test
-	public final void testGetfechaPublicacion() {
-		
+	final void testGetfechaPublicacion() {
+	    assertNotNull(obraWrapper.getFechaPublicacion());
 	}
 	
+	
 	@Test
-	public final void testSetfechaPublicacion() {
-		Date fecha = new Date(2023,12,12);
+	final void testSetfechaPublicacion() {
+		Date fecha = new Date();
 		obraWrapper.setFechaPublicacion(fecha);
 		assertEquals(fecha, obraWrapper.getFechaPublicacion());
 	}
 	
 	@Test
-	public final void testGetnroPaginas() {
+	final void testGetnroPaginas() {
 		assertEquals(64, (obraWrapper.getNroPaginas()));
 	}
 	
 	@Test
-	public final void testSetnroPaginas() {
+	final void testSetnroPaginas() {
 		int numPag = 64;
 		obraWrapper.setNroPaginas(numPag);
 		assertEquals(numPag, obraWrapper.getNroPaginas());
 	}
 	
 	@Test
-	public final void testGeteditorial() {
+	final void testGeteditorial() {
 		assertEquals("Santillana", obraWrapper.getEditorial());
 	}
 	
 	@Test
-	public final void testSeteditorial() {
+	final void testSeteditorial() {
 		String editorial = "Santillana";
 		obraWrapper.setEditorial(editorial);
 		assertEquals(editorial, obraWrapper.getEditorial());
 	}
 	
 	@Test
-	public final void testGetedicion() {
+	final void testGetedicion() {
 		assertEquals("Tercera", obraWrapper.getEdicion());
 	}
 	
@@ -188,27 +189,25 @@ class ObraWrapperTest {
 	}
 	
 	@Test
-	public final void testGetid() {
+	final void testGetid() {
 		assertNotNull(obraWrapper.getId());
 	}
 	
 	@Test
-	public final void testSetid() {
+	final void testSetid() {
 		long id = (long) 13;
 		obraWrapper.setId(id);
 		assertEquals(id, obraWrapper.getId());
 	}
-	
-	
-	
+		
 	@Test
-	public final void testGetesLibro() {
+	final void testGetesLibro() {
 		boolean esLibro = obraWrapper.isEsLibro();
 		assertTrue(esLibro);
 	}
 	
 	@Test
-	public final void testSetesLibro() {
+	final void testSetesLibro() {
 		obraWrapper.setEsLibro(true);
 		assertEquals(true, obraWrapper.isEsLibro());
 	}

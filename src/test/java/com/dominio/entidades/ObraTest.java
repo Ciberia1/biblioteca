@@ -44,7 +44,7 @@ class ObraTest {
 	}
 	
 	@Test
-	public final void testObra() throws Exception {
+	final void testObra() throws Exception {
 		Obra obra1 = new Obra(ejemplares, "Realista" ,"La colmena", 453 ,13L,new Date());
 		assertTrue(obra1.getGenero().equals(obra.getGenero())
 				&& obra1.getTitulo().equals(obra.getTitulo()));
@@ -52,57 +52,58 @@ class ObraTest {
 	
 	
 	@Test
-	public final void testGetejemplares() {
+	final void testGetejemplares() {
 		Collection<Ejemplar> reserva = obra.getEjemplares();
 		assertEquals(ejemplares, reserva);
 	}
 	
 	
 	@Test
-	public final void testSetejemplares() {
+	final void testSetejemplares() {
 		Maxejemplares.add(new Ejemplar());
 		obra.setEjemplares(Maxejemplares);
 		assertEquals(Maxejemplares, obra.getEjemplares());
 	}
 	
 	@Test
-	public final void testGetgenero() {
+	final void testGetgenero() {
 		assertEquals("Realista", obra.getGenero());
 	}
 	
 	@Test
-	public final void testSetgenero() {
+	final void testSetgenero() {
 		String genero = "Realista";
 		obra.setGenero(genero);
 		assertEquals(genero, obra.getGenero());
 	}
 	
 	@Test
-	public final void testGettitulo() {
+	final void testGettitulo() {
 		assertEquals("La colmena", obra.getTitulo());
 	}
 	
 	@Test
-	public final void testSettitulo() {
-		String titulo = "La colmena";
-		obra.setGenero(titulo);
-		assertEquals(titulo, obra.getTitulo());
+	final void testSettitulo() {
+	    String titulo = "La colmena";
+	    obra.setTitulo(titulo);
+	    assertEquals(titulo, obra.getTitulo());
 	}
+
 	
 	@Test
-	public final void testGetnroPaginas() {
+	final void testGetnroPaginas() {
 		assertEquals(453, (obra.getNroPaginas()));
 	}
 	
 	@Test
-	public final void testSetnroPaginas() {
+	final void testSetnroPaginas() {
 		int numPag = 453;
 		obra.setNroPaginas(numPag);
 		assertEquals(numPag, obra.getNroPaginas());
 	}
 	
 	@Test
-	public final void testGetid() {
+	final void testGetid() {
 		assertNotNull(obra.getId());
 	}
 	
@@ -114,13 +115,15 @@ class ObraTest {
 	}
 
 	@Test
-	public final void testGetfechaPublicacion() {
-		
+	final void testGetfechaPublicacion() {
+	    assertNotNull(obra.getFechaPublicacion());
 	}
-	
+
 	@Test
-	public final void testSetfechaPublicacion() {
-		
+	final void testSetfechaPublicacion() {
+	    Date fecha = new Date();
+	    obra.setFechaPublicacion(fecha);
+	    assertEquals(fecha, obra.getFechaPublicacion());
 	}
 
 }
