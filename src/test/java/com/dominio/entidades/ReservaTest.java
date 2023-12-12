@@ -1,37 +1,61 @@
 package com.dominio.entidades;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ReservaTest {
+import java.util.Date;
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class ReservaTest {
+	private Reserva reserva;
+	private Usuario usuario;
+	private Ejemplar ejemplar;
+	
+
+	@BeforeAll
+	protected static void setUpBeforeClass() throws Exception {
+		System.out.println("@BeforeClass");
 	}
 
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
+	@AfterAll
+	protected static void tearDownAfterClass() throws Exception {
+		System.out.println("@AfterClass");
 	}
 
-	@Before
-	public void setUp() throws Exception {
+	@BeforeEach
+	protected void setUp() throws Exception {
+		System.out.println("@Before");
+		reserva = new Reserva(40L, usuario ,ejemplar, new Date());
+		reserva.setReservaID((long) 40);
+		
 	}
 
-	@After
-	public void tearDown() throws Exception {
+	@AfterEach
+	protected void tearDown() throws Exception {
+		System.out.println("@After");
+	}
+	
+	@Test
+	public final void testReserva() throws Exception {
+		Reserva reserva1 = new Reserva(40L, usuario ,ejemplar, new Date());
 	}
 	
 	@Test
 	public final void testGetreservaId() {
-		
+		assertNotNull(reserva.getReservaID());
 	}
 	
 	@Test
 	public final void testSetreservaId() {
-		
+		long id = (long) 40;
+		reserva.setReservaID(id);
+		assertEquals(id, reserva.getReservaID());
 	}
 	
 	@Test
