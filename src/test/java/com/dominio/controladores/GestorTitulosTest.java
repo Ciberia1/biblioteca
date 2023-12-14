@@ -3,14 +3,16 @@ package com.dominio.controladores;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -46,6 +48,7 @@ class GestorTitulosTest {
 	private ObraDAO obraDAO;
 	@Mock
 	private LibroDAO libroDAO;
+
 	@Mock
 	private PubSeriadasDAO pubSeriadasDAO;
 
@@ -67,12 +70,71 @@ class GestorTitulosTest {
 	}
 
 	@Test
-	public void testAltaObra_Libro() throws InterruptedException {
+	public void testAltaObraLibro() throws InterruptedException {
+	    Libro libro = new Libro( new HashSet<>(), "Editorial Prueba", "Edición Prueba", "ISBN Prueba", "Encuadernacion Prueba");
+	    libro.setId(1L);
 
+	    Collection<Ejemplar> ejemplares = new HashSet<>();
+	    String genero = "Genero Prueba";
+	    String titulo = "Titulo Prueba";
+	    int nroPaginas = 100;
+	    Long id = 1L;
+	    Date fechaPublicacion = new Date();
+	    Obra obra = new Obra(ejemplares, genero, titulo, nroPaginas, id, fechaPublicacion);
+
+	    when(libroDAO.save(any(Libro.class))).thenAnswer(invocation -> {
+	        Libro savedLibro = invocation.getArgument(0);
+	        savedLibro.setId(1L);
+	        return savedLibro;
+	    });
+	    when(libroDAO.findById(any(Long.class))).thenAnswer(invocation -> Optional.of(libro));
+
+	    Ejemplar ejemplar = new Ejemplar();
+	    ejemplar.setEstado("Disponible");
+	    when(ejemplarDAO.save(any(Ejemplar.class))).thenReturn(ejemplar);
+
+	    String nroEjemplares = "1";
+	    String resultado = gestorTitulos.altaObra(obra, libro, null, "Libro", nroEjemplares);
+
+	    assertEquals("redirect:/gestion", resultado);
+	    verify(libroDAO, times(1)).save(any(Libro.class));
+	    verify(ejemplarDAO, times(Integer.parseInt(nroEjemplares))).save(any(Ejemplar.class));
 	}
 
+	
+	@Test
+	public void testAltaObraPubSeriada() throws InterruptedException {
 
+	    PubSeriadas pubseriada = new PubSeriadas("ISBN Prueba", "Vocento", "Periódico", "Diario");
+	    pubseriada.setId(1L);
 
+	    Collection<Ejemplar> ejemplares = new HashSet<>();
+	    String genero = "Genero Prueba";
+	    String titulo = "Titulo Prueba";
+	    int nroPaginas = 100;
+	    Long id = 1L;
+	    Date fechaPublicacion = new Date();
+	    Obra obra = new Obra(ejemplares, genero, titulo, nroPaginas, id, fechaPublicacion);
+
+	    
+	    when(pubSeriadasDAO.save(any(PubSeriadas.class))).thenAnswer(invocation -> {
+	        PubSeriadas savedPubSeriada = invocation.getArgument(0);
+	        savedPubSeriada.setId(1L);
+	        return savedPubSeriada;
+	    });
+	    when(pubSeriadasDAO.findById(any(Long.class))).thenAnswer(invocation -> Optional.of(pubseriada));
+
+	    Ejemplar ejemplar = new Ejemplar();
+	    ejemplar.setEstado("Disponible");
+	    when(ejemplarDAO.save(any(Ejemplar.class))).thenReturn(ejemplar);
+
+	    String nroEjemplares = "1";
+	    String resultado = gestorTitulos.altaObra(obra, null, pubseriada, "Publicación seriada", nroEjemplares);
+
+	    assertEquals("redirect:/gestion", resultado);
+	    verify(pubSeriadasDAO, times(1)).save(any(PubSeriadas.class));
+	    verify(ejemplarDAO, times(Integer.parseInt(nroEjemplares))).save(any(Ejemplar.class));
+	}
 
 
 	@Test
