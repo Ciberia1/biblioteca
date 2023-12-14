@@ -68,7 +68,7 @@ public class GestorEjemplares {
 /**
  * La función `bajaEjemplar` elimina múltiples objetos ejemplares de la base de datos según sus ID.
  * 
- * @param data {
+ * @param data 
  * @return El método devuelve una cadena "redirect:/inicio".
  */
 	@PostMapping("/borrarEjemplar")

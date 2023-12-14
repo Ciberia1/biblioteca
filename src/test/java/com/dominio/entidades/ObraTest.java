@@ -22,17 +22,14 @@ class ObraTest {
 
 	@BeforeAll
 	protected static void setUpBeforeClass() throws Exception {
-		System.out.println("@BeforeClass");
 	}
 
 	@AfterAll
 	protected static void tearDownAfterClass() throws Exception {
-		System.out.println("@AfterClass");
 	}
 
 	@BeforeEach
 	protected void setUp() throws Exception {
-		System.out.println("@Before");
 		obra = new Obra(ejemplares, "Realista" ,"La colmena", 543 ,13L,new Date());
 		obra.setId((long) 13);
 		obra.setNroPaginas(453);
@@ -40,7 +37,6 @@ class ObraTest {
 
 	@AfterEach
 	protected void tearDown() throws Exception {
-		System.out.println("@After");
 	}
 	
 	@Test

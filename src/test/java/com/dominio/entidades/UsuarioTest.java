@@ -22,23 +22,19 @@ class UsuarioTest {
 	
 	@BeforeAll
 	protected static void setUpBeforeClass() throws Exception {
-		System.out.println("@BeforeClass");
 	}
 
 	@AfterAll
 	protected static void tearDownAfterClass() throws Exception {
-		System.out.println("@AfterClass");
 	}
 
 	@BeforeEach
 	protected void setUp() throws Exception {
-		System.out.println("@Before");
 		usuario = new Usuario(prestado,reservado ,"05749924Q", "Ana", "García", new Date () ,2 ,"usuario", "1234");
 	}
 
 	@AfterEach
 	protected void tearDown() throws Exception {
-		System.out.println("@After");
 	}
 	
 	@Test

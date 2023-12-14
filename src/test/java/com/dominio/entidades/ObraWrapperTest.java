@@ -17,23 +17,19 @@ class ObraWrapperTest {
 
 	@BeforeAll
 	protected static void setUpBeforeClass() throws Exception {
-		System.out.println("@BeforeClass");
 	}
 
 	@AfterAll
 	protected static void tearDownAfterClass() throws Exception {
-		System.out.println("@AfterClass");
 	}
 
 	@BeforeEach
 	protected void setUp() throws Exception {
-		System.out.println("@Before");
 		obraWrapper = new ObraWrapper("Misterio", "978-7562-5433-432" ,"Tapa blanda", "234-5678-9876-543","Luis","Articulo","Semanal","La colmena", new Date(), 64, "Santillana", "Tercera", 13L,true);
 	}
 
 	@AfterEach
 	protected void tearDown() throws Exception {
-		System.out.println("@After");
 	}
 	
 	@Test

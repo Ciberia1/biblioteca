@@ -21,24 +21,20 @@ class LibroTest {
 
 	@BeforeAll
 	protected static void setUpBeforeClass() throws Exception {
-		System.out.println("@BeforeClass");
 	}
 
 	@AfterAll
 	protected static void tearDownAfterClass() throws Exception {
-		System.out.println("@AfterClass");
 	}
 
 	@BeforeEach
 	protected void setUp() throws Exception {
-		System.out.println("@Before");
 		libro = new Libro(Maxautor,"Santillana", "Tercera", "978-7562-5433-432", "Tapa blanda");
 		autores.add(new Autor(33L, "Ana", "Ramirez","Su obra más famosa es el rey", libros));
 	}
 
 	@AfterEach
 	protected void tearDown() throws Exception {
-		System.out.println("@After");
 	}
 	
 	@Test
