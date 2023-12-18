@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!-- This site was created in Webflow. https://www.webflow.com -->
-<!-- Last Published: Fri Oct 27 2023 01:57:13 GMT+0000 (Coordinated Universal Time) -->
 <html data-wf-domain="biblioteca-6acf80.webflow.io" data-wf-page="65365511e38c758ed167643c" data-wf-site="65365511e38c758ed1676401" lang="es" xml:lang="es">
   <head>
     <meta charset="utf-8" />
@@ -62,7 +60,9 @@
           <h1 class="heading">Bienvenido 👋</h1>
           <div class="partnership-text-wrap">
             <p class="paragraph">Para empezar a usar este programa de gestión bibliotecaria elige alguna de las opciones disponibles <br />‍ </p>
-			<div class="div-block"><span style="visibility: hidden;">.</span></div>
+            <div class="div-block">
+              <span style="visibility: hidden;">.</span>
+            </div>
             <a href="/operacionEjemplar" class="button-primary-right-icon w-inline-block">
               <div>Operar sobre el catálogo </div>
               <div class="icon-regular w-embed">
@@ -82,16 +82,15 @@
     <a href="http://www.flowbase.co" target="_blank" class="flowbase-banner w-inline-block">
       <h3 class="flowbase-header">Biblioteca: UCLM</h3>
     </a>
-	<script>
-  document.addEventListener('DOMContentLoaded', (event) => {
-    let logoutButton = Array.from(document.querySelectorAll('.button-primary')).find(button => button.innerText === 'Cerrar sesión');
-    if (logoutButton) {
-      logoutButton.addEventListener('click', () => {
-        window.location.href = '/login';
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        let logoutButton = Array.from(document.querySelectorAll('.button-primary')).find(button => button.innerText === 'Cerrar sesión');
+        if (logoutButton) {
+          logoutButton.addEventListener('click', () => {
+            window.location.href = '/login';
+          });
+        }
       });
-    }
-  });
-</script>
-
+    </script>
   </body>
 </html>

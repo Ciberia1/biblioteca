@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-wf-domain="biblioteca-6acf80.webflow.io" data-wf-page="65365511e38c758ed1676458" data-wf-site="65365511e38c758ed1676401"lang="es" xml:lang="es">
+<html data-wf-domain="biblioteca-6acf80.webflow.io" data-wf-page="65365511e38c758ed1676458" data-wf-site="65365511e38c758ed1676401" lang="es" xml:lang="es">
   <head>
     <meta charset="utf-8">
     <title>Publicar autor</title>
@@ -16,14 +16,12 @@
 
       .job-submission-form-number {
         margin-right: 20px;
-        /* Ajusta este valor a lo que necesites */
       }
 
       table {
         width: 100%;
         border-collapse: collapse;
         table-layout: auto;
-        /* 테이블 레이아웃을 자동으로 설정합니다. */
       }
 
       h2 {
@@ -47,9 +45,23 @@
         background-color: #443fde;
         color: white;
       }
+	  
+	  .boton-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #007BFF; /* Cambia el color de fondo a tu preferencia */
+  color: white; /* Cambia el color del texto a tu preferencia */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 9999; /* Esto hará que el botón se superponga a los demás elementos */
+}
     </style>
   </head>
   <body>
+    <button id="botonLimpiar" class="boton-flotante">Limpiar</button>
     <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
       <div class="container-navigation">
         <div class="navigation-left">
@@ -88,41 +100,54 @@
         <div data-w-id="7a6f2f36-720c-79f1-afa5-219274c01bb5" style="-webkit-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:100" class="job-submission-form-wrapper">
           <div class="w-form">
             <form action="/publicarAutor" method="post" class="job-submission-form" th:object="${autor}">
-  <div id="formulario-obra" class="job-submission-form-section-wrapper">
-    <div id="w-node-_35571b41-498a-13b4-c487-1c69096208df-d1676458" class="job-submission-form-section">
-      <div class="margin-bottom-24">
-        <h5>Datos del autor</h5>
-      </div>
-      <label id="nombre-nombre" for="nombre">Nombre</label>
-      <input type="text" class="form-field w-input" maxlength="25" name="nombre" th:field="*{nombre}" id="nombre" required="">
-      <label id="nombre-apellidos" for="apellido">Apellidos</label>
-      <input type="text" class="form-field w-input" name="apellidos" maxlength="40" th:field="*{apellido}" placeholder="" id="apellido" required="">
-      <label id="nombre-biografia" for="biografia">Biografía</label>
-      <input type="text" class="form-field w-input" name="biografia" maxlength="100" th:field="*{biografia}" placeholder="" id="biografia" required="">
-      
-      <!-- 'Enviar' botón -->
-      <input type="submit" value="Enviar" class="button-primary w-button">
-    </div>
-  </div>
-</form>
-        <div class="success-message w-form-done">
-          <div> La petición ha sido recibida </div>
+              <div id="formulario-obra" class="job-submission-form-section-wrapper">
+                <div id="w-node-_35571b41-498a-13b4-c487-1c69096208df-d1676458" class="job-submission-form-section">
+                  <div class="margin-bottom-24">
+                    <h5>Datos del autor</h5>
+                  </div>
+                  <label id="nombre-nombre" for="nombre">Nombre</label>
+                  <input type="text" class="form-field w-input" maxlength="25" name="nombre" th:field="*{nombre}" id="nombre" required="">
+                  <label id="nombre-apellidos" for="apellido">Apellidos</label>
+                  <input type="text" class="form-field w-input" name="apellidos" maxlength="40" th:field="*{apellido}" placeholder="" id="apellido" required="">
+                  <label id="nombre-biografia" for="biografia">Biografía</label>
+                  <input type="text" class="form-field w-input" name="biografia" maxlength="100" th:field="*{biografia}" placeholder="" id="biografia" required="">
+                  <input type="submit" value="Enviar" class="button-primary w-button">
+                </div>
+              </div>
+            </form>
+            <div class="success-message w-form-done">
+              <div> La petición ha sido recibida </div>
+            </div>
+            <div class="error-message w-form-fail">
+              <div> Error </div>
+            </div>
+          </div>
         </div>
-        <div class="error-message w-form-fail">
-          <div> Error </div>
-        </div>
-      </div>
-    </div>
-    <script type="text/javascript">
-	  document.addEventListener('DOMContentLoaded', (event) => {
-    let logoutButton = document.querySelector('.button-primary[data-wf-user-logout="Cerrar sesión"]');
-    if (logoutButton) {
-      logoutButton.addEventListener('click', () => {
-        window.location.href = '/login';
-      });
+        <script type="text/javascript">
+          document.addEventListener('DOMContentLoaded', (event) => {
+            let logoutButton = document.querySelector('.button-primary[data-wf-user-logout="Cerrar sesión"]');
+            if (logoutButton) {
+              logoutButton.addEventListener('click', () => {
+                window.location.href = '/login';
+              });
+            }
+          });
+		  
+		  document.getElementById('botonLimpiar').addEventListener('click', function() {
+  var inputs = document.getElementsByTagName('input');
+  for (var i = 0; i < inputs.length; i++) {
+    switch (inputs[i].type) {
+      case 'text':
+      case 'number':
+      case 'checkbox':
+        inputs[i].value = '';
+        inputs[i].checked = false;
+        break;
     }
-  });
+  }
+});
 
-    </script>
+
+        </script>
   </body>
 </html>

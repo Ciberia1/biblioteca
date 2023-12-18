@@ -18,13 +18,11 @@
         .action-button {
           margin: 5px;
           padding: 5px 20px;
-          /* Aquí he aumentado el padding horizontal */
           border: none;
           border-radius: 3px;
           color: white;
           cursor: pointer;
           width: 100px;
-          /* Aquí he añadido un ancho fijo para los botones */
         }
 
         .dni-field {
@@ -103,16 +101,12 @@
           width: 100%;
           border-collapse: collapse;
           table-layout: auto;
-          /* 테이블 레이아웃을 자동으로 설정합니다. */
           margin-bottom: 60px;
-          /* 원하는 마진 크기로 변경 */
         }
 
         input {
           width: 100%;
-          /* 입력 필드의 너비를 부모 요소인 셀의 너비에 맞춥니다. */
           box-sizing: border-box;
-          /* 테두리와 패딩이 너비에 포함되도록 설정합니다. */
         }
 
         th {
@@ -140,13 +134,9 @@
 
         input {
           max-width: 200px;
-          /* 원하는 최대 너비를 설정합니다. */
           overflow: hidden;
-          /* 내용이 너무 길면 숨깁니다. */
           text-overflow: ellipsis;
-          /* 너무 긴 내용은 생략 부호(...)로 표시합니다. */
           white-space: nowrap;
-          /* 내용을 한 줄에 표시합니다. */
         }
       </style>
   </head>
@@ -190,24 +180,21 @@
         </div>
       </div>
       <form id="ejemplarForm" th:object="${ejemplares}" th:action="@{/actualizarEjemplares}" method="post">
-        <table>
+        <table id="tabla">
           <tr>
-            <th>ID</th>
-            <th>Estado</th>
-            <th>Obra</th>
+            <th onclick="sortTable(0)">ID</th>
+            <th onclick="sortTable(1)">Estado</th>
+            <th onclick="sortTable(2)">Obra</th>
           </tr>
           <tr th:each="ejemplar : ${ejemplares}">
             <td>
               <p th:text="${ejemplar.ejemplarID}"></p>
-              <!-- 여기를 th:text로 수정했습니다. -->
             </td>
             <td>
               <p th:text="${ejemplar.estado}"></p>
-              <!-- 여기를 th:text로 수정했습니다. -->
             </td>
             <td>
               <p th:text="${ejemplar.obra.titulo}"></p>
-              <!-- 여기를 th:text로 수정하고, "titulo" 필드를 추가했습니다. -->
             </td>
             <td>
               <button type="button" class="action-button devolver-button" th:onclick="'devolver(\'' + ${ejemplar.ejemplarID} + '\')'" th:disabled="${ejemplar.estado == 'Disponible'}">Devolver</button>
@@ -308,7 +295,43 @@ function devolver(ejemplarID) {
       });
     }
   });
+  function sortTable(n) {
+      var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+      table = document.getElementById("tabla");
+      switching = true;
+      dir = "asc"; 
 
+      while (switching) {
+        switching = false;
+        rows = table.rows;
+        for (i = 1; i < (rows.length - 1); i++) {
+          shouldSwitch = false;
+          x = rows[i].getElementsByTagName("TD")[n];
+          y = rows[i + 1].getElementsByTagName("TD")[n];
+          if (dir == "asc") {
+            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+              shouldSwitch= true;
+              break;
+            }
+          } else if (dir == "desc") {
+            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+              shouldSwitch = true;
+              break;
+            }
+          }
+        }
+        if (shouldSwitch) {
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+          switchcount ++;      
+        } else {
+          if (switchcount == 0 && dir == "asc") {
+            dir = "desc";
+            switching = true;
+          }
+        }
+      }
+    }
     </script>
   </body>
 </html>

@@ -23,7 +23,6 @@
         width: 100%;
         border-collapse: collapse;
         table-layout: auto;
-        /* 테이블 레이아웃을 자동으로 설정합니다. */
       }
 
       h2 {
@@ -80,35 +79,34 @@
     <div class="job-submit-section">
       <div class="container-small">
         <div data-w-id="18f15721-4c45-512a-e538-07e4f3167b37" style="-webkit-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:100" class="title-wrap-center">
-            <h2>Libros escritos por el autor seleccionado</h2>
+          <h2>Libros escritos por el autor seleccionado</h2>
         </div>
         <div data-w-id="7a6f2f36-720c-79f1-afa5-219274c01bb5" style="-webkit-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:100" class="job-submission-form-wrapper">
           <div class="w-form">
             <form class="job-submission-form">
-			<table>
-			  <thead>
-				<tr>
-				  <th>Título</th>
-				  <th>ISBN</th>
-				  <th>Editorial</th>
-				  <th>Edición</th>
-				  <th>Encuadernación</th>
-				</tr>
-			  </thead>
-			  <tbody>
-				<tr th:each="libro : ${libros}">
-				  <td th:text="${libro.titulo}"></td>
-				  <td th:text="${libro.isbn}"></td>
-				  <td th:text="${libro.editorial}"></td>
-				  <td th:text="${libro.edicion}"></td>
-				  <td th:text="${libro.encuadernacion}"></td>
-				</tr>
-			  </tbody>
-			</table>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Título</th>
+                    <th>ISBN</th>
+                    <th>Editorial</th>
+                    <th>Edición</th>
+                    <th>Encuadernación</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="libro : ${libros}">
+                    <td th:text="${libro.titulo}"></td>
+                    <td th:text="${libro.isbn}"></td>
+                    <td th:text="${libro.editorial}"></td>
+                    <td th:text="${libro.edicion}"></td>
+                    <td th:text="${libro.encuadernacion}"></td>
+                  </tr>
+                </tbody>
+              </table>
             </form>
           </div>
         </div>
-
         <div class="success-message w-form-done">
           <div> La petición ha sido recibida </div>
         </div>
@@ -118,15 +116,14 @@
       </div>
     </div>
     <script type="text/javascript">
-	    document.addEventListener('DOMContentLoaded', (event) => {
-    let logoutButton = document.querySelector('.button-primary[data-wf-user-logout="Cerrar sesión"]');
-    if (logoutButton) {
-      logoutButton.addEventListener('click', () => {
-        window.location.href = '/login';
+      document.addEventListener('DOMContentLoaded', (event) => {
+        let logoutButton = document.querySelector('.button-primary[data-wf-user-logout="Cerrar sesión"]');
+        if (logoutButton) {
+          logoutButton.addEventListener('click', () => {
+            window.location.href = '/login';
+          });
+        }
       });
-    }
-  });
-
     </script>
   </body>
 </html>
