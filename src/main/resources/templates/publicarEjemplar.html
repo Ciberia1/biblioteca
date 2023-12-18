@@ -16,15 +16,28 @@
 
       .job-submission-form-number {
         margin-right: 20px;
-        /* Ajusta este valor a lo que necesites */
       }
 
       table {
         width: 100%;
         border-collapse: collapse;
         table-layout: auto;
-        /* 테이블 레이아웃을 자동으로 설정합니다. */
       }
+	  
+.boton-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #007BFF; /* Cambia el color de fondo a tu preferencia */
+  color: white; /* Cambia el color del texto a tu preferencia */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 9999; /* Esto hará que el botón se superponga a los demás elementos */
+}
+
+
 
       h2 {
         white-space: nowrap;
@@ -50,6 +63,7 @@
     </style>
   </head>
   <body>
+  <button id="botonLimpiar" class="boton-flotante">Limpiar</button>
     <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
       <div class="container-navigation">
         <div class="navigation-left">
@@ -96,11 +110,11 @@
                   <label id="titulo-ejemplar" for="nroEjemplar">Cantidad de ejemplares</label>
                   <input type="number" class="form-field w-input" maxlength="19" name="nroEjemplar" placeholder="" id="nroEjemplar" min="1" required="">
                   <label id="titulo-obra" for="obra">Obras</label>
-                  <table>
+                  <table id="tabla">
                     <thead>
                       <tr>
-                        <th>Título</th>
-                        <th>ISBN/ISSN</th>
+    <th onclick="sortTable(0)">Título</th>
+    <th onclick="sortTable(1)">ISBN/ISSN</th>
                         <th>Seleccionar</th>
                       </tr>
                       <tr th:each="obra : ${obras}">
@@ -151,7 +165,59 @@
     }
   });
 
+document.getElementById('botonLimpiar').addEventListener('click', function() {
+  var inputs = document.getElementsByTagName('input');
+  for (var i = 0; i < inputs.length; i++) {
+    switch (inputs[i].type) {
+      case 'text':
+      case 'number':
+      case 'checkbox':
+        inputs[i].value = '';
+        inputs[i].checked = false;
+        break;
+    }
+  }
+});
 
-    </script>
+    function sortTable(n) {
+      var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+      table = document.getElementById("tabla");
+      switching = true;
+      dir = "asc"; 
+
+      while (switching) {
+        switching = false;
+        rows = table.rows;
+        for (i = 1; i < (rows.length - 1); i++) {
+          shouldSwitch = false;
+          x = rows[i].getElementsByTagName("TD")[n];
+          y = rows[i + 1].getElementsByTagName("TD")[n];
+          if (dir == "asc") {
+            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+              shouldSwitch= true;
+              break;
+            }
+          } else if (dir == "desc") {
+            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+              shouldSwitch = true;
+              break;
+            }
+          }
+        }
+        if (shouldSwitch) {
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+          switchcount ++;      
+        } else {
+          if (switchcount == 0 && dir == "asc") {
+            dir = "desc";
+            switching = true;
+          }
+        }
+      }
+    }
+</script>
+
+
   </body>
 </html>      

@@ -19,14 +19,12 @@
 
       .job-submission-form-number {
         margin-right: 20px;
-        /* Ajusta este valor a lo que necesites */
       }
 
       table {
         width: 100%;
         border-collapse: collapse;
         table-layout: auto;
-        /* 테이블 레이아웃을 자동으로 설정합니다. */
       }
 
       h2 {
@@ -50,9 +48,22 @@
         background-color: #443fde;
         color: white;
       }
+	  .boton-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #007BFF; /* Cambia el color de fondo a tu preferencia */
+  color: white; /* Cambia el color del texto a tu preferencia */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 9999; /* Esto hará que el botón se superponga a los demás elementos */
+}
     </style>
   </head>
   <body>
+    <button id="botonLimpiar" class="boton-flotante">Limpiar</button>
     <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
       <div class="container-navigation">
         <div class="navigation-left">
@@ -99,13 +110,13 @@
                   <label id="titulo-titulo" for="titulo">Título</label>
                   <input type="text" class="form-field w-input" maxlength="30" name="titulo" th:field="*{titulo}" id="titulo" required="">
                   <label id="titulo-paginas" for="nroPaginas">Número de páginas</label>
-                  <input type="number" class="form-field w-input" name="nroPaginas" th:field="*{nroPaginas}" placeholder="" id="nroPaginas"  min="1" oninput="validity.valid||(value='');" required="">
+                  <input type="number" class="form-field w-input" name="nroPaginas" th:field="*{nroPaginas}" placeholder="" id="nroPaginas" min="1" oninput="validity.valid||(value='');" required="">
                   <label id="fechaPub-label" for="fechaPublicacion">Fecha de publicación</label>
                   <input type="date" class="form-field w-input" name="fechaPublicacion" th:field="*{fechaPublicacion}" id="fechaPublicacion" required="">
                   <label id="genero-label" for="genero">Género</label>
                   <input type="text" class="form-field w-input" maxlength="30" name="genero" th:field="*{genero}" placeholder="" id="genero" required="">
-				  <label id="nroEjemplares-label" for="nroEjemplares">Número de ejemplares</label>
-				  <input type="number" class="form-field w-input" name="nroEjemplares" placeholder="" id="nroEjemplares" min="1" oninput="validity.valid||(value='');" required="">
+                  <label id="nroEjemplares-label" for="nroEjemplares">Número de ejemplares</label>
+                  <input type="number" class="form-field w-input" name="nroEjemplares" placeholder="" id="nroEjemplares" min="1" oninput="validity.valid||(value='');" required="">
                   <label id="titulo-tipo" for="tipo">Seleccionar tipo de obra</label>
                   <div data-delay="0" data-hover="false" class="w-dropdown">
                     <div class="dropdown-toggle-2 w-dropdown-toggle">
@@ -127,7 +138,7 @@
                   <div class="margin-bottom-24">
                     <h5>Datos adicionales del libro</h5>
                   </div>
-		          <input type="hidden" class="form-field w-input" name="nroEjemplares" data-name="nroEjemplares" id="nroEjemplares" required="">
+                  <input type="hidden" class="form-field w-input" name="nroEjemplares" data-name="nroEjemplares" id="nroEjemplares" required="">
                   <input type="hidden" class="form-field w-input" maxlength="30" name="titulo" data-name="titulo" id="titulo" required="">
                   <input type="hidden" class="form-field w-input" name="nroPaginas" data-name="nroPaginas" id="nroPaginas" required="">
                   <input type="date" class="form-field w-input" name="fechaPublicacion" data-name="fechaPublicacion" id="fechaPublicacion" required="" style="display: none;">
@@ -140,14 +151,14 @@
                   <input type="text" th:field="*{isbn}" id="isbn" maxlength="25" class="form-field w-input" required="">
                   <label for="encuadernacion">Encuadernación</label>
                   <input type="text" th:field="*{encuadernacion}" id="encuadernacion" maxlength="25" class="form-field w-input" required="">
-				   <input type="hidden" name="claseObra" value="Libro">
+                  <input type="hidden" name="claseObra" value="Libro">
                   <label id="titulo-autor" for="autor">Autor</label>
-                  <table>
+                  <table id="tabla">
                     <thead>
                       <tr>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Biografia</th>
+                        <th onclick="sortTable(0)">Nombre</th>
+                        <th onclick="sortTable(0)">Apellidos</th>
+                        <th onclick="sortTable(1)">Biografia</th>
                         <th>Seleccionar</th>
                       </tr>
                     </thead>
@@ -176,7 +187,7 @@
               </div>
               <input type="hidden" class="form-field w-input" maxlength="30" name="titulo" data-name="titulo" id="titulo" required="">
               <input type="hidden" class="form-field w-input" name="nroPaginas" data-name="nroPaginas" id="nroPaginas" required="">
-			   <input type="hidden" class="form-field w-input" name="nroEjemplares" data-name="nroEjemplares" id="nroEjemplares" required="">
+              <input type="hidden" class="form-field w-input" name="nroEjemplares" data-name="nroEjemplares" id="nroEjemplares" required="">
               <input type="date" class="form-field w-input" name="fechaPublicacion" data-name="fechaPublicacion" id="fechaPublicacion" required="" style="display: none;">
               <input type="hidden" class="form-field w-input" maxlength="30" name="genero" data-name="genero" id="genero" required="">
               <label for="editor">Editor</label>
@@ -214,20 +225,16 @@
         dropdownContent.children[0].addEventListener('click', function() {
           formLibro.style.display = 'block';
           formSeriada.style.display = 'none';
-          // 이전 Obra 폼의 데이터를 Libro 폼에 복사
           copyData(formObra, formLibro);
         });
         dropdownContent.children[1].addEventListener('click', function() {
           formSeriada.style.display = 'block';
           formLibro.style.display = 'none';
-          // 이전 Obra 폼의 데이터를 PubSeriada 폼에 복사
-          copyData(formObra, formSeriada);
         });
         document.addEventListener('click', function() {
           dropdownContent.style.display = 'none';
         });
       };
-      // 한 폼에서 다른 폼으로 데이터를 복사하는 함수
       function copyData(fromForm, toForm) {
         var fromInputs = fromForm.querySelectorAll('input');
         var toInputs = toForm.querySelectorAll('input');
@@ -239,16 +246,66 @@
           });
         });
       }
-	  
-	    document.addEventListener('DOMContentLoaded', (event) => {
-    let logoutButton = document.querySelector('.button-primary[data-wf-user-logout="Cerrar sesión"]');
-    if (logoutButton) {
-      logoutButton.addEventListener('click', () => {
-        window.location.href = '/login';
+      document.addEventListener('DOMContentLoaded', (event) => {
+        let logoutButton = document.querySelector('.button-primary[data-wf-user-logout="Cerrar sesión"]');
+        if (logoutButton) {
+          logoutButton.addEventListener('click', () => {
+            window.location.href = '/login';
+          });
+        }
       });
+	  document.getElementById('botonLimpiar').addEventListener('click', function() {
+  var inputs = document.getElementsByTagName('input');
+  for (var i = 0; i < inputs.length; i++) {
+    switch (inputs[i].type) {
+      case 'text':
+      case 'number':
+	  case 'date':
+      case 'checkbox':
+        inputs[i].value = '';
+        inputs[i].checked = false;
+        break;
     }
-  });
+  }
+});
 
+  function sortTable(n) {
+      var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+      table = document.getElementById("tabla");
+      switching = true;
+      dir = "asc"; 
+
+      while (switching) {
+        switching = false;
+        rows = table.rows;
+        for (i = 1; i < (rows.length - 1); i++) {
+          shouldSwitch = false;
+          x = rows[i].getElementsByTagName("TD")[n];
+          y = rows[i + 1].getElementsByTagName("TD")[n];
+          if (dir == "asc") {
+            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+              shouldSwitch= true;
+              break;
+            }
+          } else if (dir == "desc") {
+            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+              shouldSwitch = true;
+              break;
+            }
+          }
+        }
+        if (shouldSwitch) {
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+          switchcount ++;      
+        } else {
+          if (switchcount == 0 && dir == "asc") {
+            dir = "desc";
+            switching = true;
+          }
+        }
+      }
+    }
     </script>
   </body>
 </html>

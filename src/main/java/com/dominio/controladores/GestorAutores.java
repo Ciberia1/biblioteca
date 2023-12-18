@@ -95,7 +95,7 @@ public class GestorAutores {
 	}
 
 	@GetMapping( "/author/{id}")
-	public String getAuthorBooks(@PathVariable("id") Long id, Model model) {
+	public String getLibrosDelAutor(@PathVariable("id") Long id, Model model) {
 		Autor autor = autorDAO.getById(id);
 		Set<Libro> libros = autor.getLibros();
 
