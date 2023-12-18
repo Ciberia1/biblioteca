@@ -5,6 +5,7 @@ on:
       - develop
       - testing
       - release
+      - calidad
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
