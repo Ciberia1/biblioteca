@@ -176,7 +176,7 @@
         </div>
         <div class="dni-field">
           <label for="dni">Introduce tu DNI: </label>
-          <input type="text" id="dni" name="dni">
+			<input type="text" id="dni" required="" name="dni" value="">
         </div>
       </div>
       <form id="ejemplarForm" th:object="${ejemplares}" th:action="@{/actualizarEjemplares}" method="post">
@@ -207,7 +207,11 @@
     </div>
     <script>
       function prestar(ejemplarID) {
-        var dni = document.getElementById('dni').value;
+  var dni = document.getElementById('dni').value;
+		if (dni === "") {
+			alert('Por favor, introduce tu DNI');
+			return;
+		  }
         fetch('/prestarEjemplar', {
           method: 'POST',
           headers: {
@@ -235,6 +239,10 @@
 
 function reservar(ejemplarID) {
   var dni = document.getElementById('dni').value;
+  		if (dni === "") {
+			alert('Por favor, introduce tu DNI');
+			return;
+		  }
   fetch('/reservarEjemplar', {
     method: 'POST',
     headers: {
@@ -262,6 +270,10 @@ function reservar(ejemplarID) {
 
 function devolver(ejemplarID) {
   var dni = document.getElementById('dni').value;
+  		if (dni === "") {
+			alert('Por favor, introduce tu DNI');
+			return;
+		  }
   fetch('/devolverEjemplar', {
     method: 'POST',
     headers: {

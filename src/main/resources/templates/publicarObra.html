@@ -230,6 +230,7 @@
         dropdownContent.children[1].addEventListener('click', function() {
           formSeriada.style.display = 'block';
           formLibro.style.display = 'none';
+		  copyData(formObra, formSeriada);
         });
         document.addEventListener('click', function() {
           dropdownContent.style.display = 'none';
