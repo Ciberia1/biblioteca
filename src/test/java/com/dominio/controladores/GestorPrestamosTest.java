@@ -70,7 +70,7 @@ class GestorPrestamosTest {
 	
 	
 	@Test
-	public void testPrestarEjemplar_CP1() {
+	void testPrestarEjemplar_CP1() {
 	    // Configura los datos de prueba
 	    Usuario usuario = new Usuario(new HashSet<Prestamo>(), new HashSet<Reserva>(), "55154299T", "Nombre", "Apellidos", null, 9, "Rol", "Contraseña");
 	    Ejemplar ejemplar = new Ejemplar();
@@ -95,7 +95,7 @@ class GestorPrestamosTest {
 
 
 	@Test
-	public void testAltaEjemplar_CP2() {
+	void testAltaEjemplar_CP2() {
 	    // Configura los datos de prueba
 	    Ejemplar Ejemplar = new Ejemplar(Long.parseLong("99999"), null, null, null, "Disponible");
 	    Ejemplar ejemplar2 = new Ejemplar(Long.parseLong("72991"), null, null, null, "Disponible");
@@ -126,7 +126,7 @@ class GestorPrestamosTest {
 	}
 	
 	@Test
-	public void testReservarAlta_CP3() {
+	void testReservarAlta_CP3() {
 
 	    Usuario usuario = new Usuario(new HashSet<Prestamo>(), new HashSet<Reserva>(), "111111Z", "Nombre", "Apellidos", new Date(1044, 10, 11), 10+11, "Rol", "Contraseña");
 
@@ -145,7 +145,7 @@ class GestorPrestamosTest {
 	}
 	
 	@Test
-	public void testAltaEjemplar_CP4() {
+	void testAltaEjemplar_CP4() {
 	    // Configura los datos de prueba
 	    Ejemplar Ejemplar = new Ejemplar(Long.parseLong("72991"), null, null, null, "Disponible");
 	    Ejemplar Ejemplar2 = new Ejemplar(Long.parseLong("9999"), null, null, null, "Disponible");
@@ -174,7 +174,7 @@ class GestorPrestamosTest {
 	}
 	
 	@Test
-    public void testAltaEjemplar_CP5() {
+    void testAltaEjemplar_CP5() {
         // Configura los datos de prueba
         Usuario usuario = new Usuario(new HashSet<Prestamo>(), new HashSet<Reserva>(), "08633642V", "Nombre", "Apellidos", null, 10, "Rol", "Contraseña");
         Ejemplar ejemplar = new Ejemplar(); // Asegúrate de inicializar el ejemplar correctamente
@@ -195,7 +195,7 @@ class GestorPrestamosTest {
     }
 	
 	@Test
-    public void testAltaEjemplar_CP6() {
+    void testAltaEjemplar_CP6() {
         // Configura los datos de prueba
         Usuario usuario = new Usuario(null, null, "55154299T", "Nombre", "Apellidos", null, -9, "Rol", "Contraseña");
         Ejemplar ejemplar = new Ejemplar(); // Asegúrate de inicializar el ejemplar correctamente
@@ -217,7 +217,7 @@ class GestorPrestamosTest {
 	
 
 	@Test
-	public void testRealizarDevolucion_CP0() {
+	void testRealizarDevolucion_CP0() {
 	    // Configura los datos de prueba
 	    Ejemplar ejemplar = new Ejemplar(Long.parseLong("72991"), null, null, null, "Disponible");
 
@@ -244,7 +244,7 @@ class GestorPrestamosTest {
 
 	
 	@Test
-	public void testRealizarDevolucion_CP1() {
+	void testRealizarDevolucion_CP1() {
 	    // Configura los datos de prueba
 	    Usuario usuario = new Usuario(new HashSet<Prestamo>(), new HashSet<Reserva>(), "55154299T", "Nombre", "Apellidos", new Date(2024, 0, 11), 1, "Rol", "Contraseña");
 	    Ejemplar ejemplar = new Ejemplar(); // Asegúrate de inicializar el ejemplar correctamente
@@ -268,7 +268,7 @@ class GestorPrestamosTest {
 	
 
 	@Test
-	public void testRealizarDevolucion_CP2() {
+	void testRealizarDevolucion_CP2() {
 	    // Configura los datos de prueba
 	    Ejemplar ejemplar = new Ejemplar(Long.parseLong("72991"), null, null, null, "Prestado");
 	    when(ejemplarDAO.findById(Long.parseLong("72991"))).thenReturn(Optional.of(ejemplar));
@@ -299,7 +299,7 @@ class GestorPrestamosTest {
 	
 
 	@Test
-	public void testRealizarDevolucion_CP3() {
+	void testRealizarDevolucion_CP3() {
 	    Usuario usuario = new Usuario(null, new HashSet<Reserva>(), "111111Z", "Nombre", "Apellidos", new Date(), 10+11, "Rol", "Contraseña");
 
 	    when(usuarioDAO.findByDni("111111Z")).thenReturn(usuario);
@@ -317,7 +317,7 @@ class GestorPrestamosTest {
 	}
 	
 	@Test
-	public void testRealizarDevolucion_CP4() {
+	void testRealizarDevolucion_CP4() {
 	    // Configura los datos de prueba
 	    Ejemplar ejemplar = new Ejemplar(Long.parseLong("72991"), null, null, null, "Prestado");
         when(ejemplarDAO.findById(Long.parseLong("72991"))).thenReturn(Optional.of(ejemplar));
@@ -344,7 +344,7 @@ class GestorPrestamosTest {
 	
 	
 	@Test
-	public void testRealizarDevolucion_CP5() {
+	void testRealizarDevolucion_CP5() {
 	    // Configura los datos de prueba
 	    Ejemplar Ejemplar = new Ejemplar(Long.parseLong("72991"), null, null, null, "Disponible");
 	    Ejemplar Ejemplar2 = new Ejemplar(Long.parseLong("9999"), null, null, null, "Disponible");
@@ -369,7 +369,7 @@ class GestorPrestamosTest {
 	}
 	
 	@Test
-    public void testRealizarDevolucion_CP6() {
+    void testRealizarDevolucion_CP6() {
 		Ejemplar ejemplar = new Ejemplar(Long.parseLong("72991"), null, null, null, "Prestado");
         when(ejemplarDAO.findById(Long.parseLong("72991"))).thenReturn(Optional.of(ejemplar));
 
@@ -398,7 +398,7 @@ class GestorPrestamosTest {
 
 
 	@Test
-    public void testReservarEjemplar_CP1() {
+    void testReservarEjemplar_CP1() {
         // Configura los datos de prueba
         Usuario usuario = new Usuario(new HashSet<>(), new HashSet<>(), "55154299T", "Nombre", "Apellidos", null, 10, "Rol", "Contraseña");
         Ejemplar ejemplar = new Ejemplar(); // Asegúrate de inicializar el ejemplar correctamente
@@ -419,7 +419,7 @@ class GestorPrestamosTest {
     }
 	
 	@Test
-	public void testReservarEjemplar_CP2() {
+	void testReservarEjemplar_CP2() {
 	    // Configura los datos de prueba
 	    Ejemplar Ejemplar = new Ejemplar(Long.parseLong("99999"), null, null, null, "Disponible");
 	    Ejemplar ejemplar2 = new Ejemplar(Long.parseLong("72991"), null, null, null, "Disponible");
@@ -450,7 +450,7 @@ class GestorPrestamosTest {
 	}
 
 	@Test
-	public void testReservarEjemplar_CP3() {
+	void testReservarEjemplar_CP3() {
 	    Usuario usuario = new Usuario(new HashSet<Prestamo>(), new HashSet<Reserva>(), "111111Z", "Nombre", "Apellidos", null, 0, "Rol", "Contraseña");
 
 	    when(usuarioDAO.findByDni("111111Z")).thenReturn(usuario);
@@ -468,7 +468,7 @@ class GestorPrestamosTest {
 	}
 	
 	@Test
-	public void testReservarEjemplar_CP4() {
+	void testReservarEjemplar_CP4() {
 	    // Configura los datos de prueba
 	    Ejemplar Ejemplar = new Ejemplar(Long.parseLong("72991"), null, null, null, "Disponible");
 	    Ejemplar Ejemplar2 = new Ejemplar(Long.parseLong("9999"), null, null, null, "Disponible");
@@ -497,7 +497,7 @@ class GestorPrestamosTest {
 	}
 
 	@Test
-    public void testReservarEjemplar_CP5() {
+    void testReservarEjemplar_CP5() {
         // Configura los datos de prueba
         Usuario usuario = new Usuario(new HashSet<Prestamo>(), new HashSet<Reserva>(), "08633642V", "Nombre", "Apellidos", null, 10, "Rol", "Contraseña");
         Ejemplar ejemplar = new Ejemplar(); // Asegúrate de inicializar el ejemplar correctamente
@@ -518,7 +518,7 @@ class GestorPrestamosTest {
     }
 	
 	@Test
-    public void testReservarEjemplar_CP6() {
+    void testReservarEjemplar_CP6() {
         // Configura los datos de prueba
         Usuario usuario = new Usuario(null, null, "55154299T", "Nombre", "Apellidos", null, 10, "Rol", "Contraseña");
         Ejemplar ejemplar = new Ejemplar(); // Asegúrate de inicializar el ejemplar correctamente

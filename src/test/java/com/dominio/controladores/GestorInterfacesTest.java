@@ -72,7 +72,7 @@ import com.persistencia.UsuarioDAO;
 	}
 	
 	@Test
-	public void testFormularioLogin() {
+	void testFormularioLogin() {
 	    Model model = mock(Model.class);
 	    when(model.addAttribute(anyString(), any())).thenReturn(model);
 
@@ -83,7 +83,7 @@ import com.persistencia.UsuarioDAO;
 	}
 
 	@Test
-	public void testEnviarFormularioLogin_UsuarioInexistente() {
+	void testEnviarFormularioLogin_UsuarioInexistente() {
 	    Usuario usuario = new Usuario();
 	    usuario.setDni("1234");
 	    RedirectAttributes redirectAttributes = mock(RedirectAttributes.class);
@@ -96,7 +96,7 @@ import com.persistencia.UsuarioDAO;
 	}
 
 	@Test
-	public void testEnviarFormularioLogin_ContrasenaIncorrecta() {
+	void testEnviarFormularioLogin_ContrasenaIncorrecta() {
 	    Usuario usuario = new Usuario();
 	    usuario.setDni("1234");
 	    usuario.setContrasena("contrasenaIncorrecta");
@@ -114,7 +114,7 @@ import com.persistencia.UsuarioDAO;
 	}
 
 	@Test
-	public void testEnviarFormularioLogin_Correcto() {
+	void testEnviarFormularioLogin_Correcto() {
 	    Usuario usuario = new Usuario();
 	    usuario.setDni("1234");
 	    usuario.setContrasena("contrasenaCorrecta");
@@ -132,7 +132,7 @@ import com.persistencia.UsuarioDAO;
 	}
 
 	@Test
-	public void testEnviarFormularioLogin_CorrectoCliente() {
+	void testEnviarFormularioLogin_CorrectoCliente() {
 	    Usuario usuario = new Usuario();
 	    usuario.setDni("1234");
 	    usuario.setContrasena("contrasenaCorrecta");
@@ -150,21 +150,21 @@ import com.persistencia.UsuarioDAO;
 	}
 
 	@Test
-	public void testMenuInicio() {
+	void testMenuInicio() {
 	    Model model = mock(Model.class);
 	    String result = gestorInterfaces.menuInicio(model);
 	    assertEquals("inicio", result);
 	}
 
 	@Test
-	public void testMenuInicioCliente() {
+	void testMenuInicioCliente() {
 	    Model model = mock(Model.class);
 	    String result = gestorInterfaces.menuInicioCliente(model);
 	    assertEquals("inicioCliente", result);
 	}
 
 	@Test
-	public void testGetAutores() {
+	void testGetAutores() {
 	    Model model = mock(Model.class);
 	    when(model.addAttribute(anyString(), any(Autor.class))).thenReturn(model);
 	    String result = gestorInterfaces.getAutores(model);
@@ -173,7 +173,7 @@ import com.persistencia.UsuarioDAO;
 	}
 
 	@Test
-	public void testGetObrasAutores() {
+	void testGetObrasAutores() {
 	    Model model = mock(Model.class);
 	    when(autorDAO.findAll()).thenReturn(new ArrayList<Autor>());
 	    String result = gestorInterfaces.getObrasAutores(model);
@@ -182,7 +182,7 @@ import com.persistencia.UsuarioDAO;
 	}
 
 	@Test
-	public void testGetRelacionObrasAutores() {
+	void testGetRelacionObrasAutores() {
 	    Model model = mock(Model.class);
 	    when(autorDAO.findAll()).thenReturn(new ArrayList<Autor>());
 	    when(libroDAO.findAll()).thenReturn(new ArrayList<Libro>());
@@ -204,7 +204,7 @@ import com.persistencia.UsuarioDAO;
 	}
 
 	@Test
-	public void testGetAutor() {
+	void testGetAutor() {
 	    Model model = mock(Model.class);
 	    when(autorDAO.findAll()).thenReturn(new ArrayList<Autor>());
 
@@ -215,7 +215,7 @@ import com.persistencia.UsuarioDAO;
 	}
 
 	@Test
-	public void testGetEjemplar() {
+	void testGetEjemplar() {
 	    Model model = mock(Model.class);
 	    when(ejemplarDAO.findAll()).thenReturn(new ArrayList<Ejemplar>());
 
@@ -226,7 +226,7 @@ import com.persistencia.UsuarioDAO;
 	}
 
 	@Test
-	public void testGetEjemplaresObras() {
+	void testGetEjemplaresObras() {
 	    Model model = mock(Model.class);
 	    when(obraDAO.findAll()).thenReturn(new ArrayList<Obra>());
 
@@ -237,7 +237,7 @@ import com.persistencia.UsuarioDAO;
 	}
 
 	@Test
-	public void testGetOperacionesEjemplar() {
+	void testGetOperacionesEjemplar() {
 	    Model model = mock(Model.class);
 	    when(ejemplarDAO.findAll()).thenReturn(new ArrayList<Ejemplar>());
 
