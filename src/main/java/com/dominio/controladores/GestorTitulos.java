@@ -127,8 +127,10 @@ public class GestorTitulos {
 	public String actualizarObras(@RequestBody List<ObraWrapper> obrasWrapper) {
 		for (ObraWrapper obraWrapper : obrasWrapper) {
 			if (obraWrapper.isEsLibro()) {
-				Libro libro = libroDAO.findById(obraWrapper.getId()).get();
-
+	            Optional<Libro> libroOpt = libroDAO.findById(obraWrapper.getId());
+	            if (libroOpt.isPresent()) {
+	                Libro libro = libroOpt.get();
+				
 				if (!obraWrapper.getEdicion().equals("-")) {
 					libro.setEdicion(obraWrapper.getEdicion());
 				}
@@ -151,10 +153,12 @@ public class GestorTitulos {
 				libro.setTitulo(obraWrapper.getTitulo());
 
 				libroDAO.save(libro);
-
+	            }
 			} else {
-				PubSeriadas pubSeriada = pubSeriadaDAO.findById(obraWrapper.getId()).get();
-
+				 Optional<PubSeriadas> pubSeriadaOpt = pubSeriadaDAO.findById(obraWrapper.getId());
+		            if (pubSeriadaOpt.isPresent()) {
+		                PubSeriadas pubSeriada = pubSeriadaOpt.get();
+					
 				if (!obraWrapper.getIssn().equals("-")) {
 					pubSeriada.setIssn(obraWrapper.getIssn());
 				}
@@ -173,7 +177,7 @@ public class GestorTitulos {
 				pubSeriada.setTitulo(obraWrapper.getTitulo());
 				pubSeriadaDAO.save(pubSeriada);
 			}
-		}
+		}}
 		return rutaGestion;
 	}
 

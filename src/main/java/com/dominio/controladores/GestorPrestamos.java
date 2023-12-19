@@ -60,7 +60,7 @@ public class GestorPrestamos {
 			return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
 		}
 
-		if (!esNumero(ejemplarID) || ejemplarID == null || ejemplarOpt == null) {
+		if (!esNumero(ejemplarID) || ejemplarID == null || !ejemplarOpt.isPresent()) {
 			return new ResponseEntity<>("El número de ejemplar introducido no es correcto", HttpStatus.CONFLICT);
 		}
 
@@ -144,7 +144,7 @@ public class GestorPrestamos {
 			return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
 		}
 
-		if (!esNumero(ejemplarID) || ejemplarID == null || ejemplarOpt == null||!ejemplarOpt.isPresent()) {
+		if (!esNumero(ejemplarID) || ejemplarID == null || !ejemplarOpt.isPresent()) {
 			return new ResponseEntity<>("Ejemplar no encontrado", HttpStatus.NOT_FOUND);
 		}
 
@@ -229,7 +229,7 @@ public class GestorPrestamos {
 			return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
 		}
 
-		if (!esNumero(ejemplarID) || ejemplarID == null || ejemplarOpt == null) {
+		if (!esNumero(ejemplarID) || ejemplarID == null || !ejemplarOpt.isPresent()) {
 			return new ResponseEntity<>("El número de ejemplar introducido no es correcto", HttpStatus.CONFLICT);
 		}
 
