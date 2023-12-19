@@ -70,9 +70,12 @@ public class GestorInterfaces {
 			redirectAttributes.addAttribute("error", "invalid");
 			return "redirect:/login";
 		}
-
+		
+		if(usuarioExistente.getRol().equals("Administrador")) {
+			return "redirect:/inicio";
+		}
 		// Código para manejar la información de inicio de sesión enviada...
-		return "redirect:/inicio"; // Redirige a inicio.html si los datos de inicio de sesión son correctos
+		return "redirect:/inicioCliente"; // Redirige a inicio.html si los datos de inicio de sesión son correctos
 	}
 
 /**
@@ -85,8 +88,21 @@ public class GestorInterfaces {
  */
 	@GetMapping("/inicio")
 	public String menuInicio(Model modelo) {
-		modelo.addAttribute("usuario", new Usuario());
 		return "inicio";
+	}
+	
+	/**
+	 * La función "Menú Inicio Cliente " devuelve la cadena "inicioCliente" y agrega un nuevo objeto "Usuario" al modelo.
+	 * 
+	 * @param modelo El parámetro "modelo" es de tipo Model, que es una clase proporcionada por Spring
+	 * Framework. Se utiliza para pasar datos entre el controlador y la vista. En este caso, el objeto
+	 * "modelo" se utiliza para agregar al modelo un atributo llamado "usuario", que es una instancia
+	 * @return El método devuelve una cadena "inicio".
+	 */
+	
+	@GetMapping("/inicioCliente")
+	public String menuInicioCliente(Model modelo) {
+		return "inicioCliente";
 	}
 
 /**
@@ -175,19 +191,6 @@ public class GestorInterfaces {
 		return "gestionAutor";
 	}
 
-/**
- * La función utiliza la anotación @Autowired para inyectar una instancia de la clase EjemplarDAO en la
- * clase EjemplarController.
- * 
- * @param ejemplarDAO El parámetro ejemplarDAO es una instancia de la clase EjemplarDAO. Se inyecta en
- * la clase EjemplarController utilizando la anotación @Autowired. Esto significa que la instancia
- * ejemplarDAO se crea automáticamente y se proporciona a la clase EjemplarController mediante el marco
- * Spring.
- */
-	@Autowired
-	public void EjemplarController(EjemplarDAO ejemplarDAO) {
-		this.ejemplarDAO = ejemplarDAO;
-	}
 
 /**
  * Esta función de Java recupera una lista de objetos "Ejemplar" de una base de datos y los agrega al
@@ -206,8 +209,8 @@ public class GestorInterfaces {
 	}
 
 /**
- * La función "getExampleWorks" recupera una lista de trabajos y los agrega al modelo, luego devuelve
- * la vista "publishExample"
+ * La función "getEjemplaresObras" recupera una lista de trabajos y los agrega al modelo, luego devuelve
+ * la vista "operacionEjemplar"
  * 
  * @param model El objeto modelo se utiliza para pasar datos entre el controlador y la vista. En este
  * caso se utiliza para agregar los atributos "ejemplar" y "obras" al modelo.
@@ -222,5 +225,10 @@ public class GestorInterfaces {
 		model.addAttribute("obras", obras);
 		return "publicarEjemplar";
 	}
-
+	@GetMapping("/operacionEjemplar")
+	public String getOperacionesEjemplar(Model model) {
+		List<Ejemplar> ejemplar = ejemplarDAO.findAll();
+		model.addAttribute("ejemplares", ejemplar);
+		return "operacionEjemplar"; // Nombre del archivo HTML "gestion.html"
+	}
 }

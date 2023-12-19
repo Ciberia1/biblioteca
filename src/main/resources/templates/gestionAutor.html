@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html data-wf-domain="biblioteca-6acf80.webflow.io" data-wf-page="65365511e38c758ed167644a" data-wf-site="65365511e38c758ed1676401">
+<html data-wf-domain="biblioteca-6acf80.webflow.io" data-wf-page="65365511e38c758ed167644a" data-wf-site="65365511e38c758ed1676401" lang="es" xml:lang="es">
   <head>
     <meta charset="utf-8" />
     <html xmlns:th="http://www.thymeleaf.org">
@@ -199,9 +199,7 @@
               <input type="text" th:value="${autor.biografia}" name="biografia" />
             </td>
             <td>
-              <span th:each="libro : ${autor.libros}">
-                <p th:text="${libro.titulo}"></p>
-              </span>
+				<a th:href="@{/author/{id}(id=${autor.id})}" target="_blank">Ver libros escritos por el autor</a>
             <td>
               <input type="checkbox" th:value="${autor.Id}" th:name="id" />
             </td>
@@ -247,6 +245,16 @@
           });
         });
       }
+	    document.addEventListener('DOMContentLoaded', (event) => {
+    let logoutButton = document.querySelector('.button-primary[data-wf-user-logout="Cerrar sesión"]');
+    if (logoutButton) {
+      logoutButton.addEventListener('click', () => {
+        window.location.href = '/login';
+      });
+    }
+  });
+
+
     </script>
   </body>
 </html>
