@@ -178,7 +178,7 @@ class ObraWrapperTest {
 	}
 	
 	@Test
-	public final void testSetedicion() {
+	final void testSetedicion() {
 		String edicion = "Tercera";
 		obraWrapper.setEdicion(edicion);
 		assertEquals(edicion, obraWrapper.getEdicion());

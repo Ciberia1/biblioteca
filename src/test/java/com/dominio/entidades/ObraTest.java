@@ -104,7 +104,7 @@ class ObraTest {
 	}
 	
 	@Test
-	public final void testSetid() {
+	final void testSetid() {
 		long id = (long) 13;
 		obra.setId(id);
 		assertEquals(id, obra.getId());

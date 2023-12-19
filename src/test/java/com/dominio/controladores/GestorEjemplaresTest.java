@@ -48,7 +48,7 @@ class GestorEjemplaresTest {
 
 
     @Test
-    public void testAltaEjemplar() throws InterruptedException {
+    void testAltaEjemplar() throws InterruptedException {
         Obra obra = new Obra();
         RedirectAttributes redirectAttributes = mock(RedirectAttributes.class);
         when(obraDAO.findById(anyLong())).thenReturn(java.util.Optional.of(obra));
@@ -60,7 +60,7 @@ class GestorEjemplaresTest {
     }
 
     @Test
-    public void testBajaEjemplar() {
+    void testBajaEjemplar() {
         Map<String, List<Long>> data = new HashMap<>();
         data.put("id", Arrays.asList(1L, 2L));
 

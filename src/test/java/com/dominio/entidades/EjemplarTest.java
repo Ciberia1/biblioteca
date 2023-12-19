@@ -1,7 +1,6 @@
 package com.dominio.entidades;
 
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -54,7 +53,7 @@ class EjemplarTest {
 	@Test
 	final void testEjemplar() throws Exception {
 		Ejemplar ejemplar1 = new Ejemplar(23L, obra ,reservado, prestado ,"Disponible");
-		assertTrue(ejemplar1.getEstado().equals(ejemplar.getEstado()));
+		assertEquals(ejemplar1.getEstado(),ejemplar.getEstado());
 	}
 	
 	@Test
@@ -70,7 +69,7 @@ class EjemplarTest {
 	}
 	
 	@Test
-	public final void testGetobra() throws Exception {
+	final void testGetobra() throws Exception {
 		Obra obraSelecionada = ejemplar.getObra();
 		assertEquals(obra,obraSelecionada);
 	}

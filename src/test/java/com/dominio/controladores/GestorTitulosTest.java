@@ -70,7 +70,7 @@ class GestorTitulosTest {
 	}
 
 	@Test
-	public void testAltaObraLibro() throws InterruptedException {
+	void testAltaObraLibro() throws InterruptedException {
 	    Libro libro = new Libro( new HashSet<>(), "Editorial Prueba", "Edición Prueba", "ISBN Prueba", "Encuadernacion Prueba");
 	    libro.setId(1L);
 
@@ -103,7 +103,7 @@ class GestorTitulosTest {
 
 	
 	@Test
-	public void testAltaObraPubSeriada() throws InterruptedException {
+	void testAltaObraPubSeriada() throws InterruptedException {
 
 	    PubSeriadas pubseriada = new PubSeriadas("ISBN Prueba", "Vocento", "Periódico", "Diario");
 	    pubseriada.setId(1L);
@@ -138,7 +138,7 @@ class GestorTitulosTest {
 
 
 	@Test
-	public void testActualizarObras_Libros() {
+	void testActualizarObras_Libros() {
 	    List<ObraWrapper> obrasWrapper = new ArrayList<>();
 	    ObraWrapper obraWrapper = new ObraWrapper();
 	    obraWrapper.setEsLibro(true);
@@ -160,7 +160,7 @@ class GestorTitulosTest {
 	}
 
 	@Test
-	public void testActualizarObras_PubSeriadas() {
+	void testActualizarObras_PubSeriadas() {
 	    List<ObraWrapper> obrasWrapper = new ArrayList<>();
 	    ObraWrapper obraWrapper = new ObraWrapper();
 	    obraWrapper.setEsLibro(false);
@@ -184,7 +184,7 @@ class GestorTitulosTest {
 
 
 	@Test
-	public void testBorrarObras() {
+	void testBorrarObras() {
 		Map<String, List<Long>> data = new HashMap<>();
 		data.put("id", Arrays.asList(1L, 2L));
 

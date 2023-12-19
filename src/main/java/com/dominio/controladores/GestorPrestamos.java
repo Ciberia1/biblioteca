@@ -50,7 +50,7 @@ public class GestorPrestamos {
 		String dni = body.get("dni");
 		String ejemplarID = body.get("ejemplarID");
 		Usuario usuario = usuarioDAO.findByDni(dni);
-		if (!validarDNI(dni) || dni == null) {
+		if (dni == null || !validarDNI(dni)) {
 			return new ResponseEntity<>("El DNI introducido no es correcto", HttpStatus.CONFLICT);
 		}
 
@@ -60,7 +60,7 @@ public class GestorPrestamos {
 			return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
 		}
 
-		if (!esNumero(ejemplarID) || ejemplarID == null || ejemplarOpt == null) {
+		if (!esNumero(ejemplarID) || ejemplarID == null || !ejemplarOpt.isPresent()) {
 			return new ResponseEntity<>("El número de ejemplar introducido no es correcto", HttpStatus.CONFLICT);
 		}
 
@@ -79,12 +79,9 @@ public class GestorPrestamos {
 			return new ResponseEntity<>("El usuario tiene el cupo completo",
 					HttpStatus.FORBIDDEN);
 		}
-		
-		if(usuario.getFechaFinPen()!=null) {
-			if(usuario.getFechaFinPen().after(new Date())){
-				return new ResponseEntity<>("El usuario tiene penalizaciones pendientes.",
-						HttpStatus.FORBIDDEN);
-			}
+
+		if (usuario.getFechaFinPen() != null && usuario.getFechaFinPen().after(new Date())) {
+		    return new ResponseEntity<>("El usuario tiene penalizaciones pendientes.", HttpStatus.FORBIDDEN);
 		}
 
 		// Crea un nuevo préstamo
@@ -137,7 +134,7 @@ public class GestorPrestamos {
 		String dni = body.get("dni");
 		String ejemplarID = body.get("ejemplarID");
 		Usuario usuario = usuarioDAO.findByDni(dni);
-		if (!validarDNI(dni) || dni == null) {
+		if (dni == null || !validarDNI(dni)) {
 			return new ResponseEntity<>("El DNI del usuario no es correcto", HttpStatus.CONFLICT);
 		}
 
@@ -147,7 +144,7 @@ public class GestorPrestamos {
 			return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
 		}
 
-		if (!esNumero(ejemplarID) || ejemplarID == null || ejemplarOpt == null||!ejemplarOpt.isPresent()) {
+		if (!esNumero(ejemplarID) || ejemplarID == null || !ejemplarOpt.isPresent()) {
 			return new ResponseEntity<>("Ejemplar no encontrado", HttpStatus.NOT_FOUND);
 		}
 
@@ -174,7 +171,7 @@ public class GestorPrestamos {
 		}
 
 		// Actualizar el préstamo
-		if(prestamo.getActivo()==false) {
+		if(!prestamo.getActivo()) {
 			return new ResponseEntity<>("No se ha podido devolver la obra debido a que el préstamo ya no está activo",
 					HttpStatus.CONFLICT);
 		}
@@ -221,7 +218,7 @@ public class GestorPrestamos {
 		String dni = body.get("dni");
 		String ejemplarID = body.get("ejemplarID");
 
-		if (!validarDNI(dni) || dni == null) {
+		if (dni == null || !validarDNI(dni)) {
 			return new ResponseEntity<>("El DNI introducido no es correcto", HttpStatus.CONFLICT);
 		}
 
@@ -232,7 +229,7 @@ public class GestorPrestamos {
 			return new ResponseEntity<>("Usuario no encontrado", HttpStatus.NOT_FOUND);
 		}
 
-		if (!esNumero(ejemplarID) || ejemplarID == null || ejemplarOpt == null) {
+		if (!esNumero(ejemplarID) || ejemplarID == null || !ejemplarOpt.isPresent()) {
 			return new ResponseEntity<>("El número de ejemplar introducido no es correcto", HttpStatus.CONFLICT);
 		}
 
@@ -265,6 +262,10 @@ public class GestorPrestamos {
 					return new ResponseEntity<>("El usuario ya ha reservado este ejemplar", HttpStatus.CONFLICT);
 				}
 			}
+		}
+
+		if (usuario.getFechaFinPen() != null && usuario.getFechaFinPen().after(new Date())) {
+		    return new ResponseEntity<>("El usuario tiene penalizaciones pendientes.", HttpStatus.FORBIDDEN);
 		}
 
 		Reserva reserva = new Reserva();
