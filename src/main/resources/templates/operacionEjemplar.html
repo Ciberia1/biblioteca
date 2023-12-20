@@ -2,8 +2,8 @@
 <html data-wf-domain="biblioteca-6acf80.webflow.io" data-wf-page="65365511e38c758ed167644a" data-wf-site="65365511e38c758ed1676401" lang="es" xml:lang="es">
   <head>
     <meta charset="utf-8" />
-    <title>Gestion de ejemplares del catálogo</title>
-    <html>
+		<title>Operaciones de ejemplares del catálogo</title>
+    <html xmlns:th="http://www.thymeleaf.org">
       <link href="css/biblioteca-6acf80.webflow.7c7b1dc28.css" rel="stylesheet" type="text/css" />
       <script type="text/javascript">
         WebFont.load({
@@ -15,6 +15,54 @@
       <link href="img/65365511e38c758ed16764bc_Favicon.svg" rel="shortcut icon" type="image/x-icon" />
       <link href="img/65365511e38c758ed16764bd_Webclip.svg" rel="apple-touch-icon" />
       <style>
+        .action-button {
+          margin: 5px;
+          padding: 5px 20px;
+          border: none;
+          border-radius: 3px;
+          color: white;
+          cursor: pointer;
+          width: 100px;
+        }
+
+        .dni-field {
+          display: flex;
+          justify-content: space-around;
+          /* Aquí he cambiado de 'center' a 'space-around' */
+          align-items: center;
+          width: 100%;
+          margin-bottom: 3em;
+          margin-top: 2em;
+        }
+
+        .dni-field label {
+          font-size: 24px;
+          white-space: nowrap;
+          margin-right: 1em;
+        }
+
+        .dni-field input {
+          font-size: 22px;
+          width: 300px;
+        }
+
+        .action-button:disabled {
+          background-color: #cccccc;
+          cursor: not-allowed;
+        }
+
+        .devolver-button {
+          background-color: #ff0000;
+        }
+
+        .prestar-button {
+          background-color: #008000;
+        }
+
+        .reservar-button {
+          background-color: #0000ff;
+        }
+
         * {
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
@@ -37,10 +85,12 @@
 
         .title-wrap-center-large {
           margin-bottom: 0px;
+          /* Cambia este valor según lo necesites */
         }
 
         .boton-guardar-cambios {
           margin-top: 20px;
+          /* Ajusta este valor según lo que necesites */
         }
 
         .container-navigation {
@@ -68,9 +118,9 @@
         td {
           border: 1px solid #ddd;
           padding: 4px;
-          text-align: left;
-          font-size: 0.8em;
-          line-height: 1.2em;
+		text-align: left;
+		font-size: 0.8em;  
+		line-height: 1.2em;
         }
 
         tr:nth-child(even) {
@@ -95,7 +145,7 @@
     <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
       <div class="container-navigation">
         <div class="navigation-left">
-          <a href="/inicio" class="brand w-nav-brand">
+          <a href="/inicioCliente" class="brand w-nav-brand">
             <img src="img/65367f8a8d37ee8bd2045ee4_logo.png" loading="lazy" width="169" sizes="(max-width: 479px) 43vw, 169px" alt="" srcset="img/65367f8a8d37ee8bd2045ee4_logo-p-500.png 500w, img/65367f8a8d37ee8bd2045ee4_logo-p-800.png 800w, img/65367f8a8d37ee8bd2045ee4_logo-p-1080.png 1080w, img/65367f8a8d37ee8bd2045ee4_logo-p-1600.png 1600w, img/65367f8a8d37ee8bd2045ee4_logo.png 1832w" class="logo" />
           </a>
         </div>
@@ -117,29 +167,16 @@
       </div>
     </div>
     <div class="browse-header-section">
-      <div style="-webkit-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:1" class="container-x-small">
+      <div class="container-x-small">
         <div class="title-wrap-center-large">
           <div class="margin-bottom-16">
-            <h2>Gestionar ejemplares del catálogo <span class="text-color-primary"></span>
+            <h2>Operar ejemplares del catálogo <span class="text-color-primary"></span>
             </h2>
           </div>
         </div>
-        <div class="w-layout-grid"></div>
-        <div class="w-layout-grid grid" style="display: grid; grid-template-columns: repeat(2, 1fr); justify-items: center;">
-          <a id="w-node-_454d0c08-5123-3eed-1e40-3851377dd90b-d167644a" href="/publicarEjemplar" class="button-primary-right-icon w-inline-block">
-            <div>Añadir ejemplares</div>
-            <div class="icon-regular w-embed">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              </svg>
-            </div>
-          </a>
-          <a id="w-node-_6450deab-05ad-10ea-b710-85522e08d930-d167644a" href="/gestionEjemplar" class="button-primary-right-icon w-inline-block">
-            <div>Eliminar ejemplares</div>
-            <div class="icon-regular w-embed">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              </svg>
-            </div>
-          </a>
+        <div class="dni-field">
+          <label for="dni">Introduce tu DNI: </label>
+			<input type="text" id="dni" required="" name="dni" value="">
         </div>
       </div>
       <form id="ejemplarForm" th:object="${ejemplares}" th:action="@{/actualizarEjemplares}" method="post">
@@ -155,59 +192,122 @@
             </td>
             <td>
               <p th:text="${ejemplar.estado}"></p>
+            </td>
             <td>
               <p th:text="${ejemplar.obra.titulo}"></p>
             </td>
             <td>
-              <input type="checkbox" th:value="${ejemplar.ejemplarID}" th:name="ejemplarID" />
+              <button type="button" class="action-button devolver-button" th:onclick="'devolver(\'' + ${ejemplar.ejemplarID} + '\')'" th:disabled="${ejemplar.estado == 'Disponible'}">Devolver</button>
+              <button type="button" class="action-button prestar-button" th:onclick="'prestar(\'' + ${ejemplar.ejemplarID} + '\')'" th:disabled="${ejemplar.estado != 'Disponible'}">Prestar</button>
+              <button type="button" class="action-button reservar-button" th:onclick="'reservar(\'' + ${ejemplar.ejemplarID} + '\')'" th:disabled="${ejemplar.estado == 'Disponible'}">Reservar</button>
             </td>
           </tr>
         </table>
       </form>
     </div>
     <script>
-      window.onload = function() {
-        var buttons = document.querySelectorAll('.button-primary-right-icon');
-        buttons[1].addEventListener('click', function(e) {
-          e.preventDefault();
-          var tableRows = document.querySelectorAll('#ejemplarForm table tr');
-          var ejemplarIds = [];
-          for (var i = 1; i < tableRows.length; i++) {
-            var input = tableRows[i].querySelector('input[type="checkbox"]');
-            if (input.checked) {
-              ejemplarIds.push(Number(input.value));
-            }
+      function prestar(ejemplarID) {
+  var dni = document.getElementById('dni').value;
+		if (dni === "") {
+			alert('Por favor, introduce tu DNI');
+			return;
+		  }
+        fetch('/prestarEjemplar', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ejemplarID: ejemplarID,
+            dni: dni
+          }),
+        }).then(response => {
+          if (!response.ok) {
+            return response.text().then(text => {
+              throw new Error(text)
+            });
           }
-          var data = {
-            id: ejemplarIds
-          };
-          fetch('/borrarEjemplar', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-          }).then(function(response) {
-            if (response.ok) {
-              window.location.href = '/gestionEjemplar';
-            } else {
-              console.error('Error:', response.status);
-            }
-          }).catch(function(error) {
-            console.error('Error:', error);
-          });
+          return response.text(); // Cambiamos aquí para obtener el texto de la respuesta
+        }).then(data => {
+          alert(data);
+          window.location.reload();
+        }).catch((error) => {
+          console.error('Error:', error);
+          alert('Error: ' + error.message);
         });
       }
-      document.addEventListener('DOMContentLoaded', (event) => {
-        let logoutButton = document.querySelector('.button-primary[data-wf-user-logout="Cerrar sesión"]');
-        if (logoutButton) {
-          logoutButton.addEventListener('click', () => {
-            window.location.href = '/login';
-          });
-        }
+
+function reservar(ejemplarID) {
+  var dni = document.getElementById('dni').value;
+  		if (dni === "") {
+			alert('Por favor, introduce tu DNI');
+			return;
+		  }
+  fetch('/reservarEjemplar', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      ejemplarID: ejemplarID,
+      dni: dni
+    }),
+  }).then(response => {
+    if (!response.ok) {
+      return response.text().then(text => {
+        throw new Error(text)
       });
-	  
-	    function sortTable(n) {
+    }
+    return response.text(); // Cambiamos aquí para obtener el texto de la respuesta
+  }).then(data => {
+    alert(data);
+    window.location.reload();
+  }).catch((error) => {
+    console.error('Error:', error);
+    alert('Error: ' + error.message);
+  });
+}
+
+function devolver(ejemplarID) {
+  var dni = document.getElementById('dni').value;
+  		if (dni === "") {
+			alert('Por favor, introduce tu DNI');
+			return;
+		  }
+  fetch('/devolverEjemplar', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      ejemplarID: ejemplarID,
+      dni: dni
+    }),
+  }).then(response => {
+    if (!response.ok) {
+      return response.text().then(text => {
+        throw new Error(text)
+      });
+    }
+    return response.text(); // Cambiamos aquí para obtener el texto de la respuesta
+  }).then(data => {
+    alert(data);
+    window.location.reload();
+  }).catch((error) => {
+    console.error('Error:', error);
+    alert('Error: ' + error.message);
+  });
+}
+
+  document.addEventListener('DOMContentLoaded', (event) => {
+    let logoutButton = document.querySelector('.button-primary[data-wf-user-logout="Cerrar sesión"]');
+    if (logoutButton) {
+      logoutButton.addEventListener('click', () => {
+        window.location.href = '/login';
+      });
+    }
+  });
+  function sortTable(n) {
       var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
       table = document.getElementById("tabla");
       switching = true;
